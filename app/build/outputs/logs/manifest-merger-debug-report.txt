@@ -1,0 +1,390 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:2:1-39:12
+MERGED from [androidx.databinding:databinding-adapters:8.3.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\4341de0cc2a43506768cefa235c5c7fb\transformed\databinding-adapters-8.3.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.databinding:databinding-ktx:8.3.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\25c4cc96123e145c91e8889535e77766\transformed\jetified-databinding-ktx-8.3.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.databinding:databinding-runtime:8.3.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\87d64b1abb3b446bbfe44343a31afbf9\transformed\databinding-runtime-8.3.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.databinding:viewbinding:8.3.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\097db69227cc848cb6a4cf06b9f7a400\transformed\jetified-viewbinding-8.3.2\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.material:material:1.12.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2105e60f12c8e531e12cf679270bae4d\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\f30738b3a524cccfbd5c63a912f066c8\transformed\constraintlayout-2.0.1\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\89c5f242ee47aab88c7c04e50d9abd00\transformed\jetified-appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\7a63f4458f97a8f6f6dabbc685539c3d\transformed\appcompat-1.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\65f5ce5c51b7731139ffba754c30b474\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.6.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\a2c3feec59471c70379e393222916735\transformed\fragment-1.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment-ktx:1.6.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\5ed166f814da6190272372ddd9ef8ea7\transformed\jetified-fragment-ktx-1.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity-ktx:1.8.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\5c40d1ffb6970d8cb6ad99ba1da8bb80\transformed\jetified-activity-ktx-1.8.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity:1.8.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\825b015e6efbde6bb6c83c10f0bed6c8\transformed\jetified-activity-1.8.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d8db627697a8eb71fea7a077e013eb7d\transformed\jetified-savedstate-ktx-1.2.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\96fc3f8b011d7c3c775029680d4383df\transformed\jetified-savedstate-1.2.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\f7b309f515dd4dd1b6f3a986092a33b0\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\a512ea15d789b0fedf596c56e866ac71\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\361a466acef81b7f67d22dd6b17a893c\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.transition:transition:1.5.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\a5bad74dfb37627bf5a3484d58a68eba\transformed\transition-1.5.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\258a52fab8bdb9c2e0f927e62ad3dc4e\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\9d4802b967becdd62deb1c8382f3b037\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\be6fbcdb136f2ec1769ec1b57c2c64f8\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\e491968ad1b6da8ead5b3498b2035859\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-service:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\cfb8a5275402bc243c4c90beabdb08f7\transformed\jetified-lifecycle-service-2.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\0d1798f4d4ddbed38c84504b6896f6c2\transformed\jetified-emoji2-views-helper-1.2.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\ef939fa313d82c302692ffdb4d9da0aa\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\60ac3a5f95aa1b778ede9af4194b52c7\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\86d8ac3513d9ae96394e0c24172b7dfb\transformed\lifecycle-livedata-2.7.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\272a103896d8c578d5d35ce2da9c2cf6\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\e3508ae4e4f23116dc6b29f287f6a67c\transformed\drawerlayout-1.1.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\7fe918f39623edfd84c94da023d3f4d8\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\7b9add43612f81941b1ad899d156a36b\transformed\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\8f61199009d4f6623ca0e52d82b644b6\transformed\recyclerview-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\f6acd856c2ec83f6ce93b0ec7b19a7de\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.1.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\a722542559c517efdd0ecc813a586022\transformed\customview-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core-ktx:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\e0c0477306ace321be46acc42dff9113\transformed\jetified-core-ktx-1.13.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d27dd81e129d35763efa7ef724379f99\transformed\core-1.13.0\AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\5f4d6ddaa8c2b0b53c646c1aebed2e35\transformed\lifecycle-runtime-2.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\a9ee886dcb8483358cc7f2f55a8219ec\transformed\jetified-lifecycle-viewmodel-ktx-2.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b9f7506cc9c7e0e8b8b04b680a8029b7\transformed\jetified-lifecycle-runtime-ktx-2.7.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.datastore:datastore-core-android:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b4eff1d4350e8bd149c24e644e396841\transformed\jetified-datastore-core-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.datastore:datastore-android:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\32a309c72b4f88c82a06c2cd1aed44d9\transformed\jetified-datastore-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\03105bca3d96961e9ab15b00e37b9dbc\transformed\jetified-datastore-preferences-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\31200bb6090cbf9e695c4d418e7ee2f8\transformed\jetified-annotation-experimental-1.4.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2f59c2d6152b42acda2af8f127b1013e\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\5a016d2c7e3bf4ea9e95b055726c82c6\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\22b71ba5a622ecf029f590cf0d1962b8\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\08c06f55548e0f5537d2e5e60f695928\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\56e34020301009bc2abb7ee71d6c16bb\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2c59ab812849dd24288d12f5e93a035c\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2f3a63b253a53d74158b4fc2b9a567d0\transformed\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\efdf54ea09516f515765f326559436ac\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\22508f63362b56f175c2c02398e71479\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\fc740aa201c649e08903342284d0a3a0\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+	package
+		INJECTED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:4:5-67
+	android:name
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:4:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:5:5-79
+	android:name
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:5:22-76
+uses-permission#android.permission.NFC
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:6:5-62
+	android:name
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:6:22-59
+uses-feature#android.hardware.nfc
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:7:5-82
+	android:required
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:7:55-79
+	android:name
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:7:19-54
+application
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:9:5-38:19
+INJECTED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:9:5-38:19
+MERGED from [com.google.android.material:material:1.12.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2105e60f12c8e531e12cf679270bae4d\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.12.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2105e60f12c8e531e12cf679270bae4d\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\f30738b3a524cccfbd5c63a912f066c8\transformed\constraintlayout-2.0.1\AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\f30738b3a524cccfbd5c63a912f066c8\transformed\constraintlayout-2.0.1\AndroidManifest.xml:9:5-20
+MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\ef939fa313d82c302692ffdb4d9da0aa\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\ef939fa313d82c302692ffdb4d9da0aa\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\60ac3a5f95aa1b778ede9af4194b52c7\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\60ac3a5f95aa1b778ede9af4194b52c7\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.core:core:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d27dd81e129d35763efa7ef724379f99\transformed\core-1.13.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d27dd81e129d35763efa7ef724379f99\transformed\core-1.13.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\5a016d2c7e3bf4ea9e95b055726c82c6\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\5a016d2c7e3bf4ea9e95b055726c82c6\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\56e34020301009bc2abb7ee71d6c16bb\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\56e34020301009bc2abb7ee71d6c16bb\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+	android:extractNativeLibs
+		INJECTED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d27dd81e129d35763efa7ef724379f99\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
+	android:label
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:13:9-32
+	android:roundIcon
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:15:9-54
+	android:icon
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:14:9-43
+	android:allowBackup
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:12:9-35
+	android:theme
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:16:9-68
+	android:networkSecurityConfig
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:11:9-69
+	android:usesCleartextTraffic
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:10:9-44
+activity#com.example.vayvene.ui.login.NfcLoginActivity
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:18:9-27:20
+	android:exported
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:22:13-36
+	android:networkSecurityConfig
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:20:13-73
+	android:usesCleartextTraffic
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:19:13-48
+	android:name
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:21:13-54
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:23:13-26:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:24:17-68
+	android:name
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:24:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:25:17-76
+	android:name
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:25:27-74
+activity#com.example.vayvene.ui.admin.AdminMenuActivity
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:29:9-88
+	android:exported
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:29:62-86
+	android:name
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:29:19-61
+activity#com.example.vayvene.ui.admin.RegisterCardActivity
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:30:9-91
+	android:exported
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:30:65-89
+	android:name
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:30:19-64
+activity#com.example.vayvene.ui.admin.RegisterResultActivity
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:31:9-93
+	android:exported
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:31:67-91
+	android:name
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:31:19-66
+activity#com.example.vayvene.ui.main.SellerMenuActivity
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:32:9-64
+	android:name
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:32:19-61
+activity#com.example.vayvene.ui.main.SellerSummaryActivity
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:33:9-67
+	android:name
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:33:19-64
+activity#com.example.vayvene.ui.main.CancelSaleActivity
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:34:9-64
+	android:name
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:34:19-61
+activity#com.example.vayvene.ui.main.PosActivity
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:35:9-57
+	android:name
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:35:19-54
+activity#com.example.vayvene.ui.main.BalanceActivity
+ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:36:9-61
+	android:name
+		ADDED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml:36:19-58
+uses-sdk
+INJECTED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml
+MERGED from [androidx.databinding:databinding-adapters:8.3.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\4341de0cc2a43506768cefa235c5c7fb\transformed\databinding-adapters-8.3.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:databinding-adapters:8.3.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\4341de0cc2a43506768cefa235c5c7fb\transformed\databinding-adapters-8.3.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:databinding-ktx:8.3.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\25c4cc96123e145c91e8889535e77766\transformed\jetified-databinding-ktx-8.3.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:databinding-ktx:8.3.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\25c4cc96123e145c91e8889535e77766\transformed\jetified-databinding-ktx-8.3.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:databinding-runtime:8.3.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\87d64b1abb3b446bbfe44343a31afbf9\transformed\databinding-runtime-8.3.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:databinding-runtime:8.3.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\87d64b1abb3b446bbfe44343a31afbf9\transformed\databinding-runtime-8.3.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:viewbinding:8.3.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\097db69227cc848cb6a4cf06b9f7a400\transformed\jetified-viewbinding-8.3.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:viewbinding:8.3.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\097db69227cc848cb6a4cf06b9f7a400\transformed\jetified-viewbinding-8.3.2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.material:material:1.12.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2105e60f12c8e531e12cf679270bae4d\transformed\material-1.12.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.12.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2105e60f12c8e531e12cf679270bae4d\transformed\material-1.12.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\f30738b3a524cccfbd5c63a912f066c8\transformed\constraintlayout-2.0.1\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\f30738b3a524cccfbd5c63a912f066c8\transformed\constraintlayout-2.0.1\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\89c5f242ee47aab88c7c04e50d9abd00\transformed\jetified-appcompat-resources-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\89c5f242ee47aab88c7c04e50d9abd00\transformed\jetified-appcompat-resources-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\7a63f4458f97a8f6f6dabbc685539c3d\transformed\appcompat-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\7a63f4458f97a8f6f6dabbc685539c3d\transformed\appcompat-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\65f5ce5c51b7731139ffba754c30b474\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\65f5ce5c51b7731139ffba754c30b474\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.6.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\a2c3feec59471c70379e393222916735\transformed\fragment-1.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.6.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\a2c3feec59471c70379e393222916735\transformed\fragment-1.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment-ktx:1.6.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\5ed166f814da6190272372ddd9ef8ea7\transformed\jetified-fragment-ktx-1.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment-ktx:1.6.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\5ed166f814da6190272372ddd9ef8ea7\transformed\jetified-fragment-ktx-1.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-ktx:1.8.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\5c40d1ffb6970d8cb6ad99ba1da8bb80\transformed\jetified-activity-ktx-1.8.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.8.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\5c40d1ffb6970d8cb6ad99ba1da8bb80\transformed\jetified-activity-ktx-1.8.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity:1.8.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\825b015e6efbde6bb6c83c10f0bed6c8\transformed\jetified-activity-1.8.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.8.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\825b015e6efbde6bb6c83c10f0bed6c8\transformed\jetified-activity-1.8.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d8db627697a8eb71fea7a077e013eb7d\transformed\jetified-savedstate-ktx-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d8db627697a8eb71fea7a077e013eb7d\transformed\jetified-savedstate-ktx-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\96fc3f8b011d7c3c775029680d4383df\transformed\jetified-savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\96fc3f8b011d7c3c775029680d4383df\transformed\jetified-savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\f7b309f515dd4dd1b6f3a986092a33b0\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\f7b309f515dd4dd1b6f3a986092a33b0\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\a512ea15d789b0fedf596c56e866ac71\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\a512ea15d789b0fedf596c56e866ac71\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\361a466acef81b7f67d22dd6b17a893c\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\361a466acef81b7f67d22dd6b17a893c\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.transition:transition:1.5.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\a5bad74dfb37627bf5a3484d58a68eba\transformed\transition-1.5.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.transition:transition:1.5.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\a5bad74dfb37627bf5a3484d58a68eba\transformed\transition-1.5.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\258a52fab8bdb9c2e0f927e62ad3dc4e\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\258a52fab8bdb9c2e0f927e62ad3dc4e\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\9d4802b967becdd62deb1c8382f3b037\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\9d4802b967becdd62deb1c8382f3b037\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\be6fbcdb136f2ec1769ec1b57c2c64f8\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\be6fbcdb136f2ec1769ec1b57c2c64f8\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\e491968ad1b6da8ead5b3498b2035859\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\e491968ad1b6da8ead5b3498b2035859\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\cfb8a5275402bc243c4c90beabdb08f7\transformed\jetified-lifecycle-service-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\cfb8a5275402bc243c4c90beabdb08f7\transformed\jetified-lifecycle-service-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\0d1798f4d4ddbed38c84504b6896f6c2\transformed\jetified-emoji2-views-helper-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\0d1798f4d4ddbed38c84504b6896f6c2\transformed\jetified-emoji2-views-helper-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\ef939fa313d82c302692ffdb4d9da0aa\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\ef939fa313d82c302692ffdb4d9da0aa\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\60ac3a5f95aa1b778ede9af4194b52c7\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\60ac3a5f95aa1b778ede9af4194b52c7\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\86d8ac3513d9ae96394e0c24172b7dfb\transformed\lifecycle-livedata-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\86d8ac3513d9ae96394e0c24172b7dfb\transformed\lifecycle-livedata-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\272a103896d8c578d5d35ce2da9c2cf6\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\272a103896d8c578d5d35ce2da9c2cf6\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\e3508ae4e4f23116dc6b29f287f6a67c\transformed\drawerlayout-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\e3508ae4e4f23116dc6b29f287f6a67c\transformed\drawerlayout-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\7fe918f39623edfd84c94da023d3f4d8\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\7fe918f39623edfd84c94da023d3f4d8\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\7b9add43612f81941b1ad899d156a36b\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\7b9add43612f81941b1ad899d156a36b\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\8f61199009d4f6623ca0e52d82b644b6\transformed\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\8f61199009d4f6623ca0e52d82b644b6\transformed\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\f6acd856c2ec83f6ce93b0ec7b19a7de\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\f6acd856c2ec83f6ce93b0ec7b19a7de\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.1.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\a722542559c517efdd0ecc813a586022\transformed\customview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\a722542559c517efdd0ecc813a586022\transformed\customview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-ktx:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\e0c0477306ace321be46acc42dff9113\transformed\jetified-core-ktx-1.13.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\e0c0477306ace321be46acc42dff9113\transformed\jetified-core-ktx-1.13.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d27dd81e129d35763efa7ef724379f99\transformed\core-1.13.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d27dd81e129d35763efa7ef724379f99\transformed\core-1.13.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\5f4d6ddaa8c2b0b53c646c1aebed2e35\transformed\lifecycle-runtime-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\5f4d6ddaa8c2b0b53c646c1aebed2e35\transformed\lifecycle-runtime-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\a9ee886dcb8483358cc7f2f55a8219ec\transformed\jetified-lifecycle-viewmodel-ktx-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\a9ee886dcb8483358cc7f2f55a8219ec\transformed\jetified-lifecycle-viewmodel-ktx-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b9f7506cc9c7e0e8b8b04b680a8029b7\transformed\jetified-lifecycle-runtime-ktx-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b9f7506cc9c7e0e8b8b04b680a8029b7\transformed\jetified-lifecycle-runtime-ktx-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-core-android:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b4eff1d4350e8bd149c24e644e396841\transformed\jetified-datastore-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.datastore:datastore-core-android:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b4eff1d4350e8bd149c24e644e396841\transformed\jetified-datastore-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.datastore:datastore-android:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\32a309c72b4f88c82a06c2cd1aed44d9\transformed\jetified-datastore-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-android:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\32a309c72b4f88c82a06c2cd1aed44d9\transformed\jetified-datastore-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\03105bca3d96961e9ab15b00e37b9dbc\transformed\jetified-datastore-preferences-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\03105bca3d96961e9ab15b00e37b9dbc\transformed\jetified-datastore-preferences-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\31200bb6090cbf9e695c4d418e7ee2f8\transformed\jetified-annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\31200bb6090cbf9e695c4d418e7ee2f8\transformed\jetified-annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2f59c2d6152b42acda2af8f127b1013e\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2f59c2d6152b42acda2af8f127b1013e\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\5a016d2c7e3bf4ea9e95b055726c82c6\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\5a016d2c7e3bf4ea9e95b055726c82c6\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\22b71ba5a622ecf029f590cf0d1962b8\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\22b71ba5a622ecf029f590cf0d1962b8\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\08c06f55548e0f5537d2e5e60f695928\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\08c06f55548e0f5537d2e5e60f695928\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\56e34020301009bc2abb7ee71d6c16bb\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\56e34020301009bc2abb7ee71d6c16bb\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2c59ab812849dd24288d12f5e93a035c\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2c59ab812849dd24288d12f5e93a035c\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2f3a63b253a53d74158b4fc2b9a567d0\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2f3a63b253a53d74158b4fc2b9a567d0\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\efdf54ea09516f515765f326559436ac\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\efdf54ea09516f515765f326559436ac\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\22508f63362b56f175c2c02398e71479\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\22508f63362b56f175c2c02398e71479\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\fc740aa201c649e08903342284d0a3a0\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\fc740aa201c649e08903342284d0a3a0\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+	android:targetSdkVersion
+		INJECTED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\ozozo\Downloads\VayVeneMobileStarter\app\src\main\AndroidManifest.xml
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\ef939fa313d82c302692ffdb4d9da0aa\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\60ac3a5f95aa1b778ede9af4194b52c7\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\60ac3a5f95aa1b778ede9af4194b52c7\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\5a016d2c7e3bf4ea9e95b055726c82c6\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\5a016d2c7e3bf4ea9e95b055726c82c6\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\ef939fa313d82c302692ffdb4d9da0aa\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\ef939fa313d82c302692ffdb4d9da0aa\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\ef939fa313d82c302692ffdb4d9da0aa\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\ef939fa313d82c302692ffdb4d9da0aa\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\ef939fa313d82c302692ffdb4d9da0aa\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\ef939fa313d82c302692ffdb4d9da0aa\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\ef939fa313d82c302692ffdb4d9da0aa\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\60ac3a5f95aa1b778ede9af4194b52c7\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\60ac3a5f95aa1b778ede9af4194b52c7\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\60ac3a5f95aa1b778ede9af4194b52c7\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d27dd81e129d35763efa7ef724379f99\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d27dd81e129d35763efa7ef724379f99\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d27dd81e129d35763efa7ef724379f99\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
+permission#com.example.vayvene.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d27dd81e129d35763efa7ef724379f99\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d27dd81e129d35763efa7ef724379f99\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d27dd81e129d35763efa7ef724379f99\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d27dd81e129d35763efa7ef724379f99\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d27dd81e129d35763efa7ef724379f99\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
+uses-permission#com.example.vayvene.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d27dd81e129d35763efa7ef724379f99\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\d27dd81e129d35763efa7ef724379f99\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\b8e8111521fffcdbb9a9da9a1ecf9617\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:25-92

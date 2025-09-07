@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:padding="24dp"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <Button android:id="@+id/btnSale" android:text="Nueva venta"
+        android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+    <Button android:id="@+id/btnBalance" android:text="Consultar saldo"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+
+    <Button android:id="@+id/btnSummary" android:text="Resumen"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+
+    <Button android:id="@+id/btnCancel" android:text="Anular venta"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+
+    <Button android:id="@+id/btnLogout" android:text="Cerrar sesión"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+</LinearLayout>

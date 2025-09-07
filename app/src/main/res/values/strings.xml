@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VayVene</string>
+    <string name="welcome_title">Acerque su tarjeta de personal para iniciar sesión</string>
+    <string name="server_label">Servidor:</string>
+    <string name="connected">Conectado</string>
+    <string name="disconnected">Sin conexión</string>
+    <string name="seller_actions">Acciones</string>
+    <string name="btn_sell">VENDER</string>
+    <string name="btn_balance">CONSULTAR SALDO</string>
+    <string name="btn_summary">RESUMEN</string>
+    <string name="btn_void">ANULAR VENTA</string>
+    <string name="untitled">icon</string>
+    <string-array name="staff_roles">
+        <item>ADMINISTRADOR</item>
+        <item>ENCARGADO</item>
+        <item>CAJERO</item>
+        <item>VENDEDOR</item>
+    </string-array>
+    <string name="base_url">http://192.168.1.28:3000/</string>
+
+</resources>
