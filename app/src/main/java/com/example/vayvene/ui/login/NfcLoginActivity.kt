@@ -4,22 +4,24 @@ import android.app.PendingIntent
 import android.content.Intent
 import android.nfc.NfcAdapter
 import android.nfc.Tag
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import com.example.vayvene.data.*
-import com.example.vayvene.ui.main.MainActivity
+import com.example.vayvene.data.ApiClient
+import com.example.vayvene.data.Repository
+import com.example.vayvene.ui.main.RoleMenuActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.Locale
-import com.example.vayvene.data.TokenHolder
 
 class NfcLoginActivity : AppCompatActivity() {
 
-    private val api by lazy { ApiClient.api }
-    private val repo by lazy { Repository(api) }
+    private val api by lazy { ApiClient.create(this) }
+    private val repo by lazy { Repository(api, this) }
+
     private var nfcAdapter: NfcAdapter? = null
-    private var pendingIntent: PendingIntent? = null
+    private lateinit var pendingIntent: PendingIntent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,10 +30,13 @@ class NfcLoginActivity : AppCompatActivity() {
         pendingIntent = PendingIntent.getActivity(
             this, 0,
             Intent(this, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
+            if (Build.VERSION.SDK_INT >= 31)
+                PendingIntent.FLAG_MUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+            else
+                PendingIntent.FLAG_UPDATE_CURRENT
         )
-
-        intent?.let { handleIntent(it) }
+        // Si la activity ya fue lanzada por NFC:
+        intent?.let { handleNfcIntent(it) }
     }
 
     override fun onResume() {
@@ -46,38 +51,39 @@ class NfcLoginActivity : AppCompatActivity() {
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        if (intent != null) handleIntent(intent)
+        if (intent != null) handleNfcIntent(intent)
     }
 
-    private fun handleIntent(intent: Intent) {
+    private fun handleNfcIntent(intent: Intent) {
+        if (intent.action != NfcAdapter.ACTION_TAG_DISCOVERED &&
+            intent.action != NfcAdapter.ACTION_NDEF_DISCOVERED &&
+            intent.action != NfcAdapter.ACTION_TECH_DISCOVERED
+        ) return
+
         val tag: Tag? = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG)
-        if (tag == null) return
+        val idBytes = tag?.id ?: return
 
-        val uidBytes = tag.id ?: return
-        val normal = uidBytes.joinToString("") { String.format(Locale.US, "%02X", it) }
-        val reversed = uidBytes.reversedArray().joinToString("") { String.format(Locale.US, "%02X", it) }
+        val cardUid = bytesToHex(idBytes) // UID seguro (sin índices locos)
 
-        lifecycleScope.launch {
-            tryLogin(normal) || tryLogin(reversed)
-        }
-    }
-
-    private suspend fun tryLogin(uid: String): Boolean {
-        return try {
-            val r = repo.login(uid)
-            val token = r.getOrNull()?.token
-            TokenHolder.token = token
-            if (token != null) {
-                TokenHolder.token = token
-                val me = repo.me().getOrNull()?.user
-                Toast.makeText(this, "Login OK (${me?.role ?: "?"})", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, MainActivity::class.java))
+        CoroutineScope(Dispatchers.Main).launch {
+            val result = repo.loginWithCard(cardUid)
+            result.onSuccess { login ->
+                Toast.makeText(this@NfcLoginActivity, "Login OK", Toast.LENGTH_SHORT).show()
+                // Después del login, vamos al menú de roles (ahí decidís Admin/Vendedor)
+                startActivity(Intent(this@NfcLoginActivity, RoleMenuActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK))
                 finish()
-                true
-            } else false
-        } catch (_: Exception) {
-            Toast.makeText(this, "Login falló para UID $uid", Toast.LENGTH_SHORT).show()
-            false
+            }.onFailure { err ->
+                Toast.makeText(
+                    this@NfcLoginActivity,
+                    "Error login: ${err.message ?: "desconocido"}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
+
+    /** Conversión segura de ByteArray (UID de la tarjeta) a HEX mayúsculas */
+    private fun bytesToHex(bytes: ByteArray): String =
+        bytes.joinToString("") { b -> "%02X".format(b) }
 }

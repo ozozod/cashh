@@ -3,19 +3,25 @@ package com.example.vayvene.data
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
-// Solo la interfaz (los modelos están en ModelsMobile.kt)
+// ¡OJO! Acá solo la interfaz. Nada de data classes.
 interface ApiService {
-    @POST("api/mobile/login")
-    suspend fun login(@Body body: Map<String, String>): Response<LoginResponse>
 
-    @GET("api/mobile/me")
-    suspend fun me(): Response<MeResp>
+    // Login por tarjeta NFC (se envía como Map, clave "cardUid")
+    @POST("auth/login-card")
+    suspend fun loginWithCard(@Body body: Map<String, String>): Response<LoginResponse>
 
-    @GET("api/mobile/products")
-    suspend fun products(): Response<ProductsResp>
+    @GET("auth/me")
+    suspend fun me(@Header("Authorization") bearer: String): Response<MeResp>
 
-    @POST("api/mobile/heartbeat")
-    suspend fun heartbeat(@Body body: HeartbeatBody): Response<SimpleResp>
+    @GET("seller/balance")
+    suspend fun balance(@Header("Authorization") bearer: String): Response<BalanceResp>
+
+    @POST("seller/sale")
+    suspend fun sale(
+        @Header("Authorization") bearer: String,
+        @Body body: SaleBody
+    ): Response<SaleResp>
 }

@@ -8,6 +8,6 @@ class PosActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pos)
-        title = "Nueva venta"
+        // TODO: leer tarjeta comprador, seleccionar productos y confirmar venta.
     }
 }

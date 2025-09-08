@@ -5,7 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
@@ -17,37 +18,41 @@ import java.lang.String;
 
 public final class ActivitySellerMenuBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final ScrollView rootView;
 
   @NonNull
-  public final Button btnBalance;
+  public final Button btnAnularVenta;
 
   @NonNull
-  public final Button btnCancel;
+  public final Button btnConsultarSaldo;
 
   @NonNull
   public final Button btnLogout;
 
   @NonNull
-  public final Button btnSale;
+  public final Button btnNuevaVenta;
 
   @NonNull
-  public final Button btnSummary;
+  public final Button btnResumen;
 
-  private ActivitySellerMenuBinding(@NonNull LinearLayout rootView, @NonNull Button btnBalance,
-      @NonNull Button btnCancel, @NonNull Button btnLogout, @NonNull Button btnSale,
-      @NonNull Button btnSummary) {
+  @NonNull
+  public final TextView txtTitulo;
+
+  private ActivitySellerMenuBinding(@NonNull ScrollView rootView, @NonNull Button btnAnularVenta,
+      @NonNull Button btnConsultarSaldo, @NonNull Button btnLogout, @NonNull Button btnNuevaVenta,
+      @NonNull Button btnResumen, @NonNull TextView txtTitulo) {
     this.rootView = rootView;
-    this.btnBalance = btnBalance;
-    this.btnCancel = btnCancel;
+    this.btnAnularVenta = btnAnularVenta;
+    this.btnConsultarSaldo = btnConsultarSaldo;
     this.btnLogout = btnLogout;
-    this.btnSale = btnSale;
-    this.btnSummary = btnSummary;
+    this.btnNuevaVenta = btnNuevaVenta;
+    this.btnResumen = btnResumen;
+    this.txtTitulo = txtTitulo;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public ScrollView getRoot() {
     return rootView;
   }
 
@@ -72,15 +77,15 @@ public final class ActivitySellerMenuBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.btnBalance;
-      Button btnBalance = ViewBindings.findChildViewById(rootView, id);
-      if (btnBalance == null) {
+      id = R.id.btnAnularVenta;
+      Button btnAnularVenta = ViewBindings.findChildViewById(rootView, id);
+      if (btnAnularVenta == null) {
         break missingId;
       }
 
-      id = R.id.btnCancel;
-      Button btnCancel = ViewBindings.findChildViewById(rootView, id);
-      if (btnCancel == null) {
+      id = R.id.btnConsultarSaldo;
+      Button btnConsultarSaldo = ViewBindings.findChildViewById(rootView, id);
+      if (btnConsultarSaldo == null) {
         break missingId;
       }
 
@@ -90,20 +95,26 @@ public final class ActivitySellerMenuBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.btnSale;
-      Button btnSale = ViewBindings.findChildViewById(rootView, id);
-      if (btnSale == null) {
+      id = R.id.btnNuevaVenta;
+      Button btnNuevaVenta = ViewBindings.findChildViewById(rootView, id);
+      if (btnNuevaVenta == null) {
         break missingId;
       }
 
-      id = R.id.btnSummary;
-      Button btnSummary = ViewBindings.findChildViewById(rootView, id);
-      if (btnSummary == null) {
+      id = R.id.btnResumen;
+      Button btnResumen = ViewBindings.findChildViewById(rootView, id);
+      if (btnResumen == null) {
         break missingId;
       }
 
-      return new ActivitySellerMenuBinding((LinearLayout) rootView, btnBalance, btnCancel,
-          btnLogout, btnSale, btnSummary);
+      id = R.id.txtTitulo;
+      TextView txtTitulo = ViewBindings.findChildViewById(rootView, id);
+      if (txtTitulo == null) {
+        break missingId;
+      }
+
+      return new ActivitySellerMenuBinding((ScrollView) rootView, btnAnularVenta, btnConsultarSaldo,
+          btnLogout, btnNuevaVenta, btnResumen, txtTitulo);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

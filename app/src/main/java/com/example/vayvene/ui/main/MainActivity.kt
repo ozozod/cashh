@@ -1,41 +1,33 @@
 package com.example.vayvene.ui.main
 
-import android.content.Context
-import android.os.Build
+import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import com.example.vayvene.data.ApiClient
-import com.example.vayvene.data.Repository
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
-import kotlinx.coroutines.launch
+import com.example.vayvene.R
+import com.example.vayvene.data.TokenHolder
+import com.example.vayvene.ui.login.NfcLoginActivity
 
+/**
+ * Pantalla puente:
+ * - Si hay token guardado -> va al menú de roles
+ * - Si no -> va a la pantalla de login por NFC
+ *
+ * No crea Repository (ya no hace falta aquí).
+ */
 class MainActivity : AppCompatActivity() {
-
-    private val repo by lazy { Repository(ApiClient.api) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Usá tu layout si lo tenés:
-        // setContentView(R.layout.activity_main)
-    }
+        setContentView(R.layout.activity_main)
 
-    override fun onResume() {
-        super.onResume()
-        // Enviar heartbeat cada 30s
-        lifecycleScope.launch {
-            while (isActive) {
-                repo.heartbeat(deviceId(), null, null)
-                delay(30_000)
-            }
+        val token = TokenHolder.getToken(this)
+        val next = if (!token.isNullOrBlank()) {
+            Intent(this, RoleMenuActivity::class.java)
+        } else {
+            Intent(this, NfcLoginActivity::class.java)
         }
-    }
 
-    private fun deviceId(): String {
-        val androidId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
-        val model = Build.MODEL ?: "Android"
-        return "$model-$androidId"
+        next.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(next)
     }
 }

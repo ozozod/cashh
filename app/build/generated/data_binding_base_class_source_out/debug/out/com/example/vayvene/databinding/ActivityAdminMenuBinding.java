@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
@@ -20,21 +21,25 @@ public final class ActivityAdminMenuBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
+  public final Button btnLogout;
+
+  @NonNull
   public final Button btnRegistrarComprador;
 
   @NonNull
   public final Button btnRegistrarStaff;
 
   @NonNull
-  public final LinearLayout rootAdmin;
+  public final TextView txtTitulo;
 
-  private ActivityAdminMenuBinding(@NonNull LinearLayout rootView,
+  private ActivityAdminMenuBinding(@NonNull LinearLayout rootView, @NonNull Button btnLogout,
       @NonNull Button btnRegistrarComprador, @NonNull Button btnRegistrarStaff,
-      @NonNull LinearLayout rootAdmin) {
+      @NonNull TextView txtTitulo) {
     this.rootView = rootView;
+    this.btnLogout = btnLogout;
     this.btnRegistrarComprador = btnRegistrarComprador;
     this.btnRegistrarStaff = btnRegistrarStaff;
-    this.rootAdmin = rootAdmin;
+    this.txtTitulo = txtTitulo;
   }
 
   @Override
@@ -64,6 +69,12 @@ public final class ActivityAdminMenuBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnLogout;
+      Button btnLogout = ViewBindings.findChildViewById(rootView, id);
+      if (btnLogout == null) {
+        break missingId;
+      }
+
       id = R.id.btnRegistrarComprador;
       Button btnRegistrarComprador = ViewBindings.findChildViewById(rootView, id);
       if (btnRegistrarComprador == null) {
@@ -76,10 +87,14 @@ public final class ActivityAdminMenuBinding implements ViewBinding {
         break missingId;
       }
 
-      LinearLayout rootAdmin = (LinearLayout) rootView;
+      id = R.id.txtTitulo;
+      TextView txtTitulo = ViewBindings.findChildViewById(rootView, id);
+      if (txtTitulo == null) {
+        break missingId;
+      }
 
-      return new ActivityAdminMenuBinding((LinearLayout) rootView, btnRegistrarComprador,
-          btnRegistrarStaff, rootAdmin);
+      return new ActivityAdminMenuBinding((LinearLayout) rootView, btnLogout, btnRegistrarComprador,
+          btnRegistrarStaff, txtTitulo);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

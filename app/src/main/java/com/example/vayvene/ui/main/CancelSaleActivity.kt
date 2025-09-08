@@ -7,8 +7,8 @@ import com.example.vayvene.R
 class CancelSaleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Reutilizamos un layout simple. Luego armamos la UI de historial y anulación.
-        setContentView(R.layout.activity_main)
-        title = "Anular venta (placeholder)"
+        // usá un layout simple o uno existente
+        setContentView(R.layout.activity_nfc_prompt) // placeholder
+        // TODO: pedir tarjeta ENCARGADO, listar ventas del vendedor, elegir una, validar tarjeta del comprador y devolver saldo.
     }
 }

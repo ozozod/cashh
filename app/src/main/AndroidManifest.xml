@@ -16,24 +16,27 @@
         android:theme="@style/Theme.Material3.DayNight.NoActionBar">
 
         <activity
-            android:usesCleartextTraffic="true"
-            android:networkSecurityConfig="@xml/network_security_config"
             android:name=".ui.login.NfcLoginActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.admin.AdminMenuActivity" android:exported="false"/>
-        <activity android:name=".ui.admin.RegisterCardActivity" android:exported="false"/>
-        <activity android:name=".ui.admin.RegisterResultActivity" android:exported="false"/>
-        <activity android:name=".ui.main.SellerMenuActivity" />
-        <activity android:name=".ui.main.SellerSummaryActivity" />
-        <activity android:name=".ui.main.CancelSaleActivity" />
-        <activity android:name=".ui.main.PosActivity" />
-        <activity android:name=".ui.main.BalanceActivity" />
+        <!-- Admin -->
+        <activity android:name=".ui.admin.AdminMenuActivity" android:exported="false" />
+        <activity android:name=".ui.admin.RegisterCardActivity" android:exported="false" />
+        <activity android:name=".ui.admin.RegisterResultActivity" android:exported="false" />
+
+        <!-- Vendedor / Caja -->
+        <activity android:name=".ui.main.SellerMenuActivity" android:exported="false" />
+        <activity android:name=".ui.main.SellerSummaryActivity" android:exported="false" />
+        <activity android:name=".ui.main.CancelSaleActivity" android:exported="false" />
+        <activity android:name=".ui.main.PosActivity" android:exported="false" />
+        <activity android:name=".ui.main.BalanceActivity" android:exported="false" />
+        <activity android:name=".ui.main.RoleMenuActivity" android:exported="false" />
+        <activity android:name=".ui.main.MainActivity" android:exported="false" />
 
     </application>
 </manifest>

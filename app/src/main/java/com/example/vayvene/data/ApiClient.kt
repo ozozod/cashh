@@ -1,34 +1,26 @@
 package com.example.vayvene.data
 
+import android.content.Context
+import com.example.vayvene.BuildConfig
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import okhttp3.Interceptor
-import okhttp3.Response
-import com.example.vayvene.data.TokenHolder
-
-class TokenInterceptor : Interceptor {
-    override fun intercept(chain: Interceptor.Chain): Response {
-        val original = chain.request()
-        val b = original.newBuilder()
-        TokenHolder.token?.let { tok ->
-            b.header("Authorization", "Bearer $tok")
-        }
-        return chain.proceed(b.build())
-    }
-}
 
 object ApiClient {
-    fun create(baseUrl: String): ApiService {
-        val logging = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
+    // Firma simple: SOLO recibe context
+    fun create(context: Context): ApiService {
         val client = OkHttpClient.Builder()
-            .addInterceptor(TokenInterceptor())
-            .addInterceptor(logging)
+            .addInterceptor { chain ->
+                val req = chain.request()
+                    .newBuilder()
+                    .addHeader("Accept", "application/json")
+                    .build()
+                chain.proceed(req)
+            }
             .build()
 
         return Retrofit.Builder()
-            .baseUrl(baseUrl)
+            .baseUrl(BuildConfig.BASE_URL) // p. ej. "http://192.168.1.28:3000/"
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
