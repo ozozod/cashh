@@ -1,18 +1,16 @@
 package com.example.vayvene.ui.main
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Base64
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.vayvene.R
-import com.example.vayvene.data.TokenHolder
 import com.example.vayvene.ui.login.NfcLoginActivity
+import org.json.JSONObject
 
-/**
- * Menú del Vendedor con 5 botones.
- * Si tu layout aún no tiene esos IDs, no crashea (solo avisa).
- */
 class SellerMenuActivity : AppCompatActivity() {
 
     private fun toast(msg: String) =
@@ -20,8 +18,19 @@ class SellerMenuActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Usamos el layout que mencionaste para el menú de roles del vendedor.
+        // usás este layout para el menú del vendedor
         setContentView(R.layout.activity_role_menu)
+
+        val token = getTokenFromPrefs(this)
+        val role = token?.let { getClaim(it, "role") }?.uppercase()
+
+        if (token.isNullOrBlank() || role != "SELLER") {
+            Toast.makeText(this, "Sesión inválida. Iniciá de nuevo.", Toast.LENGTH_SHORT).show()
+            val i = Intent(this, NfcLoginActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(i)
+            return
+        }
 
         val btn1: Button? = findViewById(R.id.btnAction1)   // Nueva venta
         val btn2: Button? = findViewById(R.id.btnAction2)   // Consultar saldo
@@ -31,13 +40,10 @@ class SellerMenuActivity : AppCompatActivity() {
 
         btn1?.setOnClickListener { toast("Nueva venta (pendiente de UI)") }
         btn2?.setOnClickListener { toast("Consultar saldo (pendiente de UI)") }
-        btn3?.setOnClickListener {
-            startActivity(Intent(this, SellerSummaryActivity::class.java))
-        }
+        btn3?.setOnClickListener { startActivity(Intent(this, SellerSummaryActivity::class.java)) }
         btn4?.setOnClickListener { toast("Anular venta (pendiente de UI)") }
         btn5?.setOnClickListener {
-            // Cerrar sesión
-            TokenHolder.clear(this)
+            clearTokenInPrefs(this)
             val i = Intent(this, NfcLoginActivity::class.java)
             i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(i)
@@ -46,5 +52,39 @@ class SellerMenuActivity : AppCompatActivity() {
         if (listOf(btn1, btn2, btn3, btn4, btn5).all { it == null }) {
             toast("Faltan los 5 botones en el layout del vendedor")
         }
+    }
+
+    // -------- helpers --------
+    private fun getTokenFromPrefs(ctx: Context): String? {
+        val prefNames = arrayOf("auth", "session", "app_prefs")
+        val keys = arrayOf("token", "jwt", "Authorization")
+        for (p in prefNames) {
+            val prefs = ctx.getSharedPreferences(p, Context.MODE_PRIVATE)
+            for (k in keys) {
+                prefs.getString(k, null)?.let { if (it.isNotBlank()) return it }
+            }
+        }
+        return null
+    }
+
+    private fun clearTokenInPrefs(ctx: Context) {
+        val prefNames = arrayOf("auth", "session", "app_prefs")
+        val keys = arrayOf("token", "jwt", "Authorization")
+        for (p in prefNames) {
+            val prefs = ctx.getSharedPreferences(p, Context.MODE_PRIVATE)
+            val e = prefs.edit()
+            for (k in keys) e.remove(k)
+            e.apply()
+        }
+    }
+
+    private fun getClaim(jwt: String, key: String): String? {
+        val parts = jwt.split(".")
+        if (parts.size < 2) return null
+        val payloadB64 = parts[1].replace('-', '+').replace('_', '/')
+        val pad = (4 - payloadB64.length % 4) % 4
+        val padded = payloadB64 + "=".repeat(pad)
+        val json = JSONObject(String(Base64.decode(padded, Base64.DEFAULT)))
+        return if (json.has(key)) json.optString(key, null) else null
     }
 }

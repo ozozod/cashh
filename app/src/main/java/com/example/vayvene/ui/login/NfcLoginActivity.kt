@@ -1,6 +1,5 @@
 package com.example.vayvene.ui.login
 
-import android.app.PendingIntent
 import android.content.Intent
 import android.nfc.NfcAdapter
 import android.nfc.Tag
@@ -8,82 +7,89 @@ import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.example.vayvene.R
 import com.example.vayvene.data.ApiClient
 import com.example.vayvene.data.Repository
-import com.example.vayvene.ui.main.RoleMenuActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.example.vayvene.data.LoginRequest
+import com.example.vayvene.data.JwtUtils
+import com.example.vayvene.ui.admin.AdminMenuActivity
+import com.example.vayvene.ui.main.SellerMenuActivity
 import kotlinx.coroutines.launch
 
 class NfcLoginActivity : AppCompatActivity() {
 
     private val api by lazy { ApiClient.create(this) }
-    private val repo by lazy { Repository(api, this) }
-
-    private var nfcAdapter: NfcAdapter? = null
-    private lateinit var pendingIntent: PendingIntent
+    private val repo by lazy { Repository(api) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        nfcAdapter = NfcAdapter.getDefaultAdapter(this)
-        pendingIntent = PendingIntent.getActivity(
-            this, 0,
-            Intent(this, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
-            if (Build.VERSION.SDK_INT >= 31)
-                PendingIntent.FLAG_MUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-            else
-                PendingIntent.FLAG_UPDATE_CURRENT
-        )
-        // Si la activity ya fue lanzada por NFC:
-        intent?.let { handleNfcIntent(it) }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        nfcAdapter?.enableForegroundDispatch(this, pendingIntent, null, null)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        nfcAdapter?.disableForegroundDispatch(this)
+        setContentView(R.layout.activity_nfc_login)
+        handleNfcIntent(intent)
     }
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        if (intent != null) handleNfcIntent(intent)
+        handleNfcIntent(intent)
     }
 
-    private fun handleNfcIntent(intent: Intent) {
-        if (intent.action != NfcAdapter.ACTION_TAG_DISCOVERED &&
-            intent.action != NfcAdapter.ACTION_NDEF_DISCOVERED &&
-            intent.action != NfcAdapter.ACTION_TECH_DISCOVERED
-        ) return
+    private fun handleNfcIntent(intent: Intent?) {
+        if (intent?.action != NfcAdapter.ACTION_TAG_DISCOVERED) return
 
-        val tag: Tag? = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG)
-        val idBytes = tag?.id ?: return
+        val tag: Tag? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra(NfcAdapter.EXTRA_TAG, Tag::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getParcelableExtra(NfcAdapter.EXTRA_TAG)
+        }
 
-        val cardUid = bytesToHex(idBytes) // UID seguro (sin índices locos)
+        val uid = tag?.id?.toHexString() ?: run {
+            Toast.makeText(this, "No se pudo leer la tarjeta", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-        CoroutineScope(Dispatchers.Main).launch {
-            val result = repo.loginWithCard(cardUid)
-            result.onSuccess { login ->
-                Toast.makeText(this@NfcLoginActivity, "Login OK", Toast.LENGTH_SHORT).show()
-                // Después del login, vamos al menú de roles (ahí decidís Admin/Vendedor)
-                startActivity(Intent(this@NfcLoginActivity, RoleMenuActivity::class.java)
-                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK))
-                finish()
-            }.onFailure { err ->
-                Toast.makeText(
-                    this@NfcLoginActivity,
-                    "Error login: ${err.message ?: "desconocido"}",
-                    Toast.LENGTH_LONG
-                ).show()
+        lifecycleScope.launch {
+            try {
+                // Hacemos login con el UID de la tarjeta
+                val login = repo.loginWithCard(LoginRequest(cardId = uid))
+                // Guardar token en SharedPreferences (ya no usamos saveToken)
+                val token = login.token
+                getSharedPreferences("app", MODE_PRIVATE)
+                    .edit()
+                    .putString("jwt", token)
+                    .apply()
+
+                // Sacar rol del JWT y navegar
+                val role = JwtUtils.getRole(token).orEmpty()
+                when (role.lowercase()) {
+                    "admin" -> {
+                        startActivity(Intent(this@NfcLoginActivity, AdminMenuActivity::class.java))
+                        finish()
+                    }
+                    "seller", "vendedor" -> {
+                        startActivity(Intent(this@NfcLoginActivity, SellerMenuActivity::class.java))
+                        finish()
+                    }
+                    else -> {
+                        Toast.makeText(this@NfcLoginActivity, "Rol desconocido: $role", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: Exception) {
+                Toast.makeText(this@NfcLoginActivity, "Error login: ${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    /** Conversión segura de ByteArray (UID de la tarjeta) a HEX mayúsculas */
-    private fun bytesToHex(bytes: ByteArray): String =
-        bytes.joinToString("") { b -> "%02X".format(b) }
+    // --- utils ---
+
+    private fun ByteArray.toHexString(): String {
+        val hexChars = CharArray(size * 2)
+        val hexArray = "0123456789ABCDEF".toCharArray()
+        for (j in indices) {
+            val v = this[j].toInt() and 0xFF
+            hexChars[j * 2] = hexArray[v ushr 4]
+            hexChars[j * 2 + 1] = hexArray[v and 0x0F]
+        }
+        return String(hexChars)
+    }
 }
