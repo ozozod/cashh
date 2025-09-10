@@ -6,22 +6,31 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 
-// ¡OJO! Acá solo la interfaz. Nada de data classes.
+data class LoginRequest(val cardUid: String)
+
+data class EventDto(
+    val id: String?,
+    val name: String?
+)
+
+data class UserDto(
+    val id: String?,
+    val name: String?,
+    val role: String?,
+    val eventId: String?
+)
+
+data class LoginResponse(
+    val token: String,
+    val user: UserDto?,
+    val event: EventDto?
+)
+
+data class MeResponse(
+    val user: UserDto
+)
+
 interface ApiService {
-
-    // Login por tarjeta NFC (se envía como Map, clave "cardUid")
-    @POST("auth/login-card")
-    suspend fun loginWithCard(@Body body: Map<String, String>): Response<LoginResponse>
-
-    @GET("auth/me")
-    suspend fun me(@Header("Authorization") bearer: String): Response<MeResp>
-
-    @GET("seller/balance")
-    suspend fun balance(@Header("Authorization") bearer: String): Response<BalanceResp>
-
-    @POST("seller/sale")
-    suspend fun sale(
-        @Header("Authorization") bearer: String,
-        @Body body: SaleBody
-    ): Response<SaleResp>
+    @POST("login") suspend fun login(@Body body: LoginRequest): Response<LoginResponse>
+    @GET("me") suspend fun me(@Header("Authorization") bearer: String): Response<MeResponse>
 }
