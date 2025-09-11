@@ -14,7 +14,7 @@
 
     <uses-feature
         android:name="android.hardware.nfc"
-        android:required="true" />
+        android:required="false" />
 
     <permission
         android:name="com.example.vayvene.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
@@ -34,6 +34,8 @@
         android:testOnly="true"
         android:theme="@style/Theme.Material3.DayNight.NoActionBar"
         android:usesCleartextTraffic="true" >
+
+        <!-- Launcher -->
         <activity
             android:name="com.example.vayvene.ui.login.NfcLoginActivity"
             android:exported="true" >
@@ -77,6 +79,8 @@
         <activity
             android:name="com.example.vayvene.ui.main.MainActivity"
             android:exported="false" />
+
+        <!-- NFC Scan (si lo usás en otros flujos) -->
         <activity
             android:name="com.example.vayvene.ui.nfc.NfcScanActivity"
             android:exported="false"

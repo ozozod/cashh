@@ -3126,7 +3126,6 @@ id btnConsultarSaldo
 id btnLogout
 id btnNuevaVenta
 id btnOkForm
-id btnProbar
 id btnRegistrarComprador
 id btnRegistrarStaff
 id btnResumen
@@ -3193,7 +3192,6 @@ id easeOut
 id edge
 id edit_query
 id edit_text_id
-id edtManualUid
 id elastic
 id embed
 id end
@@ -3381,6 +3379,7 @@ id right
 id rightToLeft
 id right_icon
 id right_side
+id root
 id rootLogin
 id rootRegister
 id rounded
@@ -3493,10 +3492,10 @@ id triangle
 id tvLoginHint
 id tvNfcMsg
 id tvResultado
+id tvStatus
 id tvSub
 id tvTitle
 id tvTitulo
-id tvUid
 id txtExtra
 id txtMain
 id txtName

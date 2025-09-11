@@ -1,43 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center_horizontal"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txtTitulo"
-        android:text="Menú de Administración"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btnRegistrarStaff"
-        android:text="Registrar STAFF"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="12dp" />
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menú Administrador"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:paddingBottom="16dp" />
 
-    <Button
-        android:id="@+id/btnRegistrarComprador"
-        android:text="Registrar COMPRADOR"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <!-- Sección Gestión -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gestión"
+            android:textStyle="bold"
+            android:paddingTop="8dp"
+            android:paddingBottom="6dp" />
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="24dp" />
+        <Button
+            android:id="@+id/btnStaff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gestionar Staff (altas/bajas/roles)" />
 
-    <Button
-        android:id="@+id/btnLogout"
-        android:text="Cerrar sesión"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        <Button
+            android:id="@+id/btnRegisterCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registrar tarjeta (Admin/Encargado)" />
+
+        <!-- Sección Operaciones -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Operaciones"
+            android:textStyle="bold"
+            android:paddingTop="16dp"
+            android:paddingBottom="6dp" />
+
+        <Button
+            android:id="@+id/btnSellerOps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vender / Consultar / Resumen / Anular" />
+
+        <Button
+            android:id="@+id/btnCashierOps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cargar / Retirar / Consultar" />
+
+        <!-- Sección Evento/Reportes -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Evento / Reportes"
+            android:textStyle="bold"
+            android:paddingTop="16dp"
+            android:paddingBottom="6dp" />
+
+        <Button
+            android:id="@+id/btnSelectEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Seleccionar evento activo" />
+
+        <Button
+            android:id="@+id/btnReports"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reportes / Exportar CSV" />
+
+        <!-- Logout -->
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cerrar sesión"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+</ScrollView>
