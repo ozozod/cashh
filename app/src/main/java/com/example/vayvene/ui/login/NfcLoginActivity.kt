@@ -3,134 +3,120 @@ package com.example.vayvene.ui.login
 import android.content.Intent
 import android.nfc.NfcAdapter
 import android.nfc.Tag
-import android.os.Build
 import android.os.Bundle
-import android.os.SystemClock
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
+import com.example.vayvene.BuildConfig
 import com.example.vayvene.R
-import com.example.vayvene.data.Repository
+import com.example.vayvene.data.Session
 import com.example.vayvene.ui.admin.AdminMenuActivity
-import com.example.vayvene.ui.main.CashierMenuActivity
 import com.example.vayvene.ui.main.SellerMenuActivity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.util.Locale
+import com.example.vayvene.ui.main.CashierMenuActivity
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 
 class NfcLoginActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
 
-    private var nfcAdapter: NfcAdapter? = null
+    private val http by lazy { OkHttpClient() }
     private lateinit var tvStatus: TextView
-    private lateinit var repository: Repository
-
-    // Anti-rebote
-    @Volatile private var isHandlingTap = false
-    private var lastUid: String? = null
-    private var lastTs = 0L
+    private var nfc: NfcAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nfc_login)
+
         tvStatus = findViewById(R.id.tvStatus)
+        nfc = NfcAdapter.getDefaultAdapter(this)
 
-        repository = Repository(this)
-        nfcAdapter = NfcAdapter.getDefaultAdapter(this)
-
-        if (nfcAdapter == null) {
-            tvStatus.text = "Este dispositivo no tiene NFC"
-            Toast.makeText(this, "NFC no disponible", Toast.LENGTH_LONG).show()
-            return
-        }
-        if (nfcAdapter?.isEnabled != true) {
-            tvStatus.text = "Activá el NFC en Ajustes"
-        } else {
-            tvStatus.text = "Acercá la tarjeta para iniciar sesión"
-        }
-
-        intent?.let { maybeHandleIntent(it) }
-    }
-
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-        intent?.let { maybeHandleIntent(it) }
+        tvStatus.text = "Login por NFC\nAcercá una tarjeta…"
     }
 
     override fun onResume() {
         super.onResume()
-        nfcAdapter?.enableReaderMode(
-            this,
-            this,
+        nfc?.enableReaderMode(
+            this, this,
             NfcAdapter.FLAG_READER_NFC_A or
-                    NfcAdapter.FLAG_READER_NFC_B or
-                    NfcAdapter.FLAG_READER_NFC_F or
-                    NfcAdapter.FLAG_READER_NFC_V or
-                    NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK,
-            null
+                    NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK, null
         )
-        if (nfcAdapter?.isEnabled == true) {
-            tvStatus.text = "Acercá la tarjeta para iniciar sesión"
-        }
     }
 
     override fun onPause() {
         super.onPause()
-        nfcAdapter?.disableReaderMode(this)
+        nfc?.disableReaderMode(this)
     }
 
     override fun onTagDiscovered(tag: Tag) {
-        val uid = tag.id.toHex()
-        val now = SystemClock.elapsedRealtime()
-        if (isHandlingTap || (uid == lastUid && now - lastTs < 1500)) return
-        isHandlingTap = true; lastUid = uid; lastTs = now
+        val uid = tag.id.joinToString("") { b -> "%02X".format(b) }
+        runOnUiThread { tvStatus.text = "UID: $uid\nLogueando…" }
+        doLogin(uid)
+    }
 
-        runOnUiThread { tvStatus.text = "Leyendo...\nUID: $uid" }
+    private fun doLogin(cardUid: String) {
+        val url = BuildConfig.BASE_URL.trimEnd('/') + "/api/mobile/login"
+        val json = JSONObject().put("cardUid", cardUid)
+        val req = Request.Builder()
+            .url(url)
+            .post(json.toString().toRequestBody("application/json; charset=utf-8".toMediaType()))
+            .build()
 
-        lifecycleScope.launch {
+        Thread {
             try {
-                val result = withContext(kotlinx.coroutines.Dispatchers.IO) { repository.loginWithUid(uid) }
-                val next = when (result.role) {
-                    "admin", "encargado" -> Intent(this@NfcLoginActivity, com.example.vayvene.ui.admin.AdminMenuActivity::class.java)
-                    "cajero" -> Intent(this@NfcLoginActivity, com.example.vayvene.ui.main.CashierMenuActivity::class.java)
-                    else -> Intent(this@NfcLoginActivity, com.example.vayvene.ui.main.SellerMenuActivity::class.java)
+                http.newCall(req).execute().use { res ->
+                    val body = res.body?.string().orEmpty()
+                    if (!res.isSuccessful) {
+                        runOnUiThread {
+                            Toast.makeText(this, "Error de login: $body", Toast.LENGTH_LONG).show()
+                            tvStatus.text = "Login por NFC\nVolvé a intentar."
+                        }
+                        return@use
+                    }
+
+                    val obj = JSONObject(body)
+                    val token = obj.optString("token")
+                    val user = obj.optJSONObject("user")
+                    val role = user?.optString("role")
+                    val userId = user?.opt("id")?.toString()
+                    val userName = user?.optString("name")
+                    // eventId puede venir en la sección "user.eventId" o "event.id"
+                    val eventId = user?.opt("eventId")?.toString()
+                        ?: obj.optJSONObject("event")?.opt("id")?.toString()
+
+                    // Guarda TODO SIEMPRE con las MISMAS CLAVES
+                    Session.save(
+                        ctx = this,
+                        jwt = token,
+                        role = role,
+                        userId = userId,
+                        eventId = eventId,
+                        userName = userName
+                    )
+
+                    runOnUiThread {
+                        Toast.makeText(this, "Login OK (${role ?: "?"})", Toast.LENGTH_SHORT).show()
+                        goToMenuByRole(role)
+                    }
                 }
-                startActivity(next); finish()
-
-                next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                startActivity(next)
-                finish()
-
             } catch (e: Exception) {
                 runOnUiThread {
-                    tvStatus.text = "Error de login: ${e.message}"
-                    Toast.makeText(this@NfcLoginActivity, "Login fallido: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Red: ${e.message}", Toast.LENGTH_LONG).show()
+                    tvStatus.text = "Login por NFC\nError de red."
                 }
-            } finally {
-                isHandlingTap = false
             }
-        }
+        }.start()
     }
 
-    private fun maybeHandleIntent(intent: Intent) {
-        val action = intent.action ?: return
-        if (action != NfcAdapter.ACTION_TAG_DISCOVERED &&
-            action != NfcAdapter.ACTION_TECH_DISCOVERED &&
-            action != NfcAdapter.ACTION_NDEF_DISCOVERED) return
-
-        val tag: Tag? = if (Build.VERSION.SDK_INT >= 33) {
-            intent.getParcelableExtra(NfcAdapter.EXTRA_TAG, Tag::class.java)
-        } else {
-            @Suppress("DEPRECATION")
-            intent.getParcelableExtra(NfcAdapter.EXTRA_TAG)
+    private fun goToMenuByRole(role: String?) {
+        val r = (role ?: "").uppercase()
+        val intent = when {
+            r == "ADMINISTRADOR" -> Intent(this, AdminMenuActivity::class.java)
+            r == "CAJERO" -> Intent(this, CashierMenuActivity::class.java)
+            else -> Intent(this, SellerMenuActivity::class.java)
         }
-        tag?.let { onTagDiscovered(it) }
-    }
-
-    private fun ByteArray.toHex(): String {
-        val sb = StringBuilder()
-        for (b in this) sb.append(String.format("%02X", b))
-        return sb.toString()
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
     }
 }
