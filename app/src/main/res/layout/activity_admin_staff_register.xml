@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="20dp">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Registrar / Asignar STAFF" android:textStyle="bold" android:textSize="20sp"
+            android:paddingBottom="12dp"/>
+
+        <EditText android:id="@+id/etName" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="Nombre" />
+
+        <Spinner android:id="@+id/spRole" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="8dp"/>
+
+        <EditText android:id="@+id/etEmployeeNumber" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="N° empleado (opcional)"
+            android:layout_marginTop="8dp" android:inputType="text"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginTop="12dp">
+            <TextView android:id="@+id/tvUid" android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="UID: (sin leer)"/>
+            <Button android:id="@+id/btnScan" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="Escanear"/>
+        </LinearLayout>
+
+        <Button android:id="@+id/btnSave" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Guardar" android:layout_marginTop="16dp"/>
+        <Button android:id="@+id/btnBack" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Volver" android:layout_marginTop="8dp"/>
+    </LinearLayout>
+</ScrollView>

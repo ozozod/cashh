@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.vayvene.R
 import com.example.vayvene.ui.login.NfcLoginActivity
 import org.json.JSONObject
+import java.util.Locale
 
 class SellerMenuActivity : AppCompatActivity() {
 
@@ -18,13 +19,13 @@ class SellerMenuActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // usás este layout para el menú del vendedor
         setContentView(R.layout.activity_role_menu)
 
         val token = getTokenFromPrefs(this)
-        val role = token?.let { getClaim(it, "role") }?.uppercase()
+        val role = token?.let { getClaim(it, "role") }?.uppercase(Locale.ROOT)
+        val isSeller = role == "SELLER" || role == "VENDEDOR" || role == "VENDOR"
 
-        if (token.isNullOrBlank() || role != "SELLER") {
+        if (token.isNullOrBlank() || !isSeller) {
             Toast.makeText(this, "Sesión inválida. Iniciá de nuevo.", Toast.LENGTH_SHORT).show()
             val i = Intent(this, NfcLoginActivity::class.java)
             i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -78,13 +79,25 @@ class SellerMenuActivity : AppCompatActivity() {
         }
     }
 
+    /** Devuelve el claim `key` del JWT o, si viene anidado, lo busca en `user[key]`. */
     private fun getClaim(jwt: String, key: String): String? {
-        val parts = jwt.split(".")
-        if (parts.size < 2) return null
-        val payloadB64 = parts[1].replace('-', '+').replace('_', '/')
-        val pad = (4 - payloadB64.length % 4) % 4
-        val padded = payloadB64 + "=".repeat(pad)
-        val json = JSONObject(String(Base64.decode(padded, Base64.DEFAULT)))
-        return if (json.has(key)) json.optString(key, null) else null
+        return try {
+            val parts = jwt.split(".")
+            if (parts.size < 2) return null
+            val payloadB64 = parts[1].replace('-', '+').replace('_', '/')
+            val pad = (4 - payloadB64.length % 4) % 4
+            val padded = payloadB64 + "=".repeat(pad)
+            val json = JSONObject(String(Base64.decode(padded, Base64.DEFAULT)))
+
+            // optString no acepta null como default → usamos "" y validamos
+            val direct = json.optString(key, "")
+            if (direct.isNotBlank()) return direct
+
+            val nested = json.optJSONObject("user")?.optString(key, "")
+            nested?.takeIf { it.isNotBlank() }
+        } catch (_: Exception) {
+            null
+        }
     }
+
 }

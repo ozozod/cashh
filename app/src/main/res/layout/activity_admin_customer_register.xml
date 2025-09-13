@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="20dp">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Registrar COMPRADOR" android:textStyle="bold" android:textSize="20sp"
+            android:paddingBottom="12dp"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView android:id="@+id/tvUid" android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="UID: (sin leer)"/>
+            <Button android:id="@+id/btnScan" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="Escanear"/>
+        </LinearLayout>
+
+        <EditText android:id="@+id/etCustomerNumber" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="N° comprador (opcional)"
+            android:layout_marginTop="8dp"/>
+
+        <EditText android:id="@+id/etInitialAmount" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="Saldo inicial (opcional)"
+            android:inputType="numberDecimal" android:layout_marginTop="8dp"/>
+
+        <Button android:id="@+id/btnRegister" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Registrar (y cargar si hay monto)"
+            android:layout_marginTop="16dp"/>
+
+        <Button android:id="@+id/btnBack" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Volver" android:layout_marginTop="8dp"/>
+    </LinearLayout>
+</ScrollView>

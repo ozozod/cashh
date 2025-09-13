@@ -25,197 +25,249 @@
 17        android:required="false" />
 17-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:7:55-79
 18
-19    <permission
-19-->[androidx.core:core:1.13.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2805013b31895a78f5293557938cb540\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
-20        android:name="com.example.vayvene.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-20-->[androidx.core:core:1.13.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2805013b31895a78f5293557938cb540\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
-21        android:protectionLevel="signature" />
-21-->[androidx.core:core:1.13.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2805013b31895a78f5293557938cb540\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
-22
-23    <uses-permission android:name="com.example.vayvene.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-23-->[androidx.core:core:1.13.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2805013b31895a78f5293557938cb540\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
-23-->[androidx.core:core:1.13.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2805013b31895a78f5293557938cb540\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+19    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+19-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:8:5-76
+19-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:8:22-73
+20
+21    <permission
+21-->[androidx.core:core:1.13.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2805013b31895a78f5293557938cb540\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+22        android:name="com.example.vayvene.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+22-->[androidx.core:core:1.13.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2805013b31895a78f5293557938cb540\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+23        android:protectionLevel="signature" />
+23-->[androidx.core:core:1.13.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2805013b31895a78f5293557938cb540\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
 24
-25    <application
-25-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:9:5-47:19
-26        android:allowBackup="true"
-26-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:12:9-35
-27        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-27-->[androidx.core:core:1.13.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2805013b31895a78f5293557938cb540\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
-28        android:debuggable="true"
-29        android:extractNativeLibs="false"
-30        android:icon="@mipmap/ic_launcher"
-30-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:14:9-43
-31        android:label="VayVene"
-31-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:13:9-32
-32        android:networkSecurityConfig="@xml/network_security_config"
-32-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:11:9-69
-33        android:roundIcon="@mipmap/ic_launcher_round"
-33-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:15:9-54
-34        android:testOnly="true"
-35        android:theme="@style/Theme.Material3.DayNight.NoActionBar"
-35-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:16:9-68
-36        android:usesCleartextTraffic="true" >
-36-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:10:9-44
-37
-38        <!-- Launcher -->
-39        <activity
-39-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:19:9-26:20
-40            android:name="com.example.vayvene.ui.login.NfcLoginActivity"
-40-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:20:13-54
-41            android:exported="true" >
-41-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:21:13-36
-42            <intent-filter>
-42-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:22:13-25:29
-43                <action android:name="android.intent.action.MAIN" />
-43-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:23:17-69
-43-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:23:25-66
-44
-45                <category android:name="android.intent.category.LAUNCHER" />
-45-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:24:17-77
-45-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:24:27-74
-46            </intent-filter>
-47        </activity>
-48
-49        <!-- Admin -->
-50        <activity
-50-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:29:9-89
-51            android:name="com.example.vayvene.ui.admin.AdminMenuActivity"
-51-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:29:19-61
-52            android:exported="false" />
-52-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:29:62-86
-53        <activity
-53-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:30:9-92
-54            android:name="com.example.vayvene.ui.admin.RegisterCardActivity"
-54-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:30:19-64
-55            android:exported="false" />
-55-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:30:65-89
-56        <activity
-56-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:31:9-94
-57            android:name="com.example.vayvene.ui.admin.RegisterResultActivity"
-57-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:31:19-66
-58            android:exported="false" />
-58-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:31:67-91
-59
-60        <!-- Vendedor / Caja -->
-61        <activity
-61-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:34:9-89
-62            android:name="com.example.vayvene.ui.main.SellerMenuActivity"
-62-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:34:19-61
-63            android:exported="false" />
-63-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:34:62-86
-64        <activity
-64-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:9-92
-65            android:name="com.example.vayvene.ui.main.SellerSummaryActivity"
-65-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:19-64
-66            android:exported="false" />
-66-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:65-89
-67        <activity
-67-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:36:9-89
-68            android:name="com.example.vayvene.ui.main.CancelSaleActivity"
-68-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:36:19-61
-69            android:exported="false" />
-69-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:36:62-86
-70        <activity
-70-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:37:9-82
-71            android:name="com.example.vayvene.ui.main.PosActivity"
-71-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:37:19-54
-72            android:exported="false" />
-72-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:37:55-79
-73        <activity
-73-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:38:9-86
-74            android:name="com.example.vayvene.ui.main.BalanceActivity"
-74-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:38:19-58
-75            android:exported="false" />
-75-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:38:59-83
-76        <activity
-76-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:39:9-87
-77            android:name="com.example.vayvene.ui.main.RoleMenuActivity"
-77-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:39:19-59
-78            android:exported="false" />
-78-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:39:60-84
-79        <activity
-79-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:40:9-83
-80            android:name="com.example.vayvene.ui.main.MainActivity"
-80-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:40:19-55
-81            android:exported="false" />
-81-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:40:56-80
-82
-83        <!-- NFC Scan (si lo usás en otros flujos) -->
+25    <uses-permission android:name="com.example.vayvene.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+25-->[androidx.core:core:1.13.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2805013b31895a78f5293557938cb540\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+25-->[androidx.core:core:1.13.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2805013b31895a78f5293557938cb540\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+26
+27    <application
+27-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:10:5-60:19
+28        android:allowBackup="true"
+28-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:13:9-35
+29        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+29-->[androidx.core:core:1.13.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2805013b31895a78f5293557938cb540\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+30        android:debuggable="true"
+31        android:extractNativeLibs="false"
+32        android:icon="@mipmap/ic_launcher"
+32-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:15:9-43
+33        android:label="VayVene"
+33-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:14:9-32
+34        android:networkSecurityConfig="@xml/network_security_config"
+34-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:12:9-69
+35        android:roundIcon="@mipmap/ic_launcher_round"
+35-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:16:9-54
+36        android:testOnly="true"
+37        android:theme="@style/Theme.Material3.DayNight.NoActionBar"
+37-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:17:9-68
+38        android:usesCleartextTraffic="true" >
+38-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:11:9-44
+39
+40        <!-- Launcher -->
+41        <activity
+41-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:20:9-27:20
+42            android:name="com.example.vayvene.ui.login.NfcLoginActivity"
+42-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:21:13-54
+43            android:exported="true" >
+43-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:22:13-36
+44            <intent-filter>
+44-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:23:13-26:29
+45                <action android:name="android.intent.action.MAIN" />
+45-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:24:17-69
+45-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:24:25-66
+46
+47                <category android:name="android.intent.category.LAUNCHER" />
+47-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:25:17-77
+47-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:25:27-74
+48            </intent-filter>
+49        </activity>
+50
+51        <!-- Admin -->
+52        <activity
+52-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:30:9-89
+53            android:name="com.example.vayvene.ui.admin.AdminMenuActivity"
+53-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:30:19-61
+54            android:exported="false" />
+54-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:30:62-86
+55        <activity
+55-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:31:9-92
+56            android:name="com.example.vayvene.ui.admin.RegisterCardActivity"
+56-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:31:19-64
+57            android:exported="false" />
+57-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:31:65-89
+58        <activity
+58-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:32:9-94
+59            android:name="com.example.vayvene.ui.admin.RegisterResultActivity"
+59-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:32:19-66
+60            android:exported="false" />
+60-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:32:67-91
+61
+62        <!-- Vendedor / Caja -->
+63        <activity
+63-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:9-89
+64            android:name="com.example.vayvene.ui.main.SellerMenuActivity"
+64-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:19-61
+65            android:exported="false" />
+65-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:62-86
+66        <activity
+66-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:36:9-92
+67            android:name="com.example.vayvene.ui.main.SellerSummaryActivity"
+67-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:36:19-64
+68            android:exported="false" />
+68-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:36:65-89
+69        <activity
+69-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:37:9-89
+70            android:name="com.example.vayvene.ui.main.CancelSaleActivity"
+70-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:37:19-61
+71            android:exported="false" />
+71-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:37:62-86
+72        <activity
+72-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:38:9-82
+73            android:name="com.example.vayvene.ui.main.PosActivity"
+73-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:38:19-54
+74            android:exported="false" />
+74-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:38:55-79
+75        <activity
+75-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:39:9-86
+76            android:name="com.example.vayvene.ui.main.BalanceActivity"
+76-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:39:19-58
+77            android:exported="false" />
+77-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:39:59-83
+78        <activity
+78-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:40:9-87
+79            android:name="com.example.vayvene.ui.main.RoleMenuActivity"
+79-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:40:19-59
+80            android:exported="false" />
+80-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:40:60-84
+81        <activity
+81-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:41:9-83
+82            android:name="com.example.vayvene.ui.main.MainActivity"
+82-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:41:19-55
+83            android:exported="false" />
+83-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:41:56-80
 84        <activity
-84-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:43:9-46:46
-85            android:name="com.example.vayvene.ui.nfc.NfcScanActivity"
-85-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:44:13-51
-86            android:exported="false"
-86-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:45:13-37
-87            android:launchMode="singleTop" />
-87-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:46:13-43
-88
-89        <provider
-89-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\6cd1d18cf3fd096924e79591c58b5d87\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
-90            android:name="androidx.startup.InitializationProvider"
-90-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\6cd1d18cf3fd096924e79591c58b5d87\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:25:13-67
-91            android:authorities="com.example.vayvene.androidx-startup"
-91-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\6cd1d18cf3fd096924e79591c58b5d87\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:26:13-68
-92            android:exported="false" >
-92-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\6cd1d18cf3fd096924e79591c58b5d87\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:27:13-37
-93            <meta-data
-93-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\6cd1d18cf3fd096924e79591c58b5d87\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
-94                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-94-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\6cd1d18cf3fd096924e79591c58b5d87\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:30:17-75
-95                android:value="androidx.startup" />
-95-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\6cd1d18cf3fd096924e79591c58b5d87\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:31:17-49
-96            <meta-data
-96-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\29e4eeb92efbec899dc2c1a55c35ca74\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
-97                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-97-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\29e4eeb92efbec899dc2c1a55c35ca74\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
-98                android:value="androidx.startup" />
-98-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\29e4eeb92efbec899dc2c1a55c35ca74\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
-99            <meta-data
-99-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
-100                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-100-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
-101                android:value="androidx.startup" />
-101-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
-102        </provider>
-103
-104        <receiver
-104-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
-105            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-105-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
-106            android:directBootAware="false"
-106-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
-107            android:enabled="true"
-107-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
-108            android:exported="true"
-108-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
-109            android:permission="android.permission.DUMP" >
-109-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
-110            <intent-filter>
-110-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
-111                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-111-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
-111-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
-112            </intent-filter>
-113            <intent-filter>
-113-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
-114                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-114-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
-114-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
-115            </intent-filter>
-116            <intent-filter>
-116-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
-117                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-117-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
-117-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
-118            </intent-filter>
-119            <intent-filter>
-119-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
-120                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-120-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
-120-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
-121            </intent-filter>
-122        </receiver>
-123    </application>
-124
-125</manifest>
+84-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:42:9-91
+85            android:name="com.example.vayvene.ui.admin.AdminOpsDevActivity"
+85-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:42:19-63
+86            android:exported="false" />
+86-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:42:64-88
+87        <activity
+87-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:43:9-88
+88            android:name="com.example.vayvene.ui.nfc.NfcCaptureActivity"
+88-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:43:19-60
+89            android:exported="false" />
+89-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:43:61-85
+90        <activity
+90-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:44:9-94
+91            android:name="com.example.vayvene.ui.admin.AdminCardsMenuActivity"
+91-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:44:19-66
+92            android:exported="false" />
+92-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:44:67-91
+93        <activity
+93-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:45:9-96
+94            android:name="com.example.vayvene.ui.admin.AdminCashierMenuActivity"
+94-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:45:19-68
+95            android:exported="false" />
+95-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:45:69-93
+96        <activity
+96-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:46:9-95
+97            android:name="com.example.vayvene.ui.admin.AdminSellerMenuActivity"
+97-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:46:19-67
+98            android:exported="false" />
+98-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:46:68-92
+99        <activity
+99-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:47:9-98
+100            android:name="com.example.vayvene.ui.admin.AdminStaffRegisterActivity"
+100-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:47:19-70
+101            android:exported="false" />
+101-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:47:71-95
+102        <activity
+102-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:48:9-101
+103            android:name="com.example.vayvene.ui.admin.AdminCustomerRegisterActivity"
+103-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:48:19-73
+104            android:exported="false" />
+104-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:48:74-98
+105
+106        <!-- NFC Scan (si lo usás en otros flujos) -->
+107        <activity
+107-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:51:9-54:46
+108            android:name="com.example.vayvene.ui.nfc.NfcScanActivity"
+108-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:52:13-51
+109            android:exported="false"
+109-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:53:13-37
+110            android:launchMode="singleTop" />
+110-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:54:13-43
+111        <activity
+111-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:56:9-58:40
+112            android:name="com.example.vayvene.ui.cashier.CashierQuickOpsActivity"
+112-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:57:13-63
+113            android:exported="false" />
+113-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:58:13-37
+114
+115        <provider
+115-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\6cd1d18cf3fd096924e79591c58b5d87\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+116            android:name="androidx.startup.InitializationProvider"
+116-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\6cd1d18cf3fd096924e79591c58b5d87\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:25:13-67
+117            android:authorities="com.example.vayvene.androidx-startup"
+117-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\6cd1d18cf3fd096924e79591c58b5d87\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:26:13-68
+118            android:exported="false" >
+118-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\6cd1d18cf3fd096924e79591c58b5d87\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:27:13-37
+119            <meta-data
+119-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\6cd1d18cf3fd096924e79591c58b5d87\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+120                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+120-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\6cd1d18cf3fd096924e79591c58b5d87\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:30:17-75
+121                android:value="androidx.startup" />
+121-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\6cd1d18cf3fd096924e79591c58b5d87\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:31:17-49
+122            <meta-data
+122-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\29e4eeb92efbec899dc2c1a55c35ca74\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+123                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+123-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\29e4eeb92efbec899dc2c1a55c35ca74\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+124                android:value="androidx.startup" />
+124-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\29e4eeb92efbec899dc2c1a55c35ca74\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+125            <meta-data
+125-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+126                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+126-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+127                android:value="androidx.startup" />
+127-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+128        </provider>
+129
+130        <receiver
+130-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+131            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+131-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+132            android:directBootAware="false"
+132-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+133            android:enabled="true"
+133-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+134            android:exported="true"
+134-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+135            android:permission="android.permission.DUMP" >
+135-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+136            <intent-filter>
+136-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+137                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+137-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+137-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+138            </intent-filter>
+139            <intent-filter>
+139-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+140                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+140-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+140-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+141            </intent-filter>
+142            <intent-filter>
+142-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+143                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+143-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+143-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+144            </intent-filter>
+145            <intent-filter>
+145-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+146                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+146-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+146-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\770f168d13cddd818e00bf45f1be2b31\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+147            </intent-filter>
+148        </receiver>
+149    </application>
+150
+151</manifest>

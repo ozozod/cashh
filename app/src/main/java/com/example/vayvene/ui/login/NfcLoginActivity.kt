@@ -9,12 +9,22 @@ import android.os.SystemClock
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.vayvene.R
+import com.example.vayvene.data.Repository
+import com.example.vayvene.ui.admin.AdminMenuActivity
+import com.example.vayvene.ui.main.CashierMenuActivity
+import com.example.vayvene.ui.main.SellerMenuActivity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.util.Locale
 
 class NfcLoginActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
 
     private var nfcAdapter: NfcAdapter? = null
     private lateinit var tvStatus: TextView
+    private lateinit var repository: Repository
 
     // Anti-rebote
     @Volatile private var isHandlingTap = false
@@ -23,11 +33,12 @@ class NfcLoginActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // ⬇️ Ahora SÍ hay UI (antes, por eso veías pantalla gris)
         setContentView(R.layout.activity_nfc_login)
         tvStatus = findViewById(R.id.tvStatus)
 
+        repository = Repository(this)
         nfcAdapter = NfcAdapter.getDefaultAdapter(this)
+
         if (nfcAdapter == null) {
             tvStatus.text = "Este dispositivo no tiene NFC"
             Toast.makeText(this, "NFC no disponible", Toast.LENGTH_LONG).show()
@@ -39,7 +50,6 @@ class NfcLoginActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
             tvStatus.text = "Acercá la tarjeta para iniciar sesión"
         }
 
-        // Si te llegan intents por dispatch clásico, igual los manejamos
         intent?.let { maybeHandleIntent(it) }
     }
 
@@ -50,10 +60,9 @@ class NfcLoginActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
 
     override fun onResume() {
         super.onResume()
-        // Reader Mode one-shot (mientras esta pantalla está visible)
         nfcAdapter?.enableReaderMode(
             this,
-            this, // ReaderCallback
+            this,
             NfcAdapter.FLAG_READER_NFC_A or
                     NfcAdapter.FLAG_READER_NFC_B or
                     NfcAdapter.FLAG_READER_NFC_F or
@@ -71,37 +80,40 @@ class NfcLoginActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
         nfcAdapter?.disableReaderMode(this)
     }
 
-    /** ReaderCallback: llega cuando tocás una tarjeta */
     override fun onTagDiscovered(tag: Tag) {
         val uid = tag.id.toHex()
         val now = SystemClock.elapsedRealtime()
         if (isHandlingTap || (uid == lastUid && now - lastTs < 1500)) return
         isHandlingTap = true; lastUid = uid; lastTs = now
 
-        runOnUiThread {
-            tvStatus.text = "Leyendo...\nUID: $uid"
-        }
+        runOnUiThread { tvStatus.text = "Leyendo...\nUID: $uid" }
 
-        // TODO: acá llamá a tu backend para login con UID.
-        // Ejemplo (si ya tenés Repository/ApiService):
-        // lifecycleScope.launch {
-        //     try {
-        //         val ok = withContext(Dispatchers.IO) { repository.loginWithUid(uid) }
-        //         if (ok) { startActivity(Intent(...)); finish() }
-        //         else { tvStatus.text = "Error de login"; }
-        //     } finally { isHandlingTap = false }
-        // }
+        lifecycleScope.launch {
+            try {
+                val result = withContext(kotlinx.coroutines.Dispatchers.IO) { repository.loginWithUid(uid) }
+                val next = when (result.role) {
+                    "admin", "encargado" -> Intent(this@NfcLoginActivity, com.example.vayvene.ui.admin.AdminMenuActivity::class.java)
+                    "cajero" -> Intent(this@NfcLoginActivity, com.example.vayvene.ui.main.CashierMenuActivity::class.java)
+                    else -> Intent(this@NfcLoginActivity, com.example.vayvene.ui.main.SellerMenuActivity::class.java)
+                }
+                startActivity(next); finish()
 
-        // Por ahora, solo demostramos lectura:
-        runOnUiThread {
-            Toast.makeText(this, "UID detectado: $uid", Toast.LENGTH_SHORT).show()
-            tvStatus.text = "UID: $uid\nAhora llamá al backend para hacer login"
-            isHandlingTap = false
+                next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(next)
+                finish()
+
+            } catch (e: Exception) {
+                runOnUiThread {
+                    tvStatus.text = "Error de login: ${e.message}"
+                    Toast.makeText(this@NfcLoginActivity, "Login fallido: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            } finally {
+                isHandlingTap = false
+            }
         }
     }
 
     private fun maybeHandleIntent(intent: Intent) {
-        // Soporte para ACTION_TAG_DISCOVERED si llegara por intent-filter
         val action = intent.action ?: return
         if (action != NfcAdapter.ACTION_TAG_DISCOVERED &&
             action != NfcAdapter.ACTION_TECH_DISCOVERED &&

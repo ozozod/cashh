@@ -1,43 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center_horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <TextView
-        android:id="@+id/txtTitulo"
-        android:text="Menú de Administración"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="24dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Menú Administrador"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:paddingBottom="16dp" />
 
     <Button
-        android:id="@+id/btnRegistrarStaff"
-        android:text="Registrar STAFF"
+        android:id="@+id/btnCards"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="12dp" />
+        android:layout_height="wrap_content"
+        android:text="Tarjetas" />
 
     <Button
-        android:id="@+id/btnRegistrarComprador"
-        android:text="Registrar COMPRADOR"
+        android:id="@+id/btnCashier"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Cajero"
+        android:layout_marginTop="8dp" />
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="24dp" />
+    <Button
+        android:id="@+id/btnSeller"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vendedor"
+        android:layout_marginTop="8dp" />
 
     <Button
         android:id="@+id/btnLogout"
-        android:text="Cerrar sesión"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Cerrar sesión"
+        android:layout_marginTop="16dp" />
 </LinearLayout>

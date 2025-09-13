@@ -1,7 +1,6 @@
 package com.example.vayvene.data
 
 import com.example.vayvene.BuildConfig
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -13,46 +12,40 @@ object ApiClient {
     @Volatile
     private var jwtToken: String? = null
 
-    fun setToken(token: String?) {
-        jwtToken = token
-    }
+    /** Guardar / limpiar token en memoria (para el header Authorization) */
+    fun setToken(token: String?) { jwtToken = token }
 
-    private val authInterceptor = Interceptor { chain ->
-        val original = chain.request()
-        val builder = original.newBuilder()
-        jwtToken?.let { builder.addHeader("Authorization", "Bearer $it") }
-        chain.proceed(builder.build())
-    }
+    fun token(): String? = jwtToken
 
-    private val loggingInterceptor: HttpLoggingInterceptor by lazy {
+    private val logging by lazy {
         HttpLoggingInterceptor().apply {
             level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
             else HttpLoggingInterceptor.Level.NONE
         }
     }
 
-    private val okHttp: OkHttpClient by lazy {
+    /** Cliente OkHttp que agrega Authorization si hay token */
+    val http: OkHttpClient by lazy {
         OkHttpClient.Builder()
-            .addInterceptor(authInterceptor)
-            .addInterceptor(loggingInterceptor)
+            .addInterceptor { chain ->
+                val req = chain.request().newBuilder().apply {
+                    jwtToken?.let { addHeader("Authorization", "Bearer $it") }
+                }.build()
+                chain.proceed(req)
+            }
+            .addInterceptor(logging)
             .connectTimeout(15, TimeUnit.SECONDS)
             .readTimeout(20, TimeUnit.SECONDS)
             .writeTimeout(20, TimeUnit.SECONDS)
             .build()
     }
 
-    @PublishedApi
-    internal val retrofit: Retrofit by lazy {
+    /** Retrofit listo por si luego querés usar interfaces */
+    val retrofit: Retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL) // http://192.168.1.28:3000 en tu flavor dev
-            .client(okHttp)
+            .baseUrl(BuildConfig.BASE_URL) // ej: http://192.168.1.28:3000
+            .client(http)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
     }
-
-    /** Forma 1: sin argumentos (usá tipo explícito o genérico reified) */
-    inline fun <reified T> create(): T = retrofit.create(T::class.java)
-
-    /** Forma 2: con argumento de clase (compat con llamadas existentes) */
-    fun <T> create(service: Class<T>): T = retrofit.create(service)
 }

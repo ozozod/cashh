@@ -20,6 +20,10 @@
         "source": "com.example.vayvene.app-main-35:/mipmap-hdpi/ic_launcher.xml"
     },
     {
+        "merged": "com.example.vayvene.app-devDebug-31:/layout_activity_admin_cashier_menu.xml.flat",
+        "source": "com.example.vayvene.app-main-35:/layout/activity_admin_cashier_menu.xml"
+    },
+    {
         "merged": "com.example.vayvene.app-devDebug-31:/mipmap-xhdpi_ic_launcher.xml.flat",
         "source": "com.example.vayvene.app-main-35:/mipmap-xhdpi/ic_launcher.xml"
     },
@@ -96,8 +100,20 @@
         "source": "com.example.vayvene.app-main-35:/drawable/ic_ok.xml"
     },
     {
+        "merged": "com.example.vayvene.app-devDebug-31:/layout_activity_admin_cards_menu.xml.flat",
+        "source": "com.example.vayvene.app-main-35:/layout/activity_admin_cards_menu.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-devDebug-31:/layout_activity_admin_ops_dev.xml.flat",
+        "source": "com.example.vayvene.app-main-35:/layout/activity_admin_ops_dev.xml"
+    },
+    {
         "merged": "com.example.vayvene.app-devDebug-31:/mipmap-xxxhdpi_ic_launcher_round.xml.flat",
         "source": "com.example.vayvene.app-main-35:/mipmap-xxxhdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-devDebug-31:/layout_activity_cashier_quick_ops.xml.flat",
+        "source": "com.example.vayvene.app-main-35:/layout/activity_cashier_quick_ops.xml"
     },
     {
         "merged": "com.example.vayvene.app-devDebug-31:/layout_activity_register_card.xml.flat",
@@ -112,6 +128,10 @@
         "source": "com.example.vayvene.app-main-35:/layout/activity_balance.xml"
     },
     {
+        "merged": "com.example.vayvene.app-devDebug-31:/layout_activity_admin_seller_menu.xml.flat",
+        "source": "com.example.vayvene.app-main-35:/layout/activity_admin_seller_menu.xml"
+    },
+    {
         "merged": "com.example.vayvene.app-devDebug-31:/layout_activity_nfc_login.xml.flat",
         "source": "com.example.vayvene.app-main-35:/layout/activity_nfc_login.xml"
     },
@@ -120,8 +140,16 @@
         "source": "com.example.vayvene.app-main-35:/layout/item_product_summary.xml"
     },
     {
+        "merged": "com.example.vayvene.app-devDebug-31:/layout_activity_nfc_capture.xml.flat",
+        "source": "com.example.vayvene.app-main-35:/layout/activity_nfc_capture.xml"
+    },
+    {
         "merged": "com.example.vayvene.app-devDebug-31:/layout_activity_pos.xml.flat",
         "source": "com.example.vayvene.app-main-35:/layout/activity_pos.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-devDebug-31:/layout_activity_admin_customer_register.xml.flat",
+        "source": "com.example.vayvene.app-main-35:/layout/activity_admin_customer_register.xml"
     },
     {
         "merged": "com.example.vayvene.app-devDebug-31:/mipmap-xxhdpi_ic_launcher.xml.flat",
@@ -134,6 +162,10 @@
     {
         "merged": "com.example.vayvene.app-devDebug-31:/mipmap-mdpi_ic_launcher_round.xml.flat",
         "source": "com.example.vayvene.app-main-35:/mipmap-mdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-devDebug-31:/layout_activity_admin_staff_register.xml.flat",
+        "source": "com.example.vayvene.app-main-35:/layout/activity_admin_staff_register.xml"
     },
     {
         "merged": "com.example.vayvene.app-devDebug-31:/xml_network_security_config.xml.flat",

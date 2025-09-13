@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.NFC" />
     <uses-feature android:name="android.hardware.nfc" android:required="false" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:usesCleartextTraffic="true"
@@ -38,11 +39,23 @@
         <activity android:name=".ui.main.BalanceActivity" android:exported="false" />
         <activity android:name=".ui.main.RoleMenuActivity" android:exported="false" />
         <activity android:name=".ui.main.MainActivity" android:exported="false" />
+        <activity android:name=".ui.admin.AdminOpsDevActivity" android:exported="false" />
+        <activity android:name=".ui.nfc.NfcCaptureActivity" android:exported="false" />
+        <activity android:name=".ui.admin.AdminCardsMenuActivity" android:exported="false" />
+        <activity android:name=".ui.admin.AdminCashierMenuActivity" android:exported="false" />
+        <activity android:name=".ui.admin.AdminSellerMenuActivity" android:exported="false" />
+        <activity android:name=".ui.admin.AdminStaffRegisterActivity" android:exported="false" />
+        <activity android:name=".ui.admin.AdminCustomerRegisterActivity" android:exported="false" />
 
         <!-- NFC Scan (si lo usás en otros flujos) -->
         <activity
             android:name=".ui.nfc.NfcScanActivity"
             android:exported="false"
             android:launchMode="singleTop" />
+
+        <activity
+            android:name=".ui.cashier.CashierQuickOpsActivity"
+            android:exported="false" />
+
     </application>
 </manifest>

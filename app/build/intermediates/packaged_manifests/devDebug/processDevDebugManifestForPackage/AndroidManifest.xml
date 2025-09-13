@@ -16,6 +16,8 @@
         android:name="android.hardware.nfc"
         android:required="false" />
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <permission
         android:name="com.example.vayvene.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
@@ -79,12 +81,36 @@
         <activity
             android:name="com.example.vayvene.ui.main.MainActivity"
             android:exported="false" />
+        <activity
+            android:name="com.example.vayvene.ui.admin.AdminOpsDevActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.vayvene.ui.nfc.NfcCaptureActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.vayvene.ui.admin.AdminCardsMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.vayvene.ui.admin.AdminCashierMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.vayvene.ui.admin.AdminSellerMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.vayvene.ui.admin.AdminStaffRegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.vayvene.ui.admin.AdminCustomerRegisterActivity"
+            android:exported="false" />
 
         <!-- NFC Scan (si lo usás en otros flujos) -->
         <activity
             android:name="com.example.vayvene.ui.nfc.NfcScanActivity"
             android:exported="false"
             android:launchMode="singleTop" />
+        <activity
+            android:name="com.example.vayvene.ui.cashier.CashierQuickOpsActivity"
+            android:exported="false" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

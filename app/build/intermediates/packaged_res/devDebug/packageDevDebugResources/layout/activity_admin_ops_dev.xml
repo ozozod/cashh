@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ops de prueba (Admin)"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:paddingBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnGotoRegisterStaff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cargar/Asignar tarjeta de STAFF" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#333"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/tvScanStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tocá una tarjeta para llenar el UID"
+            android:paddingBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etCustomerUid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="UID cliente"
+                android:inputType="textNoSuggestions"
+                android:maxLines="1" />
+
+            <Button
+                android:id="@+id/btnScan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Escanear" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/etAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Monto"
+                android:inputType="numberDecimal" />
+
+            <Button
+                android:id="@+id/btnRecharge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cargar saldo" />
+
+            <Button
+                android:id="@+id/btnWithdraw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Devolver" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSeeBalance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver saldo"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/tvBalance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saldo: -"
+            android:textSize="18sp"
+            android:paddingTop="12dp" />
+
+    </LinearLayout>
+</ScrollView>
