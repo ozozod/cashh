@@ -1,61 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:text="POS de Vendedor"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
+    <!-- Texto cuando no hay productos -->
     <TextView
         android:id="@+id/tvEmpty"
-        android:text="No hay productos cargados para este evento."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No hay productos"
+        tools:visibility="visible"
         android:visibility="gone"
-        android:layout_marginTop="12dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:paddingBottom="8dp"/>
 
-    <ScrollView
+    <!-- Contenedor donde inflás/armás las filas de productos -->
+    <LinearLayout
+        android:id="@+id/productsContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:orientation="vertical"
         android:layout_weight="1"
-        android:fillViewport="true"
-        android:layout_marginTop="8dp">
+        tools:ignore="NestedWeights" />
 
-        <LinearLayout
-            android:id="@+id/productsContainer"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </ScrollView>
-
+    <!-- Total -->
     <TextView
         android:id="@+id/tvTotal"
-        android:text="Total: $0,00"
-        android:textSize="18sp"
-        android:layout_marginTop="8dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total: $0.00"
+        android:textStyle="bold"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp" />
 
+    <!-- Botón para escanear y cobrar -->
     <Button
         android:id="@+id/btnScanAndCharge"
-        android:text="Escanear y COBRAR"
-        android:layout_marginTop="12dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/tvEmpty"
-        android:text="No hay productos cargados para este evento."
-        android:visibility="gone"
-        android:layout_marginTop="12dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="wrap_content"
+        android:text="Escanear y cobrar" />
 </LinearLayout>

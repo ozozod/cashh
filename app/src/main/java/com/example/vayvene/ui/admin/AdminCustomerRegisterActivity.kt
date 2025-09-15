@@ -18,6 +18,11 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONArray
 import org.json.JSONObject
 import java.math.BigDecimal
+import com.example.vayvene.ui.common.EXTRA_UID
+import com.example.vayvene.ui.common.EXTRA_PROMPT
+import com.example.vayvene.ui.common.EXTRA_MANAGER_UID
+
+
 
 class AdminCustomerRegisterActivity : AppCompatActivity() {
 
@@ -35,7 +40,7 @@ class AdminCustomerRegisterActivity : AppCompatActivity() {
         ActivityResultContracts.StartActivityForResult()
     ) { res ->
         if (res.resultCode == RESULT_OK) {
-            val uid = res.data?.getStringExtra(NfcCaptureActivity.EXTRA_UID).orEmpty()
+            val uid = res.data?.getStringExtra(EXTRA_UID).orEmpty()
             if (uid.isNotBlank()) {
                 tvUid.text = uid
                 if (pendingRegisterAfterScan) {
@@ -124,7 +129,7 @@ class AdminCustomerRegisterActivity : AppCompatActivity() {
     // ------- helpers -------
     private fun openScan(prompt: String) {
         val i = Intent(this, NfcCaptureActivity::class.java)
-        i.putExtra(NfcCaptureActivity.EXTRA_PROMPT, prompt)
+        i.putExtra(EXTRA_PROMPT, prompt)
         scanLauncher.launch(i)
     }
 

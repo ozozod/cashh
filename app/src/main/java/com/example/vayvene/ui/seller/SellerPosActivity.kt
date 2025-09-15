@@ -18,6 +18,9 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.text.NumberFormat
 import java.util.Locale
+import com.example.vayvene.ui.common.EXTRA_UID
+import com.example.vayvene.ui.common.EXTRA_PROMPT
+import com.example.vayvene.ui.common.EXTRA_MANAGER_UID
 
 class SellerPosActivity : AppCompatActivity() {
 
@@ -43,7 +46,7 @@ class SellerPosActivity : AppCompatActivity() {
         androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()
     ) { res ->
         if (res.resultCode == RESULT_OK) {
-            val uid = res.data?.getStringExtra(NfcCaptureActivity.EXTRA_UID).orEmpty().uppercase()
+            val uid = res.data?.getStringExtra(EXTRA_UID).orEmpty().uppercase()
             if (uid.isNotBlank()) chargeWithItems(uid, lastBuiltItems)
         }
     }
@@ -184,7 +187,7 @@ class SellerPosActivity : AppCompatActivity() {
                 d.dismiss()
                 val i = Intent(this, NfcCaptureActivity::class.java)
                 i.putExtra(
-                    NfcCaptureActivity.EXTRA_PROMPT,
+                    EXTRA_PROMPT,
                     "Acercá la tarjeta del COMPRADOR para COBRAR"
                 )
                 scanLauncher.launch(i)

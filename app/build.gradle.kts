@@ -17,11 +17,12 @@ android {
         versionName = "1.0"
 
         // Fallback si corrés sin flavors
-        buildConfigField("String", "BASE_URL", "\"http://192.168.1.28:3000\"")
+        buildConfigField("String", "BASE_URL", "\"http://192.168.1.28:3000\"") // sin barra final
     }
 
     // Habilita BuildConfig (necesario para los buildConfigField)
     buildFeatures {
+        viewBinding = true
         buildConfig = true
     }
 

@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="http://schemas.android.com/tools" xmlns:ns2="urn:oasis:names:tc:xliff:document:1.2">
-    <string-array name="staff_roles">
-        <item>ADMINISTRADOR</item>
-        <item>ENCARGADO</item>
-        <item>CAJERO</item>
-        <item>VENDEDOR</item>
-    </string-array>
     <attr format="reference" name="animate_relativeTo"/>
     <attr format="reference" name="appBarLayoutStyle"/>
     <attr format="enum" name="arcMode">
@@ -1915,6 +1909,12 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with <ns2:g example="Mail" id="application_name">%s</ns2:g></string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
+    <string name="admin_cards">Tarjetas</string>
+    <string name="admin_menu_title">Menú de Admin</string>
+    <string name="admin_open_cashier">Cajero</string>
+    <string name="admin_open_seller">Vendedor</string>
+    <string name="already_authorized">Ya autorizado</string>
+    <string name="already_registered">Esa tarjeta ya está registrada en este evento</string>
     <string name="androidx_startup" translatable="false">androidx.startup</string>
     <string name="app_name">VayVene</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
@@ -1936,12 +1936,23 @@
     <string name="call_notification_incoming_text">Incoming call</string>
     <string name="call_notification_ongoing_text">Ongoing call</string>
     <string name="call_notification_screening_text">Screening an incoming call</string>
+    <string name="card_registered_customer">Tarjeta no registrada para staff</string>
+    <string name="cards_menu_title">Tarjetas</string>
+    <string name="cashier_balance">Consultar saldo</string>
+    <string name="cashier_menu_title">Menú de Cajero</string>
+    <string name="cashier_refund">Devolver saldo</string>
+    <string name="cashier_register_customer">Registrar comprador</string>
+    <string name="cashier_topup">Cargar saldo</string>
     <string name="character_counter_content_description">Characters entered %1$d of %2$d</string>
     <string name="character_counter_overflowed_content_description">Character limit exceeded %1$d of %2$d</string>
     <string name="character_counter_pattern" translatable="false">%1$d/%2$d</string>
+    <string name="choose_role">Rol</string>
     <string name="clear_text_end_icon_content_description">Clear text</string>
     <string name="connected">Conectado</string>
+    <string name="continue_btn">Continuar</string>
     <string name="disconnected">Sin conexión</string>
+    <string name="enter_dni">DNI</string>
+    <string name="enter_name">Nombre</string>
     <string description="Screen reader announcement for when a checkbox is on error. [CHAR LIMIT=NONE]" name="error_a11y_label">
     Error: invalid
   </string>
@@ -1952,6 +1963,7 @@
     <string name="hide_bottom_view_on_scroll_behavior" translatable="false">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
     <string description="Content description for an icon that appears in the title area of a dialog" name="icon_content_description">Dialog Icon</string>
     <string name="item_view_role_description">Tab</string>
+    <string name="logout">Cerrar sesión</string>
     <string name="m3_exceed_max_badge_text_suffix" translatable="false"><ns2:g example="Some te" id="part of a long text">%1$s</ns2:g><ns2:g example="…" id="suffix">%2$s</ns2:g></string>
     <string name="m3_ref_typeface_brand_medium" translatable="false">sans-serif-medium</string>
     <string name="m3_ref_typeface_brand_regular" translatable="false">sans-serif</string>
@@ -2058,11 +2070,28 @@
     <string name="mtrl_switch_track_path" translatable="false">M0,16 A16,16 0 0,1 16,0 H36 A16,16 0 0,1 36,32 H16 A16,16 0 0,1 0,16</string>
     <string description="Button text to indicate that the widget will ignore the user&apos;s selection [CHAR_LIMIT=16]" name="mtrl_timepicker_cancel">Cancel</string>
     <string description="Button text to indicate that the widget will save the user&apos;s selection [CHAR_LIMIT=16]" name="mtrl_timepicker_confirm">OK</string>
+    <string name="need_manager_card">Necesita tarjeta de encargado</string>
     <string name="password_toggle_content_description">Show password</string>
     <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
     <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
+    <string name="ready_to_cancel_last_sale">Listo para anular la última venta</string>
+    <string name="register_customer">Cargar comprador</string>
+    <string name="register_staff">Cargar staff</string>
+    <string name="registered_ok">Registro completado</string>
+    <string name="remaining_balance">Saldo restante: $%1$s</string>
+    <string name="role_admin">ADMIN</string>
+    <string name="role_cashier">CAJERO</string>
+    <string name="role_seller">VENDEDOR</string>
+    <string name="scan_customer_balance">Acerque tarjeta del comprador para consultar saldo</string>
+    <string name="scan_customer_card">Acerque la tarjeta del CLIENTE</string>
+    <string name="scan_customer_refund">Acerque tarjeta del comprador para devolver saldo</string>
+    <string name="scan_customer_topup">Acerque tarjeta del comprador para cargar saldo</string>
+    <string name="scan_manager_card">Acerque la tarjeta de ENCARGADO</string>
+    <string name="scan_to_pay">Acerque tarjeta del comprador para cobrar $%1$s</string>
+    <string name="scan_to_register_customer">Acerque tarjeta para registrar comprador</string>
+    <string name="scan_to_register_staff">Acerque tarjeta para registrar staff</string>
     <string name="search_menu_title">Search</string>
     <string name="searchbar_scrolling_view_behavior" translatable="false">
     com.google.android.material.search.SearchBar$ScrollingViewBehavior
@@ -2070,12 +2099,16 @@
     <string description="Content description for the X button to clear text [CHAR_LIMIT=NONE]" name="searchview_clear_text_content_description">Clear text</string>
     <string description="Content description for the navigation button to return to the previous screen [CHAR_LIMIT=NONE]" name="searchview_navigation_content_description">Back</string>
     <string name="seller_actions">Acciones</string>
+    <string name="seller_cancel_last">Anular última venta</string>
+    <string name="seller_check_balance">Consultar saldo</string>
+    <string name="seller_menu_title">Menú de Vendedor</string>
+    <string name="seller_new_sale">Nueva venta</string>
     <string name="server_label">Servidor:</string>
+    <string name="session_expired">Sesión expirada</string>
     <string description="Title of the side sheet&apos;s accessibility pane that is spoken by TalkBack when the side sheet appears on screen. [CHAR_LIMIT=NONE]" name="side_sheet_accessibility_pane_title">Side Sheet</string>
     <string name="side_sheet_behavior" translatable="false">com.google.android.material.sidesheet.SideSheetBehavior</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="untitled">icon</string>
-    <string name="welcome_title">Acerque su tarjeta de personal para iniciar sesión</string>
+    <string name="welcome_title">Acerque su tarjeta para iniciar sesión</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

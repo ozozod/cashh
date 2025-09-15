@@ -10,14 +10,16 @@ import com.example.vayvene.R
 import com.example.vayvene.data.Session
 import com.example.vayvene.ui.login.NfcLoginActivity
 import com.example.vayvene.ui.nfc.NfcCaptureActivity
-
+import com.example.vayvene.ui.common.EXTRA_UID
+import com.example.vayvene.ui.common.EXTRA_PROMPT
+import com.example.vayvene.ui.common.EXTRA_MANAGER_UID
 class SellerMenuActivity : AppCompatActivity() {
 
     private val scanMgrLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { r ->
         if (r.resultCode == RESULT_OK) {
-            val managerUid = r.data?.getStringExtra(NfcCaptureActivity.Companion.EXTRA_UID)?.uppercase()
+            val managerUid = r.data?.getStringExtra(EXTRA_UID)?.uppercase()
             if (managerUid.isNullOrBlank()) {
                 Toast.makeText(this, "Tarjeta inválida. Probá de nuevo.", Toast.LENGTH_LONG).show()
                 return@registerForActivityResult
@@ -60,7 +62,7 @@ class SellerMenuActivity : AppCompatActivity() {
                 // Vendedor: pedimos tarjeta de ENCARGADO/ADMIN
                 val i = Intent(this, NfcCaptureActivity::class.java)
                 i.putExtra(
-                    NfcCaptureActivity.Companion.EXTRA_PROMPT,
+                    EXTRA_PROMPT,
                     "Acercá tarjeta de ENCARGADO/ADMIN para autorizar"
                 )
                 scanMgrLauncher.launch(i)

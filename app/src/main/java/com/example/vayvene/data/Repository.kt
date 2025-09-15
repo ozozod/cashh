@@ -1,98 +1,57 @@
+// Reemplazá el contenido de Repository.kt por algo como esto si hoy depende de ApiBase.
+// Si preferís mantener tu lógica actual, al menos quitá la herencia/uso de ApiBase.
+
 package com.example.vayvene.data
 
 import android.content.Context
-import android.net.wifi.WifiManager
-import android.os.BatteryManager
-import android.os.Build
-import androidx.core.content.getSystemService
-import com.example.vayvene.BuildConfig
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody.Companion.toRequestBody
+import android.os.Handler
+import android.os.Looper
+import com.example.vayvene.util.TelemetryUtil
+import com.example.vayvene.util.putSafe
 import org.json.JSONObject
-import java.util.Locale
-import java.util.concurrent.TimeUnit
+import java.net.HttpURLConnection
+import java.net.URL
 
-class Repository(private val context: Context) {
+object Repository {
 
-    private val client: OkHttpClient by lazy {
-        OkHttpClient.Builder()
-            .connectTimeout(15, TimeUnit.SECONDS)
-            .readTimeout(20, TimeUnit.SECONDS)
-            .writeTimeout(20, TimeUnit.SECONDS)
-            .build()
-    }
+    /**
+     * Login móvil por UID de tarjeta (reversed).
+     */
+    fun login(
+        ctx: Context,
+        uidReversed: String,
+        onSuccess: (JSONObject) -> Unit,
+        onError: (Throwable) -> Unit
+    ) {
+        Thread {
+            try {
+                val base = com.example.vayvene.BuildConfig.BASE_URL.trimEnd('/')
+                val endpoint = "$base/mobile/login"
+                val payload = JSONObject()
+                    .put("cardUidReversed", uidReversed)
+                    .put("telemetry", TelemetryUtil.snapshot(ctx))
 
-    /** POST {BASE_URL}/api/mobile/login  { cardUid }  -> { token, user:{ role,... } } */
-    suspend fun loginWithUid(uid: String): LoginResult {
-        val url = BuildConfig.BASE_URL.trimEnd('/') + "/api/mobile/login"
+                val url = URL(endpoint)
+                val conn = (url.openConnection() as HttpURLConnection).apply {
+                    requestMethod = "POST"
+                    connectTimeout = 10000
+                    readTimeout = 15000
+                    doOutput = true
+                    setRequestProperty("Content-Type", "application/json; charset=utf-8")
+                }
+                conn.outputStream.use { it.write(payload.toString().toByteArray(Charsets.UTF_8)) }
 
-        val payload = JSONObject().apply {
-            put("cardUid", uid.uppercase(Locale.ROOT))    // lo que espera tu backend
-            // opcional: telemetría tolerante (si falla, se ignora)
-            put("device", JSONObject().apply {
-                put("nombre", Build.MODEL)
-                put("plataforma", "android")
-            })
-            readBattery()?.let { put("bateria", it) }
-            readRssi()?.let { put("senal", it) }
-        }
+                val code = conn.responseCode
+                val stream = if (code in 200..299) conn.inputStream else conn.errorStream
+                val text = stream.bufferedReader().use { it.readText() }
+                val json = try { JSONObject(text) } catch (_: Throwable) { JSONObject().put("raw", text) }
 
-        val req = Request.Builder()
-            .url(url)
-            .post(payload.toString().toRequestBody("application/json; charset=utf-8".toMediaType()))
-            .build()
-
-        val resp = client.newCall(req).execute()
-        if (!resp.isSuccessful) throw IllegalStateException("HTTP ${resp.code} en /api/mobile/login")
-
-        val body = resp.body?.string().orEmpty()
-        val json = JSONObject(body)
-
-        // Token: tu router móvil devuelve "token"
-        // Token: tu API devuelve "token"
-        val token = json.optString("token", "")
-        if (token.isBlank()) throw IllegalStateException("Login sin token")
-
-
-        // Guardar token (memoria + prefs)
-        ApiClient.setToken(token)
-        context.getSharedPreferences("session", Context.MODE_PRIVATE)
-            .edit().putString("jwt", token).apply()
-
-        // Rol viene en user.role
-        val roleRaw = json.optJSONObject("user")?.optString("role", "") ?: ""
-        val role = normalizeRole(roleRaw)
-
-        return LoginResult(token = token, role = role)
-    }
-
-    private fun normalizeRole(raw: String?): String {
-        val r = (raw ?: "").trim().lowercase(Locale.ROOT)
-        return when (r) {
-            "admin", "administrador" -> "admin"
-            "encargado", "manager"   -> "encargado"
-            "vendedor", "seller", "barman", "bartender" -> "vendedor"
-            "cajero", "cashier"      -> "cajero"
-            else -> r
-        }
-    }
-
-    private fun readBattery(): Int? {
-        val bm = context.getSystemService<BatteryManager>() ?: return null
-        return bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY).takeIf { it in 1..100 }
-    }
-
-    @Suppress("DEPRECATION")
-    private fun readRssi(): Int? = try {
-        val wifi = context.applicationContext.getSystemService(Context.WIFI_SERVICE) as? WifiManager
-        wifi?.connectionInfo?.rssi
-    } catch (_: SecurityException) {
-        null // si falta permiso, no rompemos el login
-    } catch (_: Throwable) {
-        null
+                Handler(Looper.getMainLooper()).post {
+                    if (code in 200..299) onSuccess(json) else onError(Exception("HTTP $code: $text"))
+                }
+            } catch (e: Exception) {
+                Handler(Looper.getMainLooper()).post { onError(e) }
+            }
+        }.start()
     }
 }
-
-data class LoginResult(val token: String, val role: String)

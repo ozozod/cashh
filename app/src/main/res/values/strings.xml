@@ -1,22 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">VayVene</string>
-    <string name="welcome_title">Acerque su tarjeta de personal para iniciar sesión</string>
+
+    <!-- Login -->
+    <string name="welcome_title">Acerque su tarjeta para iniciar sesión</string>
+    <string name="card_registered_customer">Tarjeta no registrada para staff</string>
+    <string name="session_expired">Sesión expirada</string>
+
+    <!-- Estado de red -->
     <string name="server_label">Servidor:</string>
     <string name="connected">Conectado</string>
     <string name="disconnected">Sin conexión</string>
+
+    <!-- Menú Admin -->
+    <string name="admin_menu_title">Menú de Admin</string>
+    <string name="admin_cards">Tarjetas</string>
+    <string name="admin_open_cashier">Cajero</string>
+    <string name="admin_open_seller">Vendedor</string>
+    <string name="logout">Cerrar sesión</string>
+
+    <!-- Admin > Tarjetas -->
+    <string name="cards_menu_title">Tarjetas</string>
+    <string name="register_staff">Cargar staff</string>
+    <string name="register_customer">Cargar comprador</string>
+    <string name="enter_name">Nombre</string>
+    <string name="enter_dni">DNI</string>
+    <string name="choose_role">Rol</string>
+    <string name="role_admin">ADMIN</string>
+    <string name="role_cashier">CAJERO</string>
+    <string name="role_seller">VENDEDOR</string>
+    <string name="continue_btn">Continuar</string>
+    <string name="scan_to_register_staff">Acerque tarjeta para registrar staff</string>
+    <string name="scan_to_register_customer">Acerque tarjeta para registrar comprador</string>
+    <string name="already_registered">Esa tarjeta ya está registrada en este evento</string>
+    <string name="registered_ok">Registro completado</string>
+
+    <!-- Menú Cajero -->
+    <string name="cashier_menu_title">Menú de Cajero</string>
+    <string name="cashier_register_customer">Registrar comprador</string>
+    <string name="cashier_topup">Cargar saldo</string>
+    <string name="cashier_balance">Consultar saldo</string>
+    <string name="cashier_refund">Devolver saldo</string>
+    <string name="scan_customer_topup">Acerque tarjeta del comprador para cargar saldo</string>
+    <string name="scan_customer_balance">Acerque tarjeta del comprador para consultar saldo</string>
+    <string name="scan_customer_refund">Acerque tarjeta del comprador para devolver saldo</string>
+    <string name="remaining_balance">Saldo restante: $%1$s</string>
+
+    <!-- Menú Vendedor -->
+    <string name="seller_menu_title">Menú de Vendedor</string>
+    <string name="seller_new_sale">Nueva venta</string>
+    <string name="seller_check_balance">Consultar saldo</string>
+    <string name="seller_cancel_last">Anular última venta</string>
+    <string name="scan_to_pay">Acerque tarjeta del comprador para cobrar $%1$s</string>
+
+    <!-- Cancel last sale -->
+    <string name="ready_to_cancel_last_sale">Listo para anular la última venta</string>
+    <string name="need_manager_card">Necesita tarjeta de encargado</string>
+    <string name="already_authorized">Ya autorizado</string>
+    <string name="scan_manager_card">Acerque la tarjeta de ENCARGADO</string>
+    <string name="scan_customer_card">Acerque la tarjeta del CLIENTE</string>
+
+    <!-- Varios -->
     <string name="seller_actions">Acciones</string>
     <string name="btn_sell">VENDER</string>
     <string name="btn_balance">CONSULTAR SALDO</string>
     <string name="btn_summary">RESUMEN</string>
     <string name="btn_void">ANULAR VENTA</string>
-    <string name="untitled">icon</string>
-    <string-array name="staff_roles">
-        <item>ADMINISTRADOR</item>
-        <item>ENCARGADO</item>
-        <item>CAJERO</item>
-        <item>VENDEDOR</item>
-    </string-array>
-    <string name="base_url">http://192.168.1.28:3000/</string>
 
+    <!-- Base URL por defecto (puede sobrescribirse en runtime) -->
+    <string name="base_url">http://192.168.1.28:3000/</string>
 </resources>

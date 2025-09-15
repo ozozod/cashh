@@ -18,6 +18,9 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONArray
 import org.json.JSONObject
 import java.math.BigDecimal
+import com.example.vayvene.ui.common.EXTRA_UID
+import com.example.vayvene.ui.common.EXTRA_PROMPT
+import com.example.vayvene.ui.common.EXTRA_MANAGER_UID
 
 class CashierQuickOpsActivity : AppCompatActivity() {
 
@@ -35,7 +38,7 @@ class CashierQuickOpsActivity : AppCompatActivity() {
         ActivityResultContracts.StartActivityForResult()
     ) { res ->
         if (res.resultCode == RESULT_OK) {
-            val uid = res.data?.getStringExtra(NfcCaptureActivity.EXTRA_UID).orEmpty().uppercase()
+            val uid = res.data?.getStringExtra(EXTRA_UID).orEmpty().uppercase()
             if (uid.isNotBlank()) executeChosenAction(uid)
         }
     }
@@ -66,7 +69,7 @@ class CashierQuickOpsActivity : AppCompatActivity() {
                 else                 -> "Acercá la tarjeta del COMPRADOR para CONSULTAR saldo"
             }
             val i = Intent(this, NfcCaptureActivity::class.java)
-            i.putExtra(NfcCaptureActivity.EXTRA_PROMPT, prompt)
+            i.putExtra(EXTRA_PROMPT, prompt)
             scanLauncher.launch(i)
         }
     }

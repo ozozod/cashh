@@ -6,7 +6,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.vayvene.R
 import com.example.vayvene.data.Session
-import com.example.vayvene.ui.cashier.CashierQuickOpsActivity
+import com.example.vayvene.ui.cashier.CashierMenuActivity
 import com.example.vayvene.ui.login.NfcLoginActivity
 import com.example.vayvene.ui.seller.SellerMenuActivity
 
@@ -26,7 +26,7 @@ class AdminMenuActivity : AppCompatActivity() {
         }
 
         btnCajero.setOnClickListener {
-            startActivity(Intent(this, CashierQuickOpsActivity::class.java))
+            startActivity(Intent(this, CashierMenuActivity::class.java))
         }
 
         // SellerMenuActivity está en ui.main (¡ojo con el import!)

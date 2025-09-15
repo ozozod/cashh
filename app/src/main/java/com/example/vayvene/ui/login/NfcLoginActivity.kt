@@ -1,148 +1,75 @@
 package com.example.vayvene.ui.login
 
-import android.app.PendingIntent
 import android.content.Intent
-import android.nfc.NfcAdapter
-import android.nfc.Tag
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import com.example.vayvene.R
 import com.example.vayvene.data.Repository
 import com.example.vayvene.data.Session
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.example.vayvene.ui.admin.AdminMenuActivity
+import com.example.vayvene.ui.seller.SellerMenuActivity
+import com.example.vayvene.ui.cashier.CashierMenuActivity
+import com.example.vayvene.ui.common.EXTRA_UID
+import org.json.JSONObject
 
 class NfcLoginActivity : AppCompatActivity() {
 
-    private var nfcAdapter: NfcAdapter? = null
-    private var pendingIntent: PendingIntent? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_nfc_login)
+        setContentView(R.layout.activity_nfc_login) // Asegurate que exista y tenga tus views
 
-        nfcAdapter = NfcAdapter.getDefaultAdapter(this)
-        if (nfcAdapter == null) {
-            Toast.makeText(this, "Tu dispositivo no tiene NFC.", Toast.LENGTH_LONG).show()
-            finish()
-            return
+        // UID de la tarjeta (reversed) que te llega del capturador NFC:
+        val uid = intent.getStringExtra(EXTRA_UID)
+        if (uid != null) {
+            doLogin(uid)
+        } else {
+            // si tu flujo primero captura, navega a tu capturador aquí
+            // startActivity(Intent(this, NfcPromptActivity::class.java))
         }
+    }
 
-        pendingIntent = PendingIntent.getActivity(
-            this, 0,
-            Intent(this, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
-            PendingIntent.FLAG_MUTABLE
+    private fun doLogin(cardUidReversed: String) {
+        Repository.login(
+            this, cardUidReversed,
+            { json -> handleLoginOk(json) },
+            { e -> Toast.makeText(this, "Error de login: ${e.message}", Toast.LENGTH_LONG).show() }
         )
+
     }
 
-    override fun onResume() {
-        super.onResume()
-        nfcAdapter?.enableForegroundDispatch(this, pendingIntent, null, null)
-    }
+    private fun handleLoginOk(json: JSONObject) {
+        val token        = json.optString("token")
+        val eventId      = json.optString("eventId")
+        val staffRole    = json.optString("staffRole")
+        val staffName    = json.optString("staffName")
+        val staffCardUid = json.optString("staffCardUid")
+        val isStaff      = json.optBoolean("isStaff", false)
 
-    override fun onPause() {
-        super.onPause()
-        nfcAdapter?.disableForegroundDispatch(this)
-    }
-
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        val tag: Tag? = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG)
-        if (tag == null) {
-            Toast.makeText(this, "Acercá una tarjeta para iniciar sesión.", Toast.LENGTH_SHORT).show()
+        if (token.isBlank() || eventId.isBlank()) {
+            Toast.makeText(this, "Respuesta de login inválida", Toast.LENGTH_LONG).show()
             return
         }
-        val uid = tag.id?.toHexString() ?: run {
-            Toast.makeText(this, "No pude leer el UID.", Toast.LENGTH_SHORT).show()
-            return
-        }
-        doLogin(uid)
-    }
 
-    private fun doLogin(cardUid: String) {
-        lifecycleScope.launch(Dispatchers.IO) {
-            val repo = Repository(this@NfcLoginActivity)
-            try {
-                // ⬇️ Usa el método que tengas disponible en Repository (ver sección 2)
-                val resp = repo.mobileLogin(cardUid)
+        Session.setLogin(
+            ctx = this,
+            token = token,
+            eventId = eventId,
+            role = staffRole,
+            isStaff = isStaff,
+            staffName = staffName,
+            staffCardUid = staffCardUid
+        )
 
-                val token = resp.token ?: ""
-                val eventId = resp.eventId ?: ""
-                val role = resp.staffRole ?: ""        // "ADMINISTRADOR" | "ENCARGADO" | "VENDEDOR" | ""
-                val isStaff = resp.isStaff == true
-
-                // Guardar sesión centralizada
-                Session.saveToken(this@NfcLoginActivity, token)
-                Session.saveEventId(this@NfcLoginActivity, eventId)
-                Session.saveStaffRole(this@NfcLoginActivity, role)
-                Session.saveIsStaff(this@NfcLoginActivity, isStaff)
-
-                withContext(Dispatchers.Main) {
-                    when {
-                        isStaff && (role.equals("ADMINISTRADOR", true) || role.equals("ENCARGADO", true)) -> {
-                            goToAdminMenu()
-                        }
-                        isStaff && role.equals("VENDEDOR", true) -> {
-                            goToSellerMenu()
-                        }
-                        else -> {
-                            Toast.makeText(
-                                this@NfcLoginActivity,
-                                "La tarjeta no tiene rol de STAFF en este evento.",
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
-                    }
-                }
-            } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(
-                        this@NfcLoginActivity,
-                        "Error de login: ${e.message}",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
+        when (staffRole.lowercase()) {
+            "admin"    -> startActivity(Intent(this, com.example.vayvene.ui.admin.AdminMenuActivity::class.java))
+            "cajero"   -> startActivity(Intent(this, com.example.vayvene.ui.cashier.CashierMenuActivity::class.java))
+            "vendedor" -> startActivity(Intent(this, com.example.vayvene.ui.seller.SellerMenuActivity::class.java))
+            else -> {
+                Toast.makeText(this, "Tarjeta no registrada para staff", Toast.LENGTH_LONG).show()
+                // se queda en login
             }
         }
-    }
-
-    // Navegación robusta por reflection: evita imports que fallan si moviste paquetes.
-    private fun goToAdminMenu() {
-        val tried = arrayOf(
-            "com.example.vayvene.ui.admin.AdminMenuActivity",
-            "com.example.vayvene.ui.main.AdminMenuActivity"
-        )
-        startByClassNames(tried)
-    }
-
-    private fun goToSellerMenu() {
-        val tried = arrayOf(
-            "com.example.vayvene.ui.seller.SellerMenuActivity",
-            "com.example.vayvene.ui.main.SellerMenuActivity"
-        )
-        startByClassNames(tried)
-    }
-
-    private fun startByClassNames(classNames: Array<String>) {
-        for (name in classNames) {
-            try {
-                val clazz = Class.forName(name)
-                startActivity(Intent(this, clazz))
-                finish()
-                return
-            } catch (_: ClassNotFoundException) {
-                // probar el siguiente
-            }
-        }
-        Toast.makeText(this, "No encontré la pantalla destino.", Toast.LENGTH_LONG).show()
-    }
-
-    private fun ByteArray.toHexString(): String {
-        val sb = StringBuilder()
-        for (b in this) sb.append(String.format("%02X", b))
-        return sb.toString()
+        finish()
     }
 }
