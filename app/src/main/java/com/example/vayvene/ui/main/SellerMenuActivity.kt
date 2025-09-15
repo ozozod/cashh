@@ -1,103 +1,79 @@
 package com.example.vayvene.ui.main
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Base64
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.vayvene.R
+import com.example.vayvene.data.Session
 import com.example.vayvene.ui.login.NfcLoginActivity
-import org.json.JSONObject
-import java.util.Locale
+import com.example.vayvene.ui.nfc.NfcCaptureActivity
+import com.example.vayvene.ui.seller.SellerCancelLastSaleActivity
+import com.example.vayvene.ui.seller.SellerPosActivity
 
 class SellerMenuActivity : AppCompatActivity() {
 
-    private fun toast(msg: String) =
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    private val scanMgrLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { r ->
+        if (r.resultCode == RESULT_OK) {
+            val managerUid = r.data?.getStringExtra(NfcCaptureActivity.EXTRA_UID)?.uppercase()
+            if (managerUid.isNullOrBlank()) {
+                Toast.makeText(this, "Tarjeta inválida. Probá de nuevo.", Toast.LENGTH_LONG).show()
+                return@registerForActivityResult
+            }
+            val i = Intent(this, SellerCancelLastSaleActivity::class.java)
+            i.putExtra(SellerCancelLastSaleActivity.EXTRA_MANAGER_UID, managerUid)
+            startActivity(i)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_role_menu)
+        setContentView(R.layout.activity_seller_menu)
 
-        val token = getTokenFromPrefs(this)
-        val role = token?.let { getClaim(it, "role") }?.uppercase(Locale.ROOT)
-        val isSeller = role == "SELLER" || role == "VENDEDOR" || role == "VENDOR"
+        val btnNuevaVenta: Button = findViewById(R.id.btnNuevaVenta)
+        val btnConsultarSaldo: Button = findViewById(R.id.btnConsultarSaldo)
+        val btnResumen: Button = findViewById(R.id.btnResumen)
+        val btnAnularVenta: Button = findViewById(R.id.btnAnularVenta)
+        val btnLogout: Button = findViewById(R.id.btnLogout)
 
-        if (token.isNullOrBlank() || !isSeller) {
-            Toast.makeText(this, "Sesión inválida. Iniciá de nuevo.", Toast.LENGTH_SHORT).show()
-            val i = Intent(this, NfcLoginActivity::class.java)
-            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(i)
-            return
+        btnNuevaVenta.setOnClickListener {
+            startActivity(Intent(this, SellerPosActivity::class.java))
         }
 
-        val btn1: Button? = findViewById(R.id.btnAction1)   // Nueva venta
-        val btn2: Button? = findViewById(R.id.btnAction2)   // Consultar saldo
-        val btn3: Button? = findViewById(R.id.btnAction3)   // Resumen
-        val btn4: Button? = findViewById(R.id.btnAction4)   // Anular venta
-        val btn5: Button? = findViewById(R.id.btnAction5)   // Cerrar sesión
-
-        btn1?.setOnClickListener { toast("Nueva venta (pendiente de UI)") }
-        btn2?.setOnClickListener { toast("Consultar saldo (pendiente de UI)") }
-        btn3?.setOnClickListener { startActivity(Intent(this, SellerSummaryActivity::class.java)) }
-        btn4?.setOnClickListener { toast("Anular venta (pendiente de UI)") }
-        btn5?.setOnClickListener {
-            clearTokenInPrefs(this)
-            val i = Intent(this, NfcLoginActivity::class.java)
-            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(i)
+        btnConsultarSaldo.setOnClickListener {
+            Toast.makeText(this, "Pendiente de UI (Consultar saldo)", Toast.LENGTH_SHORT).show()
+        }
+        btnResumen.setOnClickListener {
+            Toast.makeText(this, "Pendiente de UI (Resumen)", Toast.LENGTH_SHORT).show()
         }
 
-        if (listOf(btn1, btn2, btn3, btn4, btn5).all { it == null }) {
-            toast("Faltan los 5 botones en el layout del vendedor")
-        }
-    }
-
-    // -------- helpers --------
-    private fun getTokenFromPrefs(ctx: Context): String? {
-        val prefNames = arrayOf("auth", "session", "app_prefs")
-        val keys = arrayOf("token", "jwt", "Authorization")
-        for (p in prefNames) {
-            val prefs = ctx.getSharedPreferences(p, Context.MODE_PRIVATE)
-            for (k in keys) {
-                prefs.getString(k, null)?.let { if (it.isNotBlank()) return it }
+        btnAnularVenta.setOnClickListener {
+            // 👉 Si es ENCARGADO/ADMIN, no pedimos tarjeta
+            if (Session.isManagerOrAdmin(this)) {
+                val selfCard = Session.staffCardUid(this)
+                val i = Intent(this, SellerCancelLastSaleActivity::class.java)
+                i.putExtra(SellerCancelLastSaleActivity.EXTRA_MANAGER_UID, selfCard)
+                startActivity(i)
+            } else {
+                // Vendedor: pedimos tarjeta de ENCARGADO/ADMIN
+                val i = Intent(this, NfcCaptureActivity::class.java)
+                i.putExtra(
+                    NfcCaptureActivity.EXTRA_PROMPT,
+                    "Acercá tarjeta de ENCARGADO/ADMIN para autorizar"
+                )
+                scanMgrLauncher.launch(i)
             }
         }
-        return null
-    }
 
-    private fun clearTokenInPrefs(ctx: Context) {
-        val prefNames = arrayOf("auth", "session", "app_prefs")
-        val keys = arrayOf("token", "jwt", "Authorization")
-        for (p in prefNames) {
-            val prefs = ctx.getSharedPreferences(p, Context.MODE_PRIVATE)
-            val e = prefs.edit()
-            for (k in keys) e.remove(k)
-            e.apply()
+        btnLogout.setOnClickListener {
+            Session.clear(this)
+            val i = Intent(this, NfcLoginActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(i)
         }
     }
-
-    /** Devuelve el claim `key` del JWT o, si viene anidado, lo busca en `user[key]`. */
-    private fun getClaim(jwt: String, key: String): String? {
-        return try {
-            val parts = jwt.split(".")
-            if (parts.size < 2) return null
-            val payloadB64 = parts[1].replace('-', '+').replace('_', '/')
-            val pad = (4 - payloadB64.length % 4) % 4
-            val padded = payloadB64 + "=".repeat(pad)
-            val json = JSONObject(String(Base64.decode(padded, Base64.DEFAULT)))
-
-            // optString no acepta null como default → usamos "" y validamos
-            val direct = json.optString(key, "")
-            if (direct.isNotBlank()) return direct
-
-            val nested = json.optJSONObject("user")?.optString(key, "")
-            nested?.takeIf { it.isNotBlank() }
-        } catch (_: Exception) {
-            null
-        }
-    }
-
 }

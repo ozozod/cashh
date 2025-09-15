@@ -27,7 +27,7 @@
         </activity>
 
         <!-- Admin -->
-        <activity android:name=".ui.admin.AdminMenuActivity" android:exported="false" />
+        <activity android:name=".ui.admin.AdminMenuLegacyActivity" android:exported="false" />
         <activity android:name=".ui.admin.RegisterCardActivity" android:exported="false" />
         <activity android:name=".ui.admin.RegisterResultActivity" android:exported="false" />
 
@@ -46,6 +46,14 @@
         <activity android:name=".ui.admin.AdminSellerMenuActivity" android:exported="false" />
         <activity android:name=".ui.admin.AdminStaffRegisterActivity" android:exported="false" />
         <activity android:name=".ui.admin.AdminCustomerRegisterActivity" android:exported="false" />
+        <activity android:name=".ui.seller.SellerPosActivity" />
+        <activity android:name=".ui.seller.SellerSaleResultActivity" />
+        <activity
+            android:name=".ui.seller.SellerCancelLastSaleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.main.AdminMenuActivity"
+            android:exported="false" />
 
         <!-- NFC Scan (si lo usás en otros flujos) -->
         <activity

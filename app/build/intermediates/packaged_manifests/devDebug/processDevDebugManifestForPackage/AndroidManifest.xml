@@ -50,7 +50,7 @@
 
         <!-- Admin -->
         <activity
-            android:name="com.example.vayvene.ui.admin.AdminMenuActivity"
+            android:name="com.example.vayvene.ui.admin.AdminMenuLegacyActivity"
             android:exported="false" />
         <activity
             android:name="com.example.vayvene.ui.admin.RegisterCardActivity"
@@ -101,6 +101,14 @@
             android:exported="false" />
         <activity
             android:name="com.example.vayvene.ui.admin.AdminCustomerRegisterActivity"
+            android:exported="false" />
+        <activity android:name="com.example.vayvene.ui.seller.SellerPosActivity" />
+        <activity android:name="com.example.vayvene.ui.seller.SellerSaleResultActivity" />
+        <activity
+            android:name="com.example.vayvene.ui.seller.SellerCancelLastSaleActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.vayvene.ui.main.AdminMenuActivity"
             android:exported="false" />
 
         <!-- NFC Scan (si lo usás en otros flujos) -->

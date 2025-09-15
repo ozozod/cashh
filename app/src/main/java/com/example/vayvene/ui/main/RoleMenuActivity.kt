@@ -26,7 +26,7 @@ class RoleMenuActivity : AppCompatActivity() {
         when (role) {
             "ADMINISTRADOR", "ADMIN", "ENCARGADO" -> {
                 // OJO: el AdminMenuActivity está en el paquete ui.admin (no ui.main)
-                startActivity(Intent(this, com.example.vayvene.ui.admin.AdminMenuActivity::class.java))
+                startActivity(Intent(this, com.example.vayvene.ui.main.AdminMenuActivity::class.java))
             }
             "VENDEDOR" -> {
                 startActivity(Intent(this, com.example.vayvene.ui.main.SellerMenuActivity::class.java))
