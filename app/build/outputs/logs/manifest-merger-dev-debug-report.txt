@@ -146,12 +146,12 @@ ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:32:9-
 		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:32:67-91
 	android:name
 		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:32:19-66
-activity#com.example.vayvene.ui.main.SellerMenuActivity
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:9-89
+activity#com.example.vayvene.ui.seller.SellerMenuActivity
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:9-91
 	android:exported
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:62-86
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:64-88
 	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:19-61
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:19-63
 activity#com.example.vayvene.ui.main.SellerSummaryActivity
 ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:36:9-92
 	android:exported
@@ -244,12 +244,12 @@ ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:51:9-
 		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:53:13-37
 	android:name
 		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:52:13-67
-activity#com.example.vayvene.ui.main.AdminMenuActivity
+activity#com.example.vayvene.ui.admin.AdminMenuActivity
 ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:54:9-56:40
 	android:exported
 		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:56:13-37
 	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:55:13-54
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:55:13-55
 activity#com.example.vayvene.ui.nfc.NfcScanActivity
 ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:59:9-62:46
 	android:launchMode

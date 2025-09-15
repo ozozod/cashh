@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.vayvene.data.JwtUtils
+import com.example.vayvene.ui.admin.AdminMenuActivity
 import com.example.vayvene.ui.login.NfcLoginActivity
+import com.example.vayvene.ui.seller.SellerMenuActivity
 
 class RoleMenuActivity : AppCompatActivity() {
 
@@ -26,10 +28,10 @@ class RoleMenuActivity : AppCompatActivity() {
         when (role) {
             "ADMINISTRADOR", "ADMIN", "ENCARGADO" -> {
                 // OJO: el AdminMenuActivity está en el paquete ui.admin (no ui.main)
-                startActivity(Intent(this, com.example.vayvene.ui.main.AdminMenuActivity::class.java))
+                startActivity(Intent(this, AdminMenuActivity::class.java))
             }
             "VENDEDOR" -> {
-                startActivity(Intent(this, com.example.vayvene.ui.main.SellerMenuActivity::class.java))
+                startActivity(Intent(this, SellerMenuActivity::class.java))
             }
             "CAJERO" -> {
                 // podés cambiar esto a una pantalla de caja cuando la tengas

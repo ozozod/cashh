@@ -32,7 +32,7 @@
         <activity android:name=".ui.admin.RegisterResultActivity" android:exported="false" />
 
         <!-- Vendedor / Caja -->
-        <activity android:name=".ui.main.SellerMenuActivity" android:exported="false" />
+        <activity android:name=".ui.seller.SellerMenuActivity" android:exported="false" />
         <activity android:name=".ui.main.SellerSummaryActivity" android:exported="false" />
         <activity android:name=".ui.main.CancelSaleActivity" android:exported="false" />
         <activity android:name=".ui.main.PosActivity" android:exported="false" />
@@ -52,7 +52,7 @@
             android:name=".ui.seller.SellerCancelLastSaleActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.AdminMenuActivity"
+            android:name=".ui.admin.AdminMenuActivity"
             android:exported="false" />
 
         <!-- NFC Scan (si lo usás en otros flujos) -->

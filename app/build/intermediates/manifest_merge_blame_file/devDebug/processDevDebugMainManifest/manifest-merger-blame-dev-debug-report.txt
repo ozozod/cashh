@@ -103,11 +103,11 @@
 61
 62        <!-- Vendedor / Caja -->
 63        <activity
-63-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:9-89
-64            android:name="com.example.vayvene.ui.main.SellerMenuActivity"
-64-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:19-61
+63-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:9-91
+64            android:name="com.example.vayvene.ui.seller.SellerMenuActivity"
+64-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:19-63
 65            android:exported="false" />
-65-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:62-86
+65-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:64-88
 66        <activity
 66-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:36:9-92
 67            android:name="com.example.vayvene.ui.main.SellerSummaryActivity"
@@ -200,8 +200,8 @@
 109-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:53:13-37
 110        <activity
 110-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:54:9-56:40
-111            android:name="com.example.vayvene.ui.main.AdminMenuActivity"
-111-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:55:13-54
+111            android:name="com.example.vayvene.ui.admin.AdminMenuActivity"
+111-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:55:13-55
 112            android:exported="false" />
 112-->C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:56:13-37
 113

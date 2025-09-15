@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.vayvene.BuildConfig
 import com.example.vayvene.R
 import com.example.vayvene.data.Session
-import com.example.vayvene.ui.main.SellerMenuActivity
+import com.example.vayvene.ui.seller.SellerMenuActivity
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request

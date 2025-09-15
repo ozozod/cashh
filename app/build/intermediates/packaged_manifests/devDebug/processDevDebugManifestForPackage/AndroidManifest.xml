@@ -61,7 +61,7 @@
 
         <!-- Vendedor / Caja -->
         <activity
-            android:name="com.example.vayvene.ui.main.SellerMenuActivity"
+            android:name="com.example.vayvene.ui.seller.SellerMenuActivity"
             android:exported="false" />
         <activity
             android:name="com.example.vayvene.ui.main.SellerSummaryActivity"
@@ -108,7 +108,7 @@
             android:name="com.example.vayvene.ui.seller.SellerCancelLastSaleActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.vayvene.ui.main.AdminMenuActivity"
+            android:name="com.example.vayvene.ui.admin.AdminMenuActivity"
             android:exported="false" />
 
         <!-- NFC Scan (si lo usás en otros flujos) -->
