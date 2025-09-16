@@ -14,7 +14,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.NFC" />
 
-    <!-- Declaramos NFC como opcional para que instale en equipos sin NFC -->
+    <!-- Requerimos NFC para esta build -->
     <uses-feature
         android:name="android.hardware.nfc"
         android:required="true" />
@@ -38,12 +38,12 @@
         android:theme="@style/Theme.VayVene"
         android:usesCleartextTraffic="true" >
 
-        <!-- Launcher -->
+        <!-- LAUNCHER (login NFC) -->
         <activity
             android:name="com.example.vayvene.ui.login.NfcLoginActivity"
             android:exported="true"
-            android:launchMode="singleTop"
-            android:theme="@style/Theme.VayVene" >
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,20 +51,13 @@
             </intent-filter>
         </activity>
 
-        <!-- Captura de NFC (con fallback por TECH_DISCOVERED) -->
+        <!-- Captura de NFC (solo para pedir/leer UID) -->
         <activity
             android:name="com.example.vayvene.ui.nfc.NfcCaptureActivity"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="android.nfc.action.TECH_DISCOVERED" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.nfc.action.TECH_DISCOVERED"
-                android:resource="@xml/nfc_tech_filter" />
-        </activity>
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
 
         <!-- Admin -->
         <activity

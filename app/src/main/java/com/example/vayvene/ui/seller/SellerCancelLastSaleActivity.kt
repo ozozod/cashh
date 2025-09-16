@@ -13,6 +13,7 @@ class SellerCancelLastSaleActivity : AppCompatActivity() {
     private lateinit var btnAuthorize: Button
     private lateinit var btnScanAndCancel: Button
     private lateinit var tvInfo: TextView
+
     companion object {
         const val EXTRA_MANAGER_UID = "extra_manager_uid"
     }
@@ -36,13 +37,13 @@ class SellerCancelLastSaleActivity : AppCompatActivity() {
             if (Session.isManagerOrAdmin(this)) {
                 Toast.makeText(this, R.string.already_authorized, Toast.LENGTH_SHORT).show()
             } else {
-                // Abrí tu pantalla de captura NFC del ENCARGADO y al volver, marcá autorizado.
+                // Abrí tu captura NFC del ENCARGADO y al volver, marcá autorizado (pendiente de UI)
                 Toast.makeText(this, R.string.scan_manager_card, Toast.LENGTH_SHORT).show()
             }
         }
 
         btnScanAndCancel.setOnClickListener {
-            // Abrí tu captura NFC del CLIENTE y luego mandá la anulación
+            // Abrí tu captura NFC del CLIENTE y luego mandá la anulación (pendiente de UI)
             Toast.makeText(this, R.string.scan_customer_card, Toast.LENGTH_SHORT).show()
         }
     }

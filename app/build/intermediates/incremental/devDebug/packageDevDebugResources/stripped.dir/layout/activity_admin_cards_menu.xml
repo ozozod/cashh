@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:padding="20dp"
     android:orientation="vertical"
-    android:padding="20dp">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tarjetas"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:paddingBottom="12dp" />
+    android:gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/btnStaffCard"
+        android:id="@+id/btnRegisterStaff"
+        android:text="Cargar staff"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cargar STAFF" />
+        android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btnCustomerCard"
+        android:id="@+id/btnRegisterCustomer"
+        android:text="Cargar comprador"
+        android:layout_marginTop="12dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cargar COMPRADOR"
-        android:layout_marginTop="8dp" />
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/btnBack"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="Volver"
-        android:layout_marginTop="16dp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

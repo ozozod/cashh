@@ -1,57 +1,51 @@
 package com.example.vayvene.ui.login
 
 import android.nfc.NfcAdapter
+import android.nfc.Tag
 import android.os.Bundle
-import android.widget.TextView
+import android.os.Handler
+import android.os.Looper
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.vayvene.R
 import com.example.vayvene.BuildConfig
 import com.example.vayvene.data.Session
-import com.example.vayvene.ui.admin.AdminCustomerRegisterActivity
-import com.example.vayvene.ui.cashier.CashierQuickOpsActivity
+import com.example.vayvene.ui.cashier.CashierMenuActivity
 import com.example.vayvene.ui.seller.SellerMenuActivity
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
+import java.util.Locale
+import android.content.Intent
+import com.example.vayvene.ui.admin.AdminMenuActivity
 
-class NfcLoginActivity : AppCompatActivity() {
+class NfcLoginActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
 
-    private var nfcAdapter: NfcAdapter? = null
-    private lateinit var tvStatus: TextView
     private val client by lazy { OkHttpClient() }
+    private val main by lazy { Handler(Looper.getMainLooper()) }
+    private var nfcAdapter: NfcAdapter? = null
+    private var isLoggingIn = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_nfc_login)
-
-        tvStatus = findViewById(R.id.tvStatus)
+        // Puede no tener layout; si tenés uno, dejalo:
+        // setContentView(R.layout.activity_nfc_login)
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this)
         if (nfcAdapter == null) {
-            tvStatus.text = getString(R.string.nfc_not_supported)
+            Toast.makeText(this, "El dispositivo no soporta NFC", Toast.LENGTH_LONG).show()
+            finish()
             return
         }
-        tvStatus.text = getString(R.string.nfc_ready)
     }
 
     override fun onResume() {
         super.onResume()
-        nfcAdapter?.enableReaderMode(
-            this,
-            { tag ->
-                val uid = tag.id?.joinToString("") { b -> "%02X".format(b) } ?: return@enableReaderMode
-                runOnUiThread { tvStatus.text = getString(R.string.login_logging_in) }
-                doLogin(uid)
-            },
-            NfcAdapter.FLAG_READER_NFC_A or
-                    NfcAdapter.FLAG_READER_NFC_B or
-                    NfcAdapter.FLAG_READER_NFC_F or
-                    NfcAdapter.FLAG_READER_NFC_V or
-                    NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK,
-            null
-        )
+        val flags = (NfcAdapter.FLAG_READER_NFC_A
+                or NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK)
+        nfcAdapter?.enableReaderMode(this, this, flags, null)
+        isLoggingIn = false
     }
 
     override fun onPause() {
@@ -59,42 +53,115 @@ class NfcLoginActivity : AppCompatActivity() {
         nfcAdapter?.disableReaderMode(this)
     }
 
+    override fun onTagDiscovered(tag: Tag?) {
+        if (tag == null || isLoggingIn) return
+        isLoggingIn = true
+
+        val uidBytes = tag.id ?: return
+        val uid = uidBytes.joinToString("") { String.format(Locale.US, "%02X", it) }
+
+        main.post {
+            Toast.makeText(this, "Tarjeta detectada: $uid", Toast.LENGTH_SHORT).show()
+        }
+
+        doLogin(uid)
+    }
+
     private fun doLogin(cardUid: String) {
-        Thread {
-            try {
-                val url = BuildConfig.BASE_URL.trimEnd('/') + "/api/mobile/login"
+        val url = BuildConfig.BASE_URL.trimEnd('/') + "/mobile/login"
 
-                val json = JSONObject().put("cardUid", cardUid).toString()
-                val body = json.toRequestBody("application/json; charset=utf-8".toMediaType())
+        val telemetry = JSONObject().apply {
+            put("batteryPct", 100)
+            put("signal", -50)
+            put("networkType", "wifi")
+            put("device", "android")
+            put("appVersion", BuildConfig.VERSION_NAME)
+            put("online", true)
+        }
 
-                val req = Request.Builder().url(url).post(body).build()
-                val resp = client.newCall(req).execute()
-                val code = resp.code
-                val bodyStr = resp.body?.string().orEmpty()
+        val payload = JSONObject().apply {
+            put("cardUid", cardUid)
+            put("telemetry", telemetry)
+        }
 
-                if (code in 200..299) {
-                    val obj = JSONObject(bodyStr)
-                    val user = obj.getJSONObject("user")
-                    val role = user.optString("role", "").uppercase()
+        val body = payload.toString()
+            .toRequestBody("application/json; charset=utf-8".toMediaType())
 
-                    Session.currentUserName = user.optString("name", "")
-                    Session.currentUserRole = role
+        val req = Request.Builder()
+            .url(url)
+            .header("Content-Type", "application/json")
+            .post(body)
+            .build()
 
-                    runOnUiThread {
-                        tvStatus.text = getString(R.string.nfc_read_ok)
-                        when (role) {
-                            "VENDEDOR" -> startActivity(android.content.Intent(this, SellerMenuActivity::class.java))
-                            "CAJERO" -> startActivity(android.content.Intent(this, CashierQuickOpsActivity::class.java))
-                            "ADMINISTRADOR" -> startActivity(android.content.Intent(this, AdminCustomerRegisterActivity::class.java))
-                            else -> tvStatus.text = getString(R.string.nfc_read_fail)
-                        }
-                    }
-                } else {
-                    runOnUiThread { tvStatus.text = getString(R.string.nfc_read_fail) }
+        client.newCall(req).enqueue(object : okhttp3.Callback {
+            override fun onFailure(call: okhttp3.Call, e: java.io.IOException) {
+                main.post {
+                    Toast.makeText(this@NfcLoginActivity, "Error de red: ${e.message}", Toast.LENGTH_LONG).show()
+                    isLoggingIn = false
                 }
-            } catch (_: Exception) {
-                runOnUiThread { tvStatus.text = getString(R.string.nfc_read_fail) }
             }
-        }.start()
+
+            override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
+                val code = response.code
+                val text = response.body?.string().orEmpty()
+                if (code != 200) {
+                    main.post {
+                        Toast.makeText(this@NfcLoginActivity, "Login falló ($code): $text", Toast.LENGTH_LONG).show()
+                        isLoggingIn = false
+                    }
+                    return
+                }
+
+                try {
+                    val json = JSONObject(text)
+                    val token = json.optString("token", null)
+                    val eventId = json.optString("eventId", null)
+                    // El backend puede devolver "role" o "staffRole"
+                    val role = when {
+                        json.has("staffRole") -> json.optString("staffRole", null)
+                        else -> json.optString("role", null)
+                    }
+                    val name = json.optString("staffName", null)
+                    val staffUid = json.optString("staffCardUid", cardUid)
+
+                    Session.save(
+                        ctx = this@NfcLoginActivity,
+                        jwt = token,
+                        eventId = eventId,
+                        role = role,
+                        name = name,
+                        staffUid = staffUid
+                    )
+
+                    main.post {
+                        routeByRole(role)
+                    }
+                } catch (ex: Exception) {
+                    main.post {
+                        Toast.makeText(this@NfcLoginActivity, "Respuesta inválida: ${ex.message}", Toast.LENGTH_LONG).show()
+                        isLoggingIn = false
+                    }
+                }
+            }
+        })
+    }
+
+    private fun routeByRole(roleRaw: String?) {
+        val role = roleRaw?.lowercase().orEmpty()
+        val intent: Intent? = when (role) {
+            "admin", "administrador" -> Intent(this, AdminMenuActivity::class.java)
+            "cajero" -> Intent(this, CashierMenuActivity::class.java)
+            "vendedor", "encargado" -> Intent(this, SellerMenuActivity::class.java)
+            else -> null
+        }
+
+        if (intent == null) {
+            Toast.makeText(this, "Tarjeta no registrada para staff", Toast.LENGTH_LONG).show()
+            isLoggingIn = false
+            return
+        }
+
+        startActivity(intent)
+        finish()
     }
 }

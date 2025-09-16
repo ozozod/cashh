@@ -12,17 +12,16 @@ class AdminCardsMenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_cards_menu)
 
-        // Cargar/Asignar tarjeta de STAFF
-        findViewById<Button>(R.id.btnStaffCard).setOnClickListener {
+        findViewById<Button>(R.id.btnRegisterStaff).setOnClickListener {
             startActivity(Intent(this, AdminStaffRegisterActivity::class.java))
         }
 
-        // Registrar tarjeta de COMPRADOR
-        findViewById<Button>(R.id.btnCustomerCard).setOnClickListener {
+        findViewById<Button>(R.id.btnRegisterCustomer).setOnClickListener {
             startActivity(Intent(this, AdminCustomerRegisterActivity::class.java))
         }
 
-        // Volver
-        findViewById<Button>(R.id.btnBack).setOnClickListener { finish() }
+        findViewById<Button>(R.id.btnBack).setOnClickListener {
+            finish()
+        }
     }
 }

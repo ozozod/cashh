@@ -5,7 +5,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.BatteryManager
 import android.os.Build
-import android.provider.Settings
+import com.example.vayvene.data.Session
 import org.json.JSONObject
 
 object TelemetryUtil {
@@ -19,6 +19,14 @@ object TelemetryUtil {
             put("device", "${Build.MANUFACTURER} ${Build.MODEL}")
             put("appVersion", getAppVersion(ctx))
             put("online", true)
+        }
+    }
+
+    fun buildFullTelemetry(ctx: Context): JSONObject {
+        return buildBasicTelemetry(ctx).apply {
+            put("staffName", Session.staffName(ctx) ?: "")
+            put("staffRole", Session.staffRole(ctx) ?: "")
+            put("staffCardUidReversed", Session.staffCardUid(ctx) ?: "")
         }
     }
 

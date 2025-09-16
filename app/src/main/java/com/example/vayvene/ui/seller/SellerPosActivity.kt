@@ -1,308 +1,287 @@
 package com.example.vayvene.ui.seller
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.Gravity
+import android.view.View
+import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.example.vayvene.BuildConfig
-import com.example.vayvene.R
-import com.example.vayvene.data.Session
-import com.example.vayvene.ui.nfc.NfcCaptureActivity
-import okhttp3.MediaType.Companion.toMediaType
+import androidx.core.view.setPadding
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONArray
 import org.json.JSONObject
+import java.net.URLEncoder
 import java.text.NumberFormat
-import java.util.Locale
-import com.example.vayvene.ui.common.EXTRA_UID
-import com.example.vayvene.ui.common.EXTRA_PROMPT
-import com.example.vayvene.ui.common.EXTRA_MANAGER_UID
+import java.util.*
+import com.example.vayvene.BuildConfig
 
 class SellerPosActivity : AppCompatActivity() {
 
-    private val http by lazy { OkHttpClient() }
-    private lateinit var container: LinearLayout
-    private lateinit var btnScanAndCharge: Button
+    // ---------- Modelo ----------
+    data class Product(
+        val id: String,
+        val name: String,
+        val price: Long, // unidades mínimas (centavos); si tu API devuelve en enteros, ajusta formatCurrency()
+        var qty: Int = 0
+    )
+
+    // ---------- UI ----------
+    private lateinit var recycler: RecyclerView
     private lateinit var tvTotal: TextView
-    private lateinit var tvEmpty: TextView
-    private val rows = mutableListOf<ProductRow>()
-    private var lastBuiltItems: JSONArray = JSONArray()
-
-    data class Product(val id: String, val name: String, val price: Double)
-
-    private data class ProductRow(
-        val product: Product,
-        val qtyTv: TextView
-    ) {
-        fun qty(): Int = qtyTv.text.toString().toInt()
-        fun setQty(q: Int) { qtyTv.text = q.toString() }
+    private lateinit var btnScanCharge: Button
+    private val adapter = ProductsAdapter {
+        recalcTotal()
     }
 
-    private val scanLauncher = registerForActivityResult(
-        androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()
-    ) { res ->
-        if (res.resultCode == RESULT_OK) {
-            val uid = res.data?.getStringExtra(EXTRA_UID).orEmpty().uppercase()
-            if (uid.isNotBlank()) chargeWithItems(uid, lastBuiltItems)
+    // ---------- Red ----------
+    private val http by lazy { OkHttpClient() }
+
+    // Resultado del escaneo NFC (puede volver con distintas claves; leemos todas)
+    private val nfcReader =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { res ->
+            val data = res.data
+            val uid = data?.getStringExtra("extra_uid")
+                ?: data?.getStringExtra("EXTRA_UID")
+                ?: data?.getStringExtra("uid")
+
+            if (uid.isNullOrBlank()) {
+                toast("Sin UID de tarjeta")
+                return@registerForActivityResult
+            }
+
+            // TODO: acá armá el payload y hacé el POST de cobro a tu backend.
+            // val items = adapter.selectedItems()
+            toast("Tarjeta $uid detectada. (Implementar POST de cobro)")
         }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_seller_pos)
 
-        container = findViewById(R.id.productsContainer)
-        btnScanAndCharge = findViewById(R.id.btnScanAndCharge)
-        tvTotal = findViewById(R.id.tvTotal)
-        tvEmpty = findViewById(R.id.tvEmpty)
-
-        btnScanAndCharge.setOnClickListener {
-            val items = buildItems()
-            if (items.length() == 0) {
-                Toast.makeText(this, "Elegí al menos 1 producto", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-            lastBuiltItems = items
-            showConfirmDialog(items)
+        // ----------- Construcción de UI por código (sin XML) ----------
+        val root = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            setBackgroundColor(0xFF121212.toInt())
+            setPadding(dp(12))
         }
 
-        fetchProducts()
-    }
-
-    // ---------- UI ----------
-    private fun addRow(p: Product) {
-        val row = LinearLayout(this).apply {
-            orientation = LinearLayout.HORIZONTAL
-            setPadding(12, 16, 12, 16)
-            layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
+        val title = TextView(this).apply {
+            text = "Punto de Venta"
+            setTextColor(0xFFE0E0E0.toInt())
+            textSize = 20f
+            setTypeface(typeface, Typeface.BOLD)
+            setPadding(0, 0, 0, dp(8))
         }
+        root.addView(title, ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
 
-        val name = TextView(this).apply {
-            text = "${p.name}  (${formatMoney(p.price)})"
+        recycler = RecyclerView(this).apply {
+            layoutManager = LinearLayoutManager(this@SellerPosActivity)
+            adapter = this@SellerPosActivity.adapter
+            overScrollMode = View.OVER_SCROLL_IF_CONTENT_SCROLLS
+        }
+        root.addView(recycler, LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f))
+
+        tvTotal = TextView(this).apply {
+            text = "Total: $ 0,00"
+            setTextColor(0xFFE0E0E0.toInt())
+            textSize = 18f
+            setTypeface(typeface, Typeface.BOLD)
+            setPadding(0, dp(8), 0, dp(8))
+        }
+        root.addView(tvTotal, ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+
+        btnScanCharge = Button(this).apply {
+            text = "ESCANEAR Y COBRAR"
+            setAllCaps(true)
+            setTextColor(0xFFFFFFFF.toInt())
+            setBackgroundColor(0xFF651FFF.toInt()) // morado
             textSize = 16f
-            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+            setPadding(0, dp(14), 0, dp(14))
         }
+        root.addView(btnScanCharge, ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
 
-        val minus = Button(this).apply {
-            text = "–"
-            layoutParams = LinearLayout.LayoutParams(120, LinearLayout.LayoutParams.WRAP_CONTENT)
-        }
-        val qty = TextView(this).apply {
-            text = "0"
-            gravity = Gravity.CENTER
-            textSize = 16f
-            layoutParams = LinearLayout.LayoutParams(120, LinearLayout.LayoutParams.WRAP_CONTENT)
-        }
-        val plus = Button(this).apply {
-            text = "+"
-            layoutParams = LinearLayout.LayoutParams(120, LinearLayout.LayoutParams.WRAP_CONTENT)
-        }
+        setContentView(root)
 
-        val rowModel = ProductRow(p, qty)
-
-        minus.setOnClickListener {
-            val q = (rowModel.qty() - 1).coerceAtLeast(0)
-            rowModel.setQty(q)
-            refreshTotal()
+        btnScanCharge.setOnClickListener {
+            openNfcReader(prompt = "Acercá la tarjeta del comprador…")
         }
-        plus.setOnClickListener {
-            val q = (rowModel.qty() + 1).coerceAtMost(999)
-            rowModel.setQty(q)
-            refreshTotal()
-        }
-
-        row.addView(name); row.addView(minus); row.addView(qty); row.addView(plus)
-        container.addView(row)
-        rows.add(rowModel)
     }
 
-    private fun refreshTotal() { tvTotal.text = "Total: ${formatMoney(currentTotal())}" }
-
-    private fun currentTotal(): Double {
-        var total = 0.0
-        for (r in rows) total += r.qty() * r.product.price
-        return total
+    override fun onResume() {
+        super.onResume()
+        loadProductsForCurrentEvent()
     }
 
-    private fun formatMoney(v: Double): String =
-        NumberFormat.getCurrencyInstance(Locale("es", "AR")).format(v)
-
-    // ---------- Build items & confirm ----------
-    private fun buildItems(): JSONArray {
-        val items = JSONArray()
-        for (r in rows) {
-            val q = r.qty()
-            if (q > 0) {
-                // Lo que espera tu API para validar: { productId, quantity }
-                items.put(JSONObject().apply {
-                    put("productId", r.product.id)
-                    put("quantity", q)
-                })
-            }
+    private fun openNfcReader(prompt: String) {
+        // Si tenés NfcCaptureActivity, ajustá su package/class si difiere
+        val i = Intent().apply {
+            setClassName(this@SellerPosActivity, "com.example.vayvene.ui.nfc.NfcCaptureActivity")
+            putExtra("extra_prompt", prompt) // también probamos con varias keys dentro de NfcCaptureActivity
         }
-        return items
+        nfcReader.launch(i)
     }
 
-    private fun buildDetails(items: JSONArray): String {
-        // Genera "2x coquita, 1x fernet"
-        val parts = mutableListOf<String>()
-        for (i in 0 until items.length()) {
-            val it = items.getJSONObject(i)
-            val id = it.optString("productId")
-            val qty = it.optInt("quantity", 0)
-            val name = rows.firstOrNull { r -> r.product.id == id }?.product?.name ?: "item"
-            parts.add("${qty}x $name")
+    // ------------- Carga de productos filtrados por EVENTO -------------
+    private fun loadProductsForCurrentEvent() {
+        val sp = getSharedPreferences("session", MODE_PRIVATE)
+        val eventId = sp.getString("event_id", null)
+        if (eventId.isNullOrBlank()) {
+            toast("Sin event_id en sesión")
+            adapter.submitList(emptyList())
+            recalcTotal()
+            return
         }
-        return parts.joinToString(", ")
-    }
 
-    private fun showConfirmDialog(items: JSONArray) {
-        val sb = StringBuilder()
-        var total = 0.0
-        for (i in 0 until items.length()) {
-            val o = items.getJSONObject(i)
-            val id = o.optString("productId")
-            val qty = o.optInt("quantity", 0)
-            val prod = rows.firstOrNull { it.product.id == id }?.product
-            val name = prod?.name ?: "Item"
-            val price = prod?.price ?: 0.0
-            val sub = price * qty
-            total += sub
-            sb.append("$name x$qty = ${formatMoney(sub)}\n")
-        }
-        sb.append("\nTotal: ${formatMoney(total)}")
-
-        AlertDialog.Builder(this)
-            .setTitle("Confirmar venta")
-            .setMessage(sb.toString())
-            .setNegativeButton("Volver") { d, _ -> d.dismiss() }
-            .setPositiveButton("Escanear y COBRAR") { d, _ ->
-                d.dismiss()
-                val i = Intent(this, NfcCaptureActivity::class.java)
-                i.putExtra(
-                    EXTRA_PROMPT,
-                    "Acercá la tarjeta del COMPRADOR para COBRAR"
-                )
-                scanLauncher.launch(i)
-            }
-            .show()
-    }
-
-    // ---------- NET ----------
-    private fun fetchProducts() {
         val base = BuildConfig.BASE_URL.trimEnd('/')
-        val url = "$base/api/mobile/products"
-        val token = Session.jwt(this)
-        if (token.isNullOrBlank()) { Toast.makeText(this, "Sesión expirada", Toast.LENGTH_SHORT).show(); finish(); return }
-        val req = Request.Builder().url(url).get().addHeader("Authorization", "Bearer $token").build()
+        val url = "$base/api/mobile/products?eventId=${URLEncoder.encode(eventId, "UTF-8")}"
 
         Thread {
             try {
-                http.newCall(req).execute().use { res ->
-                    val body = res.body?.string().orEmpty()
-                    if (!res.isSuccessful) {
-                        runOnUiThread {
-                            Toast.makeText(this, "Productos (${res.code}): $body", Toast.LENGTH_LONG).show()
-                            showEmpty(true)
-                        }
-                        return@use
-                    }
-                    val obj = JSONObject(body)
-                    val arr = obj.optJSONArray("products") ?: JSONArray()
-                    runOnUiThread {
-                        container.removeAllViews(); rows.clear()
-                        if (arr.length() == 0) { showEmpty(true) }
-                        else {
-                            showEmpty(false)
-                            for (i in 0 until arr.length()) {
-                                val o = arr.getJSONObject(i)
-                                val p = Product(
-                                    id = o.optString("id"),
-                                    name = o.optString("name"),
-                                    price = o.optDouble("price", 0.0)
+                val req = Request.Builder().url(url).get().build()
+                http.newCall(req).execute().use { resp ->
+                    val code = resp.code
+                    val body = resp.body?.string().orEmpty()
+
+                    if (code in 200..299) {
+                        val json = JSONObject(body)
+                        val arr: JSONArray = json.optJSONArray("products") ?: JSONArray()
+                        val items = ArrayList<Product>(arr.length())
+                        for (i in 0 until arr.length()) {
+                            val o = arr.getJSONObject(i)
+                            items.add(
+                                Product(
+                                    id = o.getString("id"),
+                                    name = o.getString("name"),
+                                    price = o.optLong("price", 0L),
+                                    qty = 0
                                 )
-                                addRow(p)
-                            }
-                            refreshTotal()
+                            )
+                        }
+                        runOnUiThread {
+                            adapter.submitList(items)
+                            recalcTotal()
+                        }
+                    } else {
+                        runOnUiThread {
+                            toast("Error productos ($code)")
+                            adapter.submitList(emptyList())
+                            recalcTotal()
                         }
                     }
                 }
             } catch (e: Exception) {
                 runOnUiThread {
-                    Toast.makeText(this, "Red productos: ${e.message}", Toast.LENGTH_LONG).show()
-                    showEmpty(true)
+                    toast("Red: ${e.message}")
+                    adapter.submitList(emptyList())
+                    recalcTotal()
                 }
             }
         }.start()
     }
 
-    private fun showEmpty(empty: Boolean) {
-        tvEmpty.visibility = if (empty) android.view.View.VISIBLE else android.view.View.GONE
-        btnScanAndCharge.isEnabled = !empty
-        if (empty) tvTotal.text = "Total: $0,00"
+    private fun recalcTotal() {
+        val totalCents = adapter.currentItems().sumOf { it.price * it.qty }
+        tvTotal.text = "Total: ${formatCurrency(totalCents)}"
     }
 
-    private fun chargeWithItems(customerUid: String, items: JSONArray) {
-        val base = BuildConfig.BASE_URL.trimEnd('/')
-        val url = "$base/api/mobile/sale"
-        val token = Session.jwt(this) ?: run {
-            Toast.makeText(this, "Sesión expirada", Toast.LENGTH_SHORT).show()
-            return
-        }
+    // ---------- Utils ----------
+    private fun dp(v: Int) = (v * resources.displayMetrics.density).toInt()
 
-        val payload = JSONObject().apply {
-            put("customerUid", customerUid)
-            put("items", items)                    // para validar/registrar
-            put("details", buildDetails(items))    // para que la web muestre “2x coquita, …”
-        }
+    private fun toast(msg: String) =
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 
-        val req = Request.Builder()
-            .url(url)
-            .post(payload.toString().toRequestBody("application/json; charset=utf-8".toMediaType()))
-            .addHeader("Authorization", "Bearer $token")
-            .build()
+    private fun formatCurrency(cents: Long): String {
+        // Si tu backend ya devuelve en unidades (no centavos), cambia a: amount = cents.toDouble()
+        val amount = cents / 100.0
+        val nf = NumberFormat.getCurrencyInstance(Locale("es", "AR"))
+        return nf.format(amount)
+    }
 
-        Thread {
-            try {
-                http.newCall(req).execute().use { res ->
-                    val code = res.code
-                    val body = res.body?.string().orEmpty()
-                    runOnUiThread {
-                        if (code == 401) { Toast.makeText(this, "Sesión expirada (401)", Toast.LENGTH_SHORT).show(); finish(); return@runOnUiThread }
-                        if (code in 200..299) {
-                            rows.forEach { it.setQty(0) }; refreshTotal()
-                            val totalCobrado = computeTotalFrom(items)
-                            val i = Intent(this, SellerSaleResultActivity::class.java)
-                            i.putExtra(SellerSaleResultActivity.EXTRA_TOTAL, totalCobrado)
-                            i.putExtra(SellerSaleResultActivity.EXTRA_UID, customerUid)
-                            startActivity(i)
-                        } else {
-                            Toast.makeText(this, "Venta error ($code): $body", Toast.LENGTH_LONG).show()
-                        }
-                    }
-                }
-            } catch (e: Exception) {
-                runOnUiThread { Toast.makeText(this, "Red venta: ${e.message}", Toast.LENGTH_LONG).show() }
+    // ---------- Adapter ----------
+    inner class ProductsAdapter(
+        private val onQtyChanged: () -> Unit
+    ) : RecyclerView.Adapter<ProductsAdapter.VH>() {
+
+        private val items = mutableListOf<Product>()
+
+        inner class VH(val row: View, val tvName: TextView, val btnMinus: Button,
+                       val tvQty: TextView, val btnPlus: Button) : RecyclerView.ViewHolder(row)
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
+            // Fila horizontal: [Nombre ($precio)]  [ - ] [ qty ] [ + ]
+            val row = LinearLayout(parent.context).apply {
+                orientation = LinearLayout.HORIZONTAL
+                gravity = Gravity.CENTER_VERTICAL
+                setPadding(dp(8))
             }
-        }.start()
-    }
 
-    private fun computeTotalFrom(items: JSONArray): Double {
-        var t = 0.0
-        for (i in 0 until items.length()) {
-            val it = items.getJSONObject(i)
-            val id = it.optString("productId")
-            val qty = it.optInt("quantity", 0)
-            val price = rows.firstOrNull { r -> r.product.id == id }?.product?.price ?: 0.0
-            t += qty * price
+            val tvName = TextView(parent.context).apply {
+                setTextColor(0xFFE0E0E0.toInt())
+                textSize = 16f
+            }
+            row.addView(tvName, LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f))
+
+            fun pill(text: String): Button = Button(parent.context).apply {
+                this.text = text
+                setAllCaps(false)
+                setPadding(dp(8), dp(4), dp(8), dp(4))
+            }
+
+            val btnMinus = pill("–")
+            val tvQty = TextView(parent.context).apply {
+                setTextColor(0xFFE0E0E0.toInt())
+                text = "0"
+                textSize = 16f
+                setPadding(dp(12), 0, dp(12), 0)
+                gravity = Gravity.CENTER
+            }
+            val btnPlus = pill("+")
+
+            row.addView(btnMinus)
+            row.addView(tvQty)
+            row.addView(btnPlus)
+
+            return VH(row, tvName, btnMinus, tvQty, btnPlus)
         }
-        return t
+
+        override fun onBindViewHolder(holder: VH, position: Int) {
+            val p = items[position]
+            holder.tvName.text = "${p.name} (${formatCurrency(p.price)})"
+            holder.tvQty.text = p.qty.toString()
+
+            holder.btnMinus.setOnClickListener {
+                if (p.qty > 0) {
+                    p.qty -= 1
+                    holder.tvQty.text = p.qty.toString()
+                    onQtyChanged()
+                }
+            }
+            holder.btnPlus.setOnClickListener {
+                p.qty += 1
+                holder.tvQty.text = p.qty.toString()
+                onQtyChanged()
+            }
+        }
+
+        override fun getItemCount(): Int = items.size
+
+        fun submitList(list: List<Product>) {
+            items.clear()
+            items.addAll(list)
+            notifyDataSetChanged()
+        }
+
+        fun currentItems(): List<Product> = items
+
+        fun selectedItems(): List<Product> = items.filter { it.qty > 0 }
     }
 }

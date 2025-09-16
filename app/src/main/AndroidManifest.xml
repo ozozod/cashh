@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.NFC" />
 
-    <!-- Declaramos NFC como opcional para que instale en equipos sin NFC -->
+    <!-- Requerimos NFC para esta build -->
     <uses-feature android:name="android.hardware.nfc" android:required="true" />
 
     <application
@@ -19,31 +19,25 @@
         android:usesCleartextTraffic="true"
         android:networkSecurityConfig="@xml/network_security_config">
 
-        <!-- Launcher -->
+        <!-- LAUNCHER (login NFC) -->
         <activity
             android:name=".ui.login.NfcLoginActivity"
             android:exported="true"
-            android:launchMode="singleTop"
-            android:theme="@style/Theme.VayVene">
-
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <!-- Captura de NFC (con fallback por TECH_DISCOVERED) -->
+        <!-- Captura de NFC (solo para pedir/leer UID) -->
         <activity
             android:name=".ui.nfc.NfcCaptureActivity"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.nfc.action.TECH_DISCOVERED" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <meta-data
-                android:name="android.nfc.action.TECH_DISCOVERED"
-                android:resource="@xml/nfc_tech_filter" />
-        </activity>
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait" />
 
         <!-- Admin -->
         <activity android:name=".ui.admin.AdminMenuActivity" android:exported="false" />
@@ -60,6 +54,5 @@
         <activity android:name=".ui.seller.SellerPosActivity" android:exported="false" />
         <activity android:name=".ui.seller.SellerSaleResultActivity" android:exported="false" />
         <activity android:name=".ui.seller.SellerCancelLastSaleActivity" android:exported="false" />
-
     </application>
 </manifest>

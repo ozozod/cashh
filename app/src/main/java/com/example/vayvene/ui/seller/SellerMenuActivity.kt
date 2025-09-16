@@ -8,13 +8,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.vayvene.R
 import com.example.vayvene.data.Session
+import com.example.vayvene.ui.common.EXTRA_PROMPT
+import com.example.vayvene.ui.common.EXTRA_UID
 import com.example.vayvene.ui.login.NfcLoginActivity
 import com.example.vayvene.ui.nfc.NfcCaptureActivity
-import com.example.vayvene.ui.common.EXTRA_UID
-import com.example.vayvene.ui.common.EXTRA_PROMPT
-import com.example.vayvene.ui.common.EXTRA_MANAGER_UID
+
 class SellerMenuActivity : AppCompatActivity() {
 
+    // Lanzador para pedir tarjeta de ENCARGADO/ADMIN cuando el usuario es vendedor
     private val scanMgrLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { r ->
@@ -22,11 +23,11 @@ class SellerMenuActivity : AppCompatActivity() {
             val managerUid = r.data?.getStringExtra(EXTRA_UID)?.uppercase()
             if (managerUid.isNullOrBlank()) {
                 Toast.makeText(this, "Tarjeta inválida. Probá de nuevo.", Toast.LENGTH_LONG).show()
-                return@registerForActivityResult
+            } else {
+                val i = Intent(this, SellerCancelLastSaleActivity::class.java)
+                    .putExtra(SellerCancelLastSaleActivity.EXTRA_MANAGER_UID, managerUid) // String explícito
+                startActivity(i)
             }
-            val i = Intent(this, SellerCancelLastSaleActivity::class.java)
-            i.putExtra(SellerCancelLastSaleActivity.EXTRA_MANAGER_UID, managerUid)
-            startActivity(i)
         }
     }
 
@@ -47,24 +48,22 @@ class SellerMenuActivity : AppCompatActivity() {
         btnConsultarSaldo.setOnClickListener {
             Toast.makeText(this, "Pendiente de UI (Consultar saldo)", Toast.LENGTH_SHORT).show()
         }
+
         btnResumen.setOnClickListener {
             Toast.makeText(this, "Pendiente de UI (Resumen)", Toast.LENGTH_SHORT).show()
         }
 
         btnAnularVenta.setOnClickListener {
-            // 👉 Si es ENCARGADO/ADMIN, no pedimos tarjeta
             if (Session.isManagerOrAdmin(this)) {
-                val selfCard = Session.staffCardUid(this)
+                // Si es ENCARGADO/ADMIN, vamos directo pasando su propia tarjeta
+                val selfCard = Session.staffCardUid(this) ?: ""
                 val i = Intent(this, SellerCancelLastSaleActivity::class.java)
-                i.putExtra(SellerCancelLastSaleActivity.EXTRA_MANAGER_UID, selfCard)
+                    .putExtra(SellerCancelLastSaleActivity.EXTRA_MANAGER_UID, selfCard) // String para evitar ambigüedad
                 startActivity(i)
             } else {
-                // Vendedor: pedimos tarjeta de ENCARGADO/ADMIN
+                // Si es VENDEDOR, pedimos tarjeta del ENCARGADO/ADMIN
                 val i = Intent(this, NfcCaptureActivity::class.java)
-                i.putExtra(
-                    EXTRA_PROMPT,
-                    "Acercá tarjeta de ENCARGADO/ADMIN para autorizar"
-                )
+                    .putExtra(EXTRA_PROMPT, "Acercá tarjeta de ENCARGADO/ADMIN para autorizar")
                 scanMgrLauncher.launch(i)
             }
         }

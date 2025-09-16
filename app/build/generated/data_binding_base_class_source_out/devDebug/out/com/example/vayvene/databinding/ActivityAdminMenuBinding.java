@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
@@ -21,29 +20,24 @@ public final class ActivityAdminMenuBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final Button btnCajero;
+  public final Button btnCards;
+
+  @NonNull
+  public final Button btnCashier;
 
   @NonNull
   public final Button btnLogout;
 
   @NonNull
-  public final Button btnTarjetas;
+  public final Button btnSeller;
 
-  @NonNull
-  public final Button btnVendedor;
-
-  @NonNull
-  public final TextView tvTitle;
-
-  private ActivityAdminMenuBinding(@NonNull LinearLayout rootView, @NonNull Button btnCajero,
-      @NonNull Button btnLogout, @NonNull Button btnTarjetas, @NonNull Button btnVendedor,
-      @NonNull TextView tvTitle) {
+  private ActivityAdminMenuBinding(@NonNull LinearLayout rootView, @NonNull Button btnCards,
+      @NonNull Button btnCashier, @NonNull Button btnLogout, @NonNull Button btnSeller) {
     this.rootView = rootView;
-    this.btnCajero = btnCajero;
+    this.btnCards = btnCards;
+    this.btnCashier = btnCashier;
     this.btnLogout = btnLogout;
-    this.btnTarjetas = btnTarjetas;
-    this.btnVendedor = btnVendedor;
-    this.tvTitle = tvTitle;
+    this.btnSeller = btnSeller;
   }
 
   @Override
@@ -73,9 +67,15 @@ public final class ActivityAdminMenuBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.btnCajero;
-      Button btnCajero = ViewBindings.findChildViewById(rootView, id);
-      if (btnCajero == null) {
+      id = R.id.btnCards;
+      Button btnCards = ViewBindings.findChildViewById(rootView, id);
+      if (btnCards == null) {
+        break missingId;
+      }
+
+      id = R.id.btnCashier;
+      Button btnCashier = ViewBindings.findChildViewById(rootView, id);
+      if (btnCashier == null) {
         break missingId;
       }
 
@@ -85,26 +85,14 @@ public final class ActivityAdminMenuBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.btnTarjetas;
-      Button btnTarjetas = ViewBindings.findChildViewById(rootView, id);
-      if (btnTarjetas == null) {
+      id = R.id.btnSeller;
+      Button btnSeller = ViewBindings.findChildViewById(rootView, id);
+      if (btnSeller == null) {
         break missingId;
       }
 
-      id = R.id.btnVendedor;
-      Button btnVendedor = ViewBindings.findChildViewById(rootView, id);
-      if (btnVendedor == null) {
-        break missingId;
-      }
-
-      id = R.id.tvTitle;
-      TextView tvTitle = ViewBindings.findChildViewById(rootView, id);
-      if (tvTitle == null) {
-        break missingId;
-      }
-
-      return new ActivityAdminMenuBinding((LinearLayout) rootView, btnCajero, btnLogout,
-          btnTarjetas, btnVendedor, tvTitle);
+      return new ActivityAdminMenuBinding((LinearLayout) rootView, btnCards, btnCashier, btnLogout,
+          btnSeller);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

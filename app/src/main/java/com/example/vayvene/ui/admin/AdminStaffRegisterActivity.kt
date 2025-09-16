@@ -4,64 +4,131 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.*
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.example.vayvene.BuildConfig
 import com.example.vayvene.R
-import com.example.vayvene.ui.common.Extras
 import com.example.vayvene.ui.nfc.NfcCaptureActivity
+import com.example.vayvene.util.Extras
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 
 class AdminStaffRegisterActivity : AppCompatActivity() {
 
     private lateinit var etName: EditText
+    private lateinit var etEmployee: EditText
     private lateinit var spRole: Spinner
     private lateinit var tvCardUid: TextView
-    private lateinit var etEmployee: EditText
     private lateinit var btnScan: Button
     private lateinit var btnSave: Button
 
-    private lateinit var scanLauncher: ActivityResultLauncher<Intent>
+    private val client = OkHttpClient()
+    private var eventId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Asegurate de que este sea tu layout real o usa el que te dejo abajo
         setContentView(R.layout.activity_admin_staff_register)
 
-        // Referencias del layout (ids deben existir en el XML)
+        eventId = intent.getStringExtra(Extras.EXTRA_EVENT_ID)
+
         etName = findViewById(R.id.etName)
+        etEmployee = findViewById(R.id.etEmployee)
         spRole = findViewById(R.id.spRole)
         tvCardUid = findViewById(R.id.tvCardUid)
-        etEmployee = findViewById(R.id.etEmployee)
         btnScan = findViewById(R.id.btnScan)
         btnSave = findViewById(R.id.btnSave)
 
-        // Spinner simple para roles (ajusta si ya tenés un adapter propio)
-        if (spRole.adapter == null) {
-            val roles = listOf("ADMINISTRADOR", "CAJERO", "VENDEDOR")
-            spRole.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, roles)
-        }
-
-        // Registrar launcher AQUÍ (ya existen las views)
-        scanLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { res ->
-            if (res.resultCode == Activity.RESULT_OK) {
-                val uid = res.data?.getStringExtra(Extras.EXTRA_UID).orEmpty()
-                tvCardUid.text = uid
-            } else {
-                Toast.makeText(this, getString(R.string.nfc_read_fail), Toast.LENGTH_SHORT).show()
-            }
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.roles_staff,
+            android.R.layout.simple_spinner_item
+        ).also { a ->
+            a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spRole.adapter = a
         }
 
         btnScan.setOnClickListener {
             val i = Intent(this, NfcCaptureActivity::class.java)
-            // Opcional: mensaje de la pantalla de NFC si lo usás
-            i.putExtra(Extras.EXTRA_PROMPT, getString(R.string.nfc_prompt_register_staff))
-            scanLauncher.launch(i)
+                .putExtra(Extras.EXTRA_PROMPT, getString(R.string.nfc_prompt_register_staff))
+            startActivityForResult(i, Extras.REQ_NFC_CAPTURE)
         }
 
-        btnSave.setOnClickListener {
-            // TODO: acá iría el POST a tu API /api/mobile/staff/register
-            // usando etName.text, spRole.selectedItem, tvCardUid.text, etc.
-            Toast.makeText(this, "Guardar staff (TODO)", Toast.LENGTH_SHORT).show()
+        btnSave.setOnClickListener { saveStaff() }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == Extras.REQ_NFC_CAPTURE && resultCode == Activity.RESULT_OK) {
+            val uid = data?.getStringExtra(Extras.EXTRA_UID)?.uppercase()
+            if (uid.isNullOrBlank()) {
+                Toast.makeText(this, getString(R.string.nfc_read_fail), Toast.LENGTH_SHORT).show()
+            } else {
+                tvCardUid.text = uid
+            }
         }
+    }
+
+    private fun saveStaff() {
+        val eid = eventId
+        if (eid.isNullOrBlank()) {
+            Toast.makeText(this, "Falta eventId (login). Volvé a loguearte.", Toast.LENGTH_LONG).show()
+            return
+        }
+
+        val name = etName.text.toString().trim()
+        val empNum = etEmployee.text.toString().trim()
+        val role = spRole.selectedItem?.toString()?.trim().orEmpty()
+        val cardUid = tvCardUid.text.toString().trim().uppercase()
+
+        if (name.isEmpty()) { etName.error = "Requerido"; return }
+        if (cardUid.isEmpty()) {
+            Toast.makeText(this, "Escaneá una tarjeta", Toast.LENGTH_LONG).show(); return
+        }
+
+        val url = BuildConfig.BASE_URL.trimEnd('/') + "/api/events/$eid/users"
+        val payload = JSONObject().apply {
+            put("name", name)
+            put("role", role)
+            put("cardUid", cardUid)
+            if (empNum.isNotEmpty()) put("employeeNumber", empNum)
+        }
+
+        val body = payload.toString()
+            .toRequestBody("application/json; charset=utf-8".toMediaType())
+        val req = Request.Builder().url(url).post(body).build()
+
+        btnSave.isEnabled = false
+        Thread {
+            try {
+                client.newCall(req).execute().use { resp ->
+                    val code = resp.code
+                    val text = resp.body?.string().orEmpty()
+                    runOnUiThread {
+                        btnSave.isEnabled = true
+                        when {
+                            code in 200..299 -> {
+                                Toast.makeText(this, "Staff guardado ✅", Toast.LENGTH_LONG).show()
+                                etName.text?.clear()
+                                etEmployee.text?.clear()
+                                tvCardUid.text = ""
+                            }
+                            code == 409 -> {
+                                Toast.makeText(this, "Esa tarjeta ya está asignada en este evento.", Toast.LENGTH_LONG).show()
+                            }
+                            else -> {
+                                Toast.makeText(this, "Error ($code): $text", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                runOnUiThread {
+                    btnSave.isEnabled = true
+                    Toast.makeText(this, "Error de red: ${e.message}", Toast.LENGTH_LONG).show()
+                }
+            }
+        }.start()
     }
 }

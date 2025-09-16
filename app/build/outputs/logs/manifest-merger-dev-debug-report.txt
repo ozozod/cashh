@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:2:1-65:12
-INJECTED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:2:1-65:12
-INJECTED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:2:1-65:12
-INJECTED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:2:1-65:12
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:2:1-58:12
 MERGED from [androidx.databinding:viewbinding:8.3.2] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\097db69227cc848cb6a4cf06b9f7a400\transformed\jetified-viewbinding-8.3.2\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2105e60f12c8e531e12cf679270bae4d\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\78c3007680da986d53bd9f8ecf03bbfd\transformed\jetified-appcompat-resources-1.7.0\AndroidManifest.xml:2:1-7:12
@@ -77,8 +77,8 @@ ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:11:5-
 	android:name
 		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:11:19-54
 application
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:13:5-64:19
-INJECTED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:13:5-64:19
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:13:5-57:19
+INJECTED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:13:5-57:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2105e60f12c8e531e12cf679270bae4d\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\2105e60f12c8e531e12cf679270bae4d\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] C:\Users\ozozo\.gradle\caches\9.0-milestone-1\transforms\f30738b3a524cccfbd5c63a912f066c8\transformed\constraintlayout-2.0.1\AndroidManifest.xml:9:5-20
@@ -114,107 +114,97 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\ozozo\.gradle\cach
 	android:usesCleartextTraffic
 		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:19:9-44
 activity#com.example.vayvene.ui.login.NfcLoginActivity
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:23:9-33:20
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:23:9-32:20
+	android:screenOrientation
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:27:13-49
 	android:launchMode
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:26:13-43
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:26:13-44
 	android:exported
 		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:25:13-36
-	android:theme
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:27:13-49
 	android:name
 		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:24:13-54
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:29:13-32:29
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:28:13-31:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:30:17-69
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:29:17-68
 	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:30:25-66
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:29:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:31:17-77
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:30:17-76
 	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:31:27-74
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:30:27-74
 activity#com.example.vayvene.ui.nfc.NfcCaptureActivity
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:36:9-46:20
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:35:9-40:52
+	android:screenOrientation
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:40:13-49
+	android:excludeFromRecents
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:39:13-46
+	android:launchMode
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:38:13-43
 	android:exported
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:38:13-37
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:37:13-37
 	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:37:13-54
-intent-filter#action:name:android.nfc.action.TECH_DISCOVERED+category:name:android.intent.category.DEFAULT
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:39:13-42:29
-action#android.nfc.action.TECH_DISCOVERED
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:40:17-77
-	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:40:25-74
-category#android.intent.category.DEFAULT
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:41:17-76
-	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:41:27-73
-meta-data#android.nfc.action.TECH_DISCOVERED
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:43:13-45:59
-	android:resource
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:45:17-56
-	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:44:17-66
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:36:13-54
 activity#com.example.vayvene.ui.admin.AdminMenuActivity
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:49:9-89
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:43:9-89
 	android:exported
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:49:62-86
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:43:62-86
 	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:49:19-61
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:43:19-61
 activity#com.example.vayvene.ui.admin.AdminCardsMenuActivity
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:50:9-94
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:44:9-94
 	android:exported
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:50:67-91
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:44:67-91
 	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:50:19-66
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:44:19-66
 activity#com.example.vayvene.ui.admin.AdminStaffRegisterActivity
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:51:9-98
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:45:9-98
 	android:exported
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:51:71-95
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:45:71-95
 	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:51:19-70
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:45:19-70
 activity#com.example.vayvene.ui.admin.AdminCustomerRegisterActivity
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:52:9-101
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:46:9-101
 	android:exported
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:52:74-98
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:46:74-98
 	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:52:19-73
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:46:19-73
 activity#com.example.vayvene.ui.cashier.CashierMenuActivity
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:55:9-93
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:49:9-93
 	android:exported
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:55:66-90
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:49:66-90
 	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:55:19-65
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:49:19-65
 activity#com.example.vayvene.ui.cashier.CashierQuickOpsActivity
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:56:9-97
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:50:9-97
 	android:exported
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:56:70-94
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:50:70-94
 	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:56:19-69
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:50:19-69
 activity#com.example.vayvene.ui.seller.SellerMenuActivity
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:59:9-91
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:53:9-91
 	android:exported
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:59:64-88
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:53:64-88
 	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:59:19-63
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:53:19-63
 activity#com.example.vayvene.ui.seller.SellerPosActivity
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:60:9-90
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:54:9-90
 	android:exported
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:60:63-87
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:54:63-87
 	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:60:19-62
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:54:19-62
 activity#com.example.vayvene.ui.seller.SellerSaleResultActivity
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:61:9-97
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:55:9-97
 	android:exported
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:61:70-94
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:55:70-94
 	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:61:19-69
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:55:19-69
 activity#com.example.vayvene.ui.seller.SellerCancelLastSaleActivity
-ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:62:9-101
+ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:56:9-101
 	android:exported
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:62:74-98
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:56:74-98
 	android:name
-		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:62:19-73
+		ADDED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml:56:19-73
 uses-sdk
 INJECTED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\ozozo\Downloads\cashh\app\src\main\AndroidManifest.xml

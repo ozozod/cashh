@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="roles_staff">
+        <item>VENDEDOR</item>
+        <item>CAJERO</item>
+        <item>ADMINISTRADOR</item>
+    </string-array>
     <color name="black">#FF000000</color>
     <color name="brand_bg_dark">#101114</color>
     <color name="brand_error">#FF4D4F</color>
@@ -41,15 +46,17 @@
     <string name="disconnected">Sin conexión</string>
     <string name="enter_dni">DNI</string>
     <string name="enter_name">Nombre</string>
-    <string name="login_logging_in">Leyendo…</string>
-    <string name="login_title">Acercá la tarjeta para iniciar sesión</string>
+    <string name="login_logging_in">Validando…</string>
+    <string name="login_title">Iniciar sesión</string>
     <string name="logout">Cerrar sesión</string>
     <string name="need_manager_card">Necesita tarjeta de encargado</string>
-    <string name="nfc_not_supported">Este dispositivo no soporta NFC</string>
-    <string name="nfc_prompt_register_staff">Apoye la tarjeta para registrar al staff</string>
-    <string name="nfc_read_fail">No se pudo leer / iniciar sesión</string>
+    <string name="nfc_not_supported">Este dispositivo no tiene NFC o está desactivado</string>
+    <string name="nfc_prompt_login">Acercá la tarjeta para iniciar sesión</string>
+    <string name="nfc_prompt_register_customer">Acercá la tarjeta para registrar comprador</string>
+    <string name="nfc_prompt_register_staff">Acercá la tarjeta a registrar</string>
+    <string name="nfc_read_fail">No se pudo leer la tarjeta</string>
     <string name="nfc_read_ok">Tarjeta detectada</string>
-    <string name="nfc_ready">Acerque una tarjeta al lector…</string>
+    <string name="nfc_ready">Listo. Acerque la tarjeta…</string>
     <string name="ready_to_cancel_last_sale">Listo para anular la última venta</string>
     <string name="register_customer">Cargar comprador</string>
     <string name="register_staff">Cargar staff</string>
@@ -73,6 +80,7 @@
     <string name="seller_new_sale">Nueva venta</string>
     <string name="server_label">Servidor:</string>
     <string name="session_expired">Sesión expirada</string>
+    <string name="uid_placeholder">UID: (sin leer)</string>
     <string name="welcome_title">Acerque su tarjeta para iniciar sesión</string>
     <style name="Theme.VayVene" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/purple_500</item>

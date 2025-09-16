@@ -23,17 +23,17 @@ public final class ActivityAdminCardsMenuBinding implements ViewBinding {
   public final Button btnBack;
 
   @NonNull
-  public final Button btnCustomerCard;
+  public final Button btnRegisterCustomer;
 
   @NonNull
-  public final Button btnStaffCard;
+  public final Button btnRegisterStaff;
 
   private ActivityAdminCardsMenuBinding(@NonNull LinearLayout rootView, @NonNull Button btnBack,
-      @NonNull Button btnCustomerCard, @NonNull Button btnStaffCard) {
+      @NonNull Button btnRegisterCustomer, @NonNull Button btnRegisterStaff) {
     this.rootView = rootView;
     this.btnBack = btnBack;
-    this.btnCustomerCard = btnCustomerCard;
-    this.btnStaffCard = btnStaffCard;
+    this.btnRegisterCustomer = btnRegisterCustomer;
+    this.btnRegisterStaff = btnRegisterStaff;
   }
 
   @Override
@@ -69,20 +69,20 @@ public final class ActivityAdminCardsMenuBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.btnCustomerCard;
-      Button btnCustomerCard = ViewBindings.findChildViewById(rootView, id);
-      if (btnCustomerCard == null) {
+      id = R.id.btnRegisterCustomer;
+      Button btnRegisterCustomer = ViewBindings.findChildViewById(rootView, id);
+      if (btnRegisterCustomer == null) {
         break missingId;
       }
 
-      id = R.id.btnStaffCard;
-      Button btnStaffCard = ViewBindings.findChildViewById(rootView, id);
-      if (btnStaffCard == null) {
+      id = R.id.btnRegisterStaff;
+      Button btnRegisterStaff = ViewBindings.findChildViewById(rootView, id);
+      if (btnRegisterStaff == null) {
         break missingId;
       }
 
-      return new ActivityAdminCardsMenuBinding((LinearLayout) rootView, btnBack, btnCustomerCard,
-          btnStaffCard);
+      return new ActivityAdminCardsMenuBinding((LinearLayout) rootView, btnBack,
+          btnRegisterCustomer, btnRegisterStaff);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -2,6 +2,12 @@
 <resources>
     <string name="app_name">VayVene</string>
 
+    <string-array name="roles_staff">
+        <item>VENDEDOR</item>
+        <item>CAJERO</item>
+        <item>ADMINISTRADOR</item>
+    </string-array>
+
     <!-- Login -->
     <string name="welcome_title">Acerque su tarjeta para iniciar sesión</string>
     <string name="card_registered_customer">Tarjeta no registrada para staff</string>
@@ -11,6 +17,18 @@
     <string name="server_label">Servidor:</string>
     <string name="connected">Conectado</string>
     <string name="disconnected">Sin conexión</string>
+
+    <!-- Login NFC -->
+    <string name="login_title">Iniciar sesión</string>
+    <string name="nfc_prompt_login">Acercá la tarjeta para iniciar sesión</string>
+    <string name="nfc_ready">Listo. Acerque la tarjeta…</string>
+    <string name="login_logging_in">Validando…</string>
+    <string name="nfc_read_fail">No se pudo leer la tarjeta</string>
+    <string name="nfc_not_supported">Este dispositivo no tiene NFC o está desactivado</string>
+    <string name="nfc_read_ok">Tarjeta detectada</string>
+
+    <!-- Registrar Staff -->
+    <string name="nfc_prompt_register_staff">Acercá la tarjeta a registrar</string>
 
     <!-- Menú Admin -->
     <string name="admin_menu_title">Menú de Admin</string>
@@ -66,7 +84,8 @@
     <string name="btn_balance">CONSULTAR SALDO</string>
     <string name="btn_summary">RESUMEN</string>
     <string name="btn_void">ANULAR VENTA</string>
-
+    <string name="uid_placeholder">UID: (sin leer)</string>
+    <string name="nfc_prompt_register_customer">Acercá la tarjeta para registrar comprador</string>
     <!-- Base URL por defecto (puede sobrescribirse en runtime) -->
     <string name="base_url">http://192.168.1.28:3000/</string>
 </resources>

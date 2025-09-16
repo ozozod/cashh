@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="http://schemas.android.com/tools" xmlns:ns2="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="roles_staff">
+        <item>VENDEDOR</item>
+        <item>CAJERO</item>
+        <item>ADMINISTRADOR</item>
+    </string-array>
     <attr format="reference" name="animate_relativeTo"/>
     <attr format="reference" name="appBarLayoutStyle"/>
     <attr format="enum" name="arcMode">
@@ -1963,8 +1968,8 @@
     <string name="hide_bottom_view_on_scroll_behavior" translatable="false">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
     <string description="Content description for an icon that appears in the title area of a dialog" name="icon_content_description">Dialog Icon</string>
     <string name="item_view_role_description">Tab</string>
-    <string name="login_logging_in">Leyendo…</string>
-    <string name="login_title">Acercá la tarjeta para iniciar sesión</string>
+    <string name="login_logging_in">Validando…</string>
+    <string name="login_title">Iniciar sesión</string>
     <string name="logout">Cerrar sesión</string>
     <string name="m3_exceed_max_badge_text_suffix" translatable="false"><ns2:g example="Some te" id="part of a long text">%1$s</ns2:g><ns2:g example="…" id="suffix">%2$s</ns2:g></string>
     <string name="m3_ref_typeface_brand_medium" translatable="false">sans-serif-medium</string>
@@ -2073,11 +2078,13 @@
     <string description="Button text to indicate that the widget will ignore the user&apos;s selection [CHAR_LIMIT=16]" name="mtrl_timepicker_cancel">Cancel</string>
     <string description="Button text to indicate that the widget will save the user&apos;s selection [CHAR_LIMIT=16]" name="mtrl_timepicker_confirm">OK</string>
     <string name="need_manager_card">Necesita tarjeta de encargado</string>
-    <string name="nfc_not_supported">Este dispositivo no soporta NFC</string>
-    <string name="nfc_prompt_register_staff">Apoye la tarjeta para registrar al staff</string>
-    <string name="nfc_read_fail">No se pudo leer / iniciar sesión</string>
+    <string name="nfc_not_supported">Este dispositivo no tiene NFC o está desactivado</string>
+    <string name="nfc_prompt_login">Acercá la tarjeta para iniciar sesión</string>
+    <string name="nfc_prompt_register_customer">Acercá la tarjeta para registrar comprador</string>
+    <string name="nfc_prompt_register_staff">Acercá la tarjeta a registrar</string>
+    <string name="nfc_read_fail">No se pudo leer la tarjeta</string>
     <string name="nfc_read_ok">Tarjeta detectada</string>
-    <string name="nfc_ready">Acerque una tarjeta al lector…</string>
+    <string name="nfc_ready">Listo. Acerque la tarjeta…</string>
     <string name="password_toggle_content_description">Show password</string>
     <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
     <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
@@ -2115,6 +2122,7 @@
     <string description="Title of the side sheet&apos;s accessibility pane that is spoken by TalkBack when the side sheet appears on screen. [CHAR_LIMIT=NONE]" name="side_sheet_accessibility_pane_title">Side Sheet</string>
     <string name="side_sheet_behavior" translatable="false">com.google.android.material.sidesheet.SideSheetBehavior</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="uid_placeholder">UID: (sin leer)</string>
     <string name="welcome_title">Acerque su tarjeta para iniciar sesión</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
