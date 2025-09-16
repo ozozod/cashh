@@ -1,64 +1,67 @@
 package com.example.vayvene.ui.admin
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.*
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.vayvene.R
-import com.example.vayvene.ui.common.EXTRA_PROMPT
-import com.example.vayvene.ui.common.EXTRA_UID
+import com.example.vayvene.ui.common.Extras
 import com.example.vayvene.ui.nfc.NfcCaptureActivity
 
 class AdminStaffRegisterActivity : AppCompatActivity() {
 
     private lateinit var etName: EditText
-    private lateinit var etEmployeeNumber: EditText
     private lateinit var spRole: Spinner
+    private lateinit var tvCardUid: TextView
+    private lateinit var etEmployee: EditText
     private lateinit var btnScan: Button
-    private lateinit var tvUid: TextView
     private lateinit var btnSave: Button
-    private lateinit var btnBack: Button
 
-    private val scanLauncher = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == RESULT_OK) {
-            val uid = result.data?.getStringExtra(EXTRA_UID)
-            tvUid.text = uid ?: ""
-        }
-    }
+    private lateinit var scanLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Asegurate de que este sea tu layout real o usa el que te dejo abajo
         setContentView(R.layout.activity_admin_staff_register)
 
+        // Referencias del layout (ids deben existir en el XML)
         etName = findViewById(R.id.etName)
-        etEmployeeNumber = findViewById(R.id.etEmployeeNumber)
         spRole = findViewById(R.id.spRole)
+        tvCardUid = findViewById(R.id.tvCardUid)
+        etEmployee = findViewById(R.id.etEmployee)
         btnScan = findViewById(R.id.btnScan)
-        tvUid = findViewById(R.id.tvUid)
         btnSave = findViewById(R.id.btnSave)
-        btnBack = findViewById(R.id.btnBack)
 
-        // Importante: usamos TU layout local del spinner (no android.R)
-        spRole.adapter = ArrayAdapter(
-            this,
-            R.layout.simple_spinner_dropdown_item,
-            listOf("ADMIN", "CAJERO", "VENDEDOR")
-        )
+        // Spinner simple para roles (ajusta si ya tenés un adapter propio)
+        if (spRole.adapter == null) {
+            val roles = listOf("ADMINISTRADOR", "CAJERO", "VENDEDOR")
+            spRole.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, roles)
+        }
 
-        btnScan.setOnClickListener { openScan("Acerque tarjeta para registrar staff") }
+        // Registrar launcher AQUÍ (ya existen las views)
+        scanLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { res ->
+            if (res.resultCode == Activity.RESULT_OK) {
+                val uid = res.data?.getStringExtra(Extras.EXTRA_UID).orEmpty()
+                tvCardUid.text = uid
+            } else {
+                Toast.makeText(this, getString(R.string.nfc_read_fail), Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        btnScan.setOnClickListener {
+            val i = Intent(this, NfcCaptureActivity::class.java)
+            // Opcional: mensaje de la pantalla de NFC si lo usás
+            i.putExtra(Extras.EXTRA_PROMPT, getString(R.string.nfc_prompt_register_staff))
+            scanLauncher.launch(i)
+        }
+
         btnSave.setOnClickListener {
-            // TODO: POST /mobile/staff/register con (eventId, uid, role, name, telemetría)
+            // TODO: acá iría el POST a tu API /api/mobile/staff/register
+            // usando etName.text, spRole.selectedItem, tvCardUid.text, etc.
             Toast.makeText(this, "Guardar staff (TODO)", Toast.LENGTH_SHORT).show()
         }
-        btnBack.setOnClickListener { finish() }
-    }
-
-    private fun openScan(prompt: String) {
-        val i = Intent(this, NfcCaptureActivity::class.java)
-        i.putExtra(EXTRA_PROMPT, prompt)
-        scanLauncher.launch(i)
     }
 }

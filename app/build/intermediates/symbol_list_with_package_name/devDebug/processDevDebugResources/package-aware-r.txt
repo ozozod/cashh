@@ -3209,7 +3209,7 @@ id enterAlwaysCollapsed
 id escape
 id etAmount
 id etCustomerNumber
-id etEmployeeNumber
+id etEmployee
 id etInitialAmount
 id etName
 id exitUntilCollapsed
@@ -3501,12 +3501,14 @@ id transition_scene_layoutid_cache
 id transition_transform
 id triangle
 id tvBalance
+id tvCardUid
 id tvEmpty
+id tvHint
 id tvInfo
+id tvStatus
 id tvTitle
 id tvTotal
 id tvUid
-id tvWelcome
 id txtTitle
 id txtTitulo
 id unchecked
@@ -3646,8 +3648,10 @@ layout activity_admin_menu
 layout activity_admin_staff_register
 layout activity_cashier_menu
 layout activity_cashier_quick_ops
+layout activity_login
 layout activity_nfc_capture
 layout activity_nfc_login
+layout activity_nfc_prompt
 layout activity_seller_cancel_last_sale
 layout activity_seller_menu
 layout activity_seller_pos
@@ -3814,6 +3818,8 @@ string fab_transformation_sheet_behavior
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string item_view_role_description
+string login_logging_in
+string login_title
 string logout
 string m3_exceed_max_badge_text_suffix
 string m3_ref_typeface_brand_medium
@@ -3916,6 +3922,11 @@ string mtrl_switch_track_path
 string mtrl_timepicker_cancel
 string mtrl_timepicker_confirm
 string need_manager_card
+string nfc_not_supported
+string nfc_prompt_register_staff
+string nfc_read_fail
+string nfc_read_ok
+string nfc_ready
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through

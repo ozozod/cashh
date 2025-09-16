@@ -11,7 +11,8 @@ object Session {
     private const val K_IS_STAFF = "is_staff"
     private const val K_STAFF_NAME = "staff_name"
     private const val K_STAFF_CARD_UID = "staff_card_uid"
-
+    @JvmStatic var currentUserName: String = ""
+    @JvmStatic var currentUserRole: String = ""
     private fun prefs(ctx: Context): SharedPreferences =
         ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
 

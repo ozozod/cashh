@@ -20,11 +20,16 @@ public final class ActivityNfcLoginBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final TextView tvWelcome;
+  public final TextView tvStatus;
 
-  private ActivityNfcLoginBinding(@NonNull LinearLayout rootView, @NonNull TextView tvWelcome) {
+  @NonNull
+  public final TextView tvTitle;
+
+  private ActivityNfcLoginBinding(@NonNull LinearLayout rootView, @NonNull TextView tvStatus,
+      @NonNull TextView tvTitle) {
     this.rootView = rootView;
-    this.tvWelcome = tvWelcome;
+    this.tvStatus = tvStatus;
+    this.tvTitle = tvTitle;
   }
 
   @Override
@@ -54,13 +59,19 @@ public final class ActivityNfcLoginBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.tvWelcome;
-      TextView tvWelcome = ViewBindings.findChildViewById(rootView, id);
-      if (tvWelcome == null) {
+      id = R.id.tvStatus;
+      TextView tvStatus = ViewBindings.findChildViewById(rootView, id);
+      if (tvStatus == null) {
         break missingId;
       }
 
-      return new ActivityNfcLoginBinding((LinearLayout) rootView, tvWelcome);
+      id = R.id.tvTitle;
+      TextView tvTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvTitle == null) {
+        break missingId;
+      }
+
+      return new ActivityNfcLoginBinding((LinearLayout) rootView, tvStatus, tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

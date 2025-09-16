@@ -41,8 +41,15 @@
     <string name="disconnected">Sin conexión</string>
     <string name="enter_dni">DNI</string>
     <string name="enter_name">Nombre</string>
+    <string name="login_logging_in">Leyendo…</string>
+    <string name="login_title">Acercá la tarjeta para iniciar sesión</string>
     <string name="logout">Cerrar sesión</string>
     <string name="need_manager_card">Necesita tarjeta de encargado</string>
+    <string name="nfc_not_supported">Este dispositivo no soporta NFC</string>
+    <string name="nfc_prompt_register_staff">Apoye la tarjeta para registrar al staff</string>
+    <string name="nfc_read_fail">No se pudo leer / iniciar sesión</string>
+    <string name="nfc_read_ok">Tarjeta detectada</string>
+    <string name="nfc_ready">Acerque una tarjeta al lector…</string>
     <string name="ready_to_cancel_last_sale">Listo para anular la última venta</string>
     <string name="register_customer">Cargar comprador</string>
     <string name="register_staff">Cargar staff</string>

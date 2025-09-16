@@ -1,75 +1,100 @@
 package com.example.vayvene.ui.login
 
-import android.content.Intent
+import android.nfc.NfcAdapter
 import android.os.Bundle
-import android.widget.Toast
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.vayvene.R
-import com.example.vayvene.data.Repository
+import com.example.vayvene.BuildConfig
 import com.example.vayvene.data.Session
-import com.example.vayvene.ui.admin.AdminMenuActivity
+import com.example.vayvene.ui.admin.AdminCustomerRegisterActivity
+import com.example.vayvene.ui.cashier.CashierQuickOpsActivity
 import com.example.vayvene.ui.seller.SellerMenuActivity
-import com.example.vayvene.ui.cashier.CashierMenuActivity
-import com.example.vayvene.ui.common.EXTRA_UID
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 
 class NfcLoginActivity : AppCompatActivity() {
 
+    private var nfcAdapter: NfcAdapter? = null
+    private lateinit var tvStatus: TextView
+    private val client by lazy { OkHttpClient() }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_nfc_login) // Asegurate que exista y tenga tus views
+        setContentView(R.layout.activity_nfc_login)
 
-        // UID de la tarjeta (reversed) que te llega del capturador NFC:
-        val uid = intent.getStringExtra(EXTRA_UID)
-        if (uid != null) {
-            doLogin(uid)
-        } else {
-            // si tu flujo primero captura, navega a tu capturador aquí
-            // startActivity(Intent(this, NfcPromptActivity::class.java))
-        }
-    }
+        tvStatus = findViewById(R.id.tvStatus)
 
-    private fun doLogin(cardUidReversed: String) {
-        Repository.login(
-            this, cardUidReversed,
-            { json -> handleLoginOk(json) },
-            { e -> Toast.makeText(this, "Error de login: ${e.message}", Toast.LENGTH_LONG).show() }
-        )
-
-    }
-
-    private fun handleLoginOk(json: JSONObject) {
-        val token        = json.optString("token")
-        val eventId      = json.optString("eventId")
-        val staffRole    = json.optString("staffRole")
-        val staffName    = json.optString("staffName")
-        val staffCardUid = json.optString("staffCardUid")
-        val isStaff      = json.optBoolean("isStaff", false)
-
-        if (token.isBlank() || eventId.isBlank()) {
-            Toast.makeText(this, "Respuesta de login inválida", Toast.LENGTH_LONG).show()
+        nfcAdapter = NfcAdapter.getDefaultAdapter(this)
+        if (nfcAdapter == null) {
+            tvStatus.text = getString(R.string.nfc_not_supported)
             return
         }
+        tvStatus.text = getString(R.string.nfc_ready)
+    }
 
-        Session.setLogin(
-            ctx = this,
-            token = token,
-            eventId = eventId,
-            role = staffRole,
-            isStaff = isStaff,
-            staffName = staffName,
-            staffCardUid = staffCardUid
+    override fun onResume() {
+        super.onResume()
+        nfcAdapter?.enableReaderMode(
+            this,
+            { tag ->
+                val uid = tag.id?.joinToString("") { b -> "%02X".format(b) } ?: return@enableReaderMode
+                runOnUiThread { tvStatus.text = getString(R.string.login_logging_in) }
+                doLogin(uid)
+            },
+            NfcAdapter.FLAG_READER_NFC_A or
+                    NfcAdapter.FLAG_READER_NFC_B or
+                    NfcAdapter.FLAG_READER_NFC_F or
+                    NfcAdapter.FLAG_READER_NFC_V or
+                    NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK,
+            null
         )
+    }
 
-        when (staffRole.lowercase()) {
-            "admin"    -> startActivity(Intent(this, com.example.vayvene.ui.admin.AdminMenuActivity::class.java))
-            "cajero"   -> startActivity(Intent(this, com.example.vayvene.ui.cashier.CashierMenuActivity::class.java))
-            "vendedor" -> startActivity(Intent(this, com.example.vayvene.ui.seller.SellerMenuActivity::class.java))
-            else -> {
-                Toast.makeText(this, "Tarjeta no registrada para staff", Toast.LENGTH_LONG).show()
-                // se queda en login
+    override fun onPause() {
+        super.onPause()
+        nfcAdapter?.disableReaderMode(this)
+    }
+
+    private fun doLogin(cardUid: String) {
+        Thread {
+            try {
+                val url = BuildConfig.BASE_URL.trimEnd('/') + "/api/mobile/login"
+
+                val json = JSONObject().put("cardUid", cardUid).toString()
+                val body = json.toRequestBody("application/json; charset=utf-8".toMediaType())
+
+                val req = Request.Builder().url(url).post(body).build()
+                val resp = client.newCall(req).execute()
+                val code = resp.code
+                val bodyStr = resp.body?.string().orEmpty()
+
+                if (code in 200..299) {
+                    val obj = JSONObject(bodyStr)
+                    val user = obj.getJSONObject("user")
+                    val role = user.optString("role", "").uppercase()
+
+                    Session.currentUserName = user.optString("name", "")
+                    Session.currentUserRole = role
+
+                    runOnUiThread {
+                        tvStatus.text = getString(R.string.nfc_read_ok)
+                        when (role) {
+                            "VENDEDOR" -> startActivity(android.content.Intent(this, SellerMenuActivity::class.java))
+                            "CAJERO" -> startActivity(android.content.Intent(this, CashierQuickOpsActivity::class.java))
+                            "ADMINISTRADOR" -> startActivity(android.content.Intent(this, AdminCustomerRegisterActivity::class.java))
+                            else -> tvStatus.text = getString(R.string.nfc_read_fail)
+                        }
+                    }
+                } else {
+                    runOnUiThread { tvStatus.text = getString(R.string.nfc_read_fail) }
+                }
+            } catch (_: Exception) {
+                runOnUiThread { tvStatus.text = getString(R.string.nfc_read_fail) }
             }
-        }
-        finish()
+        }.start()
     }
 }

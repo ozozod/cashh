@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_title">Acercá la tarjeta para iniciar sesión</string>
+    <string name="nfc_ready">Acerque una tarjeta al lector…</string>
+    <string name="nfc_not_supported">Este dispositivo no soporta NFC</string>
+    <string name="nfc_read_fail">No se pudo leer / iniciar sesión</string>
+    <string name="nfc_read_ok">Tarjeta detectada</string>
+    <string name="login_logging_in">Leyendo…</string>
+    <string name="nfc_prompt_register_staff">Apoye la tarjeta para registrar al staff</string>
+</resources>

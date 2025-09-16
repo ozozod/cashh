@@ -20,8 +20,6 @@ import org.json.JSONObject
 import java.math.BigDecimal
 import com.example.vayvene.ui.common.EXTRA_UID
 import com.example.vayvene.ui.common.EXTRA_PROMPT
-import com.example.vayvene.ui.common.EXTRA_MANAGER_UID
-
 
 
 class AdminCustomerRegisterActivity : AppCompatActivity() {

@@ -64,6 +64,10 @@
         "source": "com.example.vayvene.app-main-35:/mipmap-xxxhdpi/ic_launcher.xml"
     },
     {
+        "merged": "com.example.vayvene.app-devDebug-31:/layout_activity_login.xml.flat",
+        "source": "com.example.vayvene.app-main-35:/layout/activity_login.xml"
+    },
+    {
         "merged": "com.example.vayvene.app-devDebug-31:/drawable_rounded_btn.xml.flat",
         "source": "com.example.vayvene.app-main-35:/drawable/rounded_btn.xml"
     },
@@ -110,6 +114,10 @@
     {
         "merged": "com.example.vayvene.app-devDebug-31:/mipmap-xxhdpi_ic_launcher.xml.flat",
         "source": "com.example.vayvene.app-main-35:/mipmap-xxhdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-devDebug-31:/layout_activity_nfc_prompt.xml.flat",
+        "source": "com.example.vayvene.app-main-35:/layout/activity_nfc_prompt.xml"
     },
     {
         "merged": "com.example.vayvene.app-devDebug-31:/layout_activity_seller_sale_result.xml.flat",

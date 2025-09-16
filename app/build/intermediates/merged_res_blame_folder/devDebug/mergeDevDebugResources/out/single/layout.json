@@ -8,6 +8,10 @@
         "source": "com.example.vayvene.app-main-35:/layout/activity_nfc_capture.xml"
     },
     {
+        "merged": "com.example.vayvene.app-mergeDevDebugResources-30:/layout/activity_login.xml",
+        "source": "com.example.vayvene.app-main-35:/layout/activity_login.xml"
+    },
+    {
         "merged": "com.example.vayvene.app-mergeDevDebugResources-30:/layout/activity_seller_cancel_last_sale.xml",
         "source": "com.example.vayvene.app-main-35:/layout/activity_seller_cancel_last_sale.xml"
     },
@@ -34,6 +38,10 @@
     {
         "merged": "com.example.vayvene.app-mergeDevDebugResources-30:/layout/activity_admin_menu.xml",
         "source": "com.example.vayvene.app-main-35:/layout/activity_admin_menu.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDevDebugResources-30:/layout/activity_nfc_prompt.xml",
+        "source": "com.example.vayvene.app-main-35:/layout/activity_nfc_prompt.xml"
     },
     {
         "merged": "com.example.vayvene.app-mergeDevDebugResources-30:/layout/activity_cashier_quick_ops.xml",

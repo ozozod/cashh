@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.NFC" />
 
     <!-- Declaramos NFC como opcional para que instale en equipos sin NFC -->
-    <uses-feature android:name="android.hardware.nfc" android:required="false" />
+    <uses-feature android:name="android.hardware.nfc" android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -22,7 +22,10 @@
         <!-- Launcher -->
         <activity
             android:name=".ui.login.NfcLoginActivity"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.VayVene">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

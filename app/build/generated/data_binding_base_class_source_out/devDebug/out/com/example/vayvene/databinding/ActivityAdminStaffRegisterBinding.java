@@ -23,16 +23,13 @@ public final class ActivityAdminStaffRegisterBinding implements ViewBinding {
   private final ScrollView rootView;
 
   @NonNull
-  public final Button btnBack;
-
-  @NonNull
   public final Button btnSave;
 
   @NonNull
   public final Button btnScan;
 
   @NonNull
-  public final EditText etEmployeeNumber;
+  public final EditText etEmployee;
 
   @NonNull
   public final EditText etName;
@@ -41,19 +38,18 @@ public final class ActivityAdminStaffRegisterBinding implements ViewBinding {
   public final Spinner spRole;
 
   @NonNull
-  public final TextView tvUid;
+  public final TextView tvCardUid;
 
-  private ActivityAdminStaffRegisterBinding(@NonNull ScrollView rootView, @NonNull Button btnBack,
-      @NonNull Button btnSave, @NonNull Button btnScan, @NonNull EditText etEmployeeNumber,
-      @NonNull EditText etName, @NonNull Spinner spRole, @NonNull TextView tvUid) {
+  private ActivityAdminStaffRegisterBinding(@NonNull ScrollView rootView, @NonNull Button btnSave,
+      @NonNull Button btnScan, @NonNull EditText etEmployee, @NonNull EditText etName,
+      @NonNull Spinner spRole, @NonNull TextView tvCardUid) {
     this.rootView = rootView;
-    this.btnBack = btnBack;
     this.btnSave = btnSave;
     this.btnScan = btnScan;
-    this.etEmployeeNumber = etEmployeeNumber;
+    this.etEmployee = etEmployee;
     this.etName = etName;
     this.spRole = spRole;
-    this.tvUid = tvUid;
+    this.tvCardUid = tvCardUid;
   }
 
   @Override
@@ -83,12 +79,6 @@ public final class ActivityAdminStaffRegisterBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.btnBack;
-      Button btnBack = ViewBindings.findChildViewById(rootView, id);
-      if (btnBack == null) {
-        break missingId;
-      }
-
       id = R.id.btnSave;
       Button btnSave = ViewBindings.findChildViewById(rootView, id);
       if (btnSave == null) {
@@ -101,9 +91,9 @@ public final class ActivityAdminStaffRegisterBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.etEmployeeNumber;
-      EditText etEmployeeNumber = ViewBindings.findChildViewById(rootView, id);
-      if (etEmployeeNumber == null) {
+      id = R.id.etEmployee;
+      EditText etEmployee = ViewBindings.findChildViewById(rootView, id);
+      if (etEmployee == null) {
         break missingId;
       }
 
@@ -119,14 +109,14 @@ public final class ActivityAdminStaffRegisterBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.tvUid;
-      TextView tvUid = ViewBindings.findChildViewById(rootView, id);
-      if (tvUid == null) {
+      id = R.id.tvCardUid;
+      TextView tvCardUid = ViewBindings.findChildViewById(rootView, id);
+      if (tvCardUid == null) {
         break missingId;
       }
 
-      return new ActivityAdminStaffRegisterBinding((ScrollView) rootView, btnBack, btnSave, btnScan,
-          etEmployeeNumber, etName, spRole, tvUid);
+      return new ActivityAdminStaffRegisterBinding((ScrollView) rootView, btnSave, btnScan,
+          etEmployee, etName, spRole, tvCardUid);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
