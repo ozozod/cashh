@@ -77,8 +77,9 @@ class NfcScanActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
     }
 
     // Fallback por intent (por si algún equipo lo usa)
-    override fun onNewIntent(intent: Intent?) {
+    override fun onNewIntent(intent: android.content.Intent) { // 👈 no-null
         super.onNewIntent(intent)
+        setIntent(intent)
         val tag: Tag? = if (Build.VERSION.SDK_INT >= 33) {
             intent?.getParcelableExtra(NfcAdapter.EXTRA_TAG, Tag::class.java)
         } else {

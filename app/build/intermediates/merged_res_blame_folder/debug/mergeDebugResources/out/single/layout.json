@@ -1,0 +1,114 @@
+[
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_admin_customer_register.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_admin_customer_register.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/dialog_nfc_oneshot.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/dialog_nfc_oneshot.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_role_menu.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_role_menu.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/item_product.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/item_product.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_admin_seller_menu.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_admin_seller_menu.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_seller_menu.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_seller_menu.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_nfc_prompt.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_nfc_prompt.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_login.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_balance.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_balance.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_pos.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_pos.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_nfc_scan.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_nfc_scan.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_cashier_quick_ops.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_cashier_quick_ops.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_seller_cancel_last_sale.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_seller_cancel_last_sale.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_nfc_login.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_nfc_login.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_admin_cards_menu.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_admin_cards_menu.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_main.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_admin_staff_register.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_admin_staff_register.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_seller_summary.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_seller_summary.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_register_result.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_register_result.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_admin_menu.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_admin_menu.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_seller_sale_result.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_seller_sale_result.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_admin_ops_dev.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_admin_ops_dev.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/item_product_summary.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/item_product_summary.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_admin_cashier_menu.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_admin_cashier_menu.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_seller_pos.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_seller_pos.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_recharge.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_recharge.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_nfc_capture.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_nfc_capture.xml"
+    },
+    {
+        "merged": "com.example.vayvene.app-mergeDebugResources-38:/layout/activity_register_card.xml",
+        "source": "com.example.vayvene.app-main-41:/layout/activity_register_card.xml"
+    }
+]

@@ -109,10 +109,12 @@ class RegisterCardActivity : AppCompatActivity() {
         nfcAdapter?.disableForegroundDispatch(this)
     }
 
-    override fun onNewIntent(intent: Intent?) {
+    override fun onNewIntent(intent: android.content.Intent) { // 👈 no-null
         super.onNewIntent(intent)
-        if (intent != null) handleIntent(intent)
+        setIntent(intent) // si tu lógica lo necesita
+        // TODO: tu manejo de Intent (NFC o lo que haga esta pantalla)
     }
+
 
     private fun showForm() {
         readingEnabled = false
